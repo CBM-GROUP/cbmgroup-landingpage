@@ -57,7 +57,7 @@ export function Hero() {
             className="mt-10 flex flex-wrap gap-4"
           >
             <Link
-              href="#brands"
+              href="/companies"
               className="group flex items-center gap-3 rounded-full bg-white px-6 py-3.5 font-semibold text-black transition hover:bg-cyan-300"
             >
               Explore our brands
@@ -68,7 +68,7 @@ export function Hero() {
             </Link>
 
             <Link
-              href="#about"
+              href="/about"
               className="flex items-center gap-3 rounded-full border border-white/15 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10"
             >
               <Play size={17} fill="currentColor" />

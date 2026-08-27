@@ -111,7 +111,7 @@ export default function AboutSection() {
             </p>
 
             <a
-              href="#pillars"
+              href="/companies"
               className="
                 group
                 mt-8
@@ -339,7 +339,7 @@ export default function AboutSection() {
 
       <div className="flex justify-center pb-16">
         <motion.a
-          href="#pillars"
+          href="/companies"
           animate={{
             y: [0, 8, 0],
           }}

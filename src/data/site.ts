@@ -10,28 +10,24 @@ import {
 
 export const navItems: NavItem[] = [
   {
-    label: "About",
-    href: "#about",
+    label: "About Us",
+    href: "/about",
   },
   {
-    label: "Pillars",
-    href: "#pillars",
-  },
-  {
-    label: "Brands",
-    href: "#brands",
+    label: "Companies",
+    href: "/companies",
   },
   {
     label: "Initiatives",
-    href: "#initiatives",
+    href: "/initiatives",
   },
   {
     label: "Team",
-    href: "#team",
+    href: "/team",
   },
   {
     label: "Careers",
-    href: "#careers",
+    href: "/careers",
   },
 ];
 
