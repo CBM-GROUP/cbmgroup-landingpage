@@ -83,38 +83,44 @@ export const brands: Brand[] = [
   {
     id: "cbm-tv",
     name: "CBM TV",
-    image: "/logo.png",
-    link: ""
+    image: "/companies/CBM Advertising Logo - 7 (1).jpg.jpeg",
+    href: "https://cbmtv.cbmgroupco.com"
   },
   {
     id: "now-play",
     name: "Now Play",
-    image: "/logo.png",
-    link: ""
+    image: "/companies/NOW PLAY - 3.jpg.jpeg",
+    href: "https://nowplay.cbmgroupco.com"
   },
   {
     id: "cbm-radio",
     name: "CBM Radio",
-    image: "/logo.png",
-    link: ""
+    image: "/companies/Cbm Radio - 1.jpg.jpeg",
+    href: "https://cbmradio.cbmgroupco.com"
+  },
+  {
+    id: "cbm-records",
+    name: "CBM Records",
+    image: "/companies/CBM Records Logo - 17.jpg.jpeg",
+    href: "https://records.cbmgroupco.com"
   },
   {
     id: "cbm-advertising",
     name: "CBM Advertising",
-    image: "/logo.png",
-    link: ""
+    image: "/companies/CBM Advertising Logo - 3 (1).jpg.jpeg",
+    href: "https://adverts.cbmgroupco.com"
   },
   {
     id: "cbm-events",
     name: "CBM Events",
-    image: "/logo.png",
-    link: ""
+    image: "/companies/CBM Events.jpeg",
+    href: "https://events.cbmgroupco.com"
   },
   {
     id: "cbm-film",
     name: "CBM Film",
-    image: "/logo.png",
-    link: ""
+    image: "/companies/Cbm Film.jpeg",
+    href: "https://film.cbmgroupco.com"
   },
 ];
 
