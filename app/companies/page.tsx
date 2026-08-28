@@ -3,23 +3,10 @@ import Image from "next/image";
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-white py-20 text-black">
+    <main className="min-h-screen bg-white py-20 text-center text-black">
       <div className="mx-auto max-w-5xl px-6">
-        <h1 className="text-4xl font-bold">Companies & Pillars</h1>
-        <p className="mt-4 text-gray-600">Explore the pillars and brands within CBM Group.</p>
-
-        <section className="mt-10">
-          <h2 className="text-2xl font-semibold">Pillars</h2>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2">
-            {pillars.map((p) => (
-              <div key={p.id} className="rounded border border-gray-200 p-4">
-                <div className="text-sm text-brand-text">{p.number}</div>
-                <div className="mt-1 text-lg font-medium">{p.title}</div>
-                <p className="mt-2 text-gray-600">{p.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <h1 className="text-6xl font-bold">Our Companies</h1>
+        <p className="mt-4 text-gray-600">Explore brands within CBM Group.</p>
 
         <section className="mt-12">
           <h2 className="text-2xl font-semibold">Brands</h2>

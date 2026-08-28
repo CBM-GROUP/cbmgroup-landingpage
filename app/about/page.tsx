@@ -1,4 +1,4 @@
-import { coreValues } from "@/data/site";
+import { coreValues, teamMembers, pillars } from "@/data/site";
 
 export default function Page() {
   return (
@@ -18,6 +18,37 @@ export default function Page() {
             ))}
           </div>
         </section>
+
+        <section className="mt-10">
+                  <div className="mx-auto max-w-4xl px-6">
+                    <h1 className="text-4xl font-bold">Team</h1>
+                    <p className="mt-4">Meet the people behind CBM Group.</p>
+        
+                    <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                      {teamMembers.map((m) => (
+                        <div key={m.id} className="rounded border border-white/10 p-4">
+                          <div className="text-lg font-medium">{m.name}</div>
+                          <div className="mt-1 text-sm">{m.role}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+        
+                <section>
+                  <h1>Our Pillars</h1>
+                    <p className="mt-4">Explore the pillars and brands within CBM Group.</p>
+                  <h2 className="text-2xl font-semibold">Pillars</h2>
+                  <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                    {pillars.map((p) => (
+                      <div key={p.id} className="rounded border border-white/10 p-4">
+                        <div className="text-sm">{p.number}</div>
+                        <div className="mt-1 text-lg font-medium">{p.title}</div>
+                        <p className="mt-2">{p.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
       </div>
     </main>
   );
