@@ -5,7 +5,7 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-black text-white py-20">
       <div className="mx-auto max-w-5xl px-6">
-        <h1 className="text-4xl font-bold">Companies & Pillars</h1>
+        <h1 className="text-4xl text-lg font-bold">Companies & Pillars</h1>
         <p className="mt-4 text-white/70">Explore the pillars and brands within CBM Group.</p>
 
         <section className="mt-10">
@@ -22,7 +22,7 @@ export default function Page() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-2xl font-semibold">Brands</h2>
+          <h2 className="text-2xl font-semibold">Our Companies</h2>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {brands.map((b) => {
               const card = (

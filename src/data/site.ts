@@ -22,7 +22,7 @@ export const navItems: NavItem[] = [
     href: "/initiatives",
   },
   {
-    label: "Work With CBM",
+    label: "Work At CBM",
     href: "/careers",
   },
 ];
@@ -84,31 +84,37 @@ export const brands: Brand[] = [
     id: "cbm-tv",
     name: "CBM TV",
     image: "/logo.png",
+    link: ""
   },
   {
     id: "now-play",
     name: "Now Play",
     image: "/logo.png",
+    link: ""
   },
   {
     id: "cbm-radio",
     name: "CBM Radio",
     image: "/logo.png",
+    link: ""
   },
   {
     id: "cbm-advertising",
     name: "CBM Advertising",
     image: "/logo.png",
+    link: ""
   },
   {
     id: "cbm-events",
     name: "CBM Events",
     image: "/logo.png",
+    link: ""
   },
   {
     id: "cbm-film",
     name: "CBM Film",
     image: "/logo.png",
+    link: ""
   },
 ];
 
