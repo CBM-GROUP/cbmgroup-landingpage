@@ -6,7 +6,7 @@ export default function Page() {
     <main className="min-h-screen bg-[#fff4f3] py-16 text-center text-[#2f2f2f] sm:py-20">
       <div className="mx-auto max-w-5xl px-6">
         <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">Our Companies</h1>
-        <p className="mt-4 text-[#686363]">Explore brands within CBM Group.</p>
+        <p className="mt-4 text-md text-[#686363]">Explore brands within CBM Group Ecosystem that define our identity.</p>
 
         <section className="mt-12">
           <h2 className="text-2xl font-semibold">Brands</h2>
