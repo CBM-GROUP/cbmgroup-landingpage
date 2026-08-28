@@ -1,1 +1,46 @@
 @import "tailwindcss";
+
+:root {
+	--teal-50: #ECFEFE;
+	--teal-100: #D4FCFC;
+	--teal-200: #A9F9F9;
+	--teal-300: #6FF6F4;
+	--teal-400: #36F2F0;
+	--teal-500: #0CBAB8;
+	--teal-600: #0A9997;
+	--teal-700: #087776;
+	--teal-800: #065655;
+	--teal-900: #043837;
+
+	--gray-0: #FFFFFF;
+	--gray-50: #FAFAFA;
+	--gray-100: #F1F3F3;
+	--gray-200: #E4E7E7;
+	--gray-300: #CED4D4;
+	--gray-400: #A0ABAB;
+	--gray-500: #788787;
+	--gray-600: #5B6767;
+	--gray-700: #434C4C;
+	--gray-800: #2B3131;
+	--gray-900: #1A1E1E;
+	--gray-1000: #000000;
+
+	--bg: var(--gray-0);
+	--bg-subtle: var(--gray-50);
+	--text: var(--gray-1000);
+	--text-muted: var(--gray-600);
+	--border: var(--gray-200);
+	--brand: var(--teal-500);
+	--brand-text: var(--teal-700);
+	--brand-hover: var(--teal-600);
+	--brand-active: var(--teal-700);
+	--brand-disabled: var(--teal-200);
+	--brand-focus-ring: rgb(12 186 184 / 35%);
+}
+
+@theme inline {
+	--color-brand: var(--brand);
+	--color-brand-text: var(--brand-text);
+	--color-brand-hover: var(--brand-hover);
+	--color-brand-active: var(--brand-active);
+}

@@ -12,7 +12,7 @@ const manrope = Manrope({
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${manrope.variable} h-full antialiased`}>
-      <body className="min-h-screen flex flex-col bg-black">
+      <body className="min-h-screen flex flex-col bg-white text-black">
         <Header />
         {children}
       </body>

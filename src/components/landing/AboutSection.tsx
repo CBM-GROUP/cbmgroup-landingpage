@@ -59,7 +59,7 @@ export default function AboutSection() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative overflow-hidden bg-black">
+      className="relative overflow-hidden bg-white">
       {/* =====================================================
           INTRODUCTION
       ====================================================== */}
@@ -88,13 +88,13 @@ export default function AboutSection() {
                 font-medium
                 leading-[0.92]
                 tracking-[-0.055em]
-                text-white
+                text-black
                 sm:text-6xl
                 md:text-7xl
                 lg:text-[7.5rem]
               ">
               We are building
-              <span className="block text-white/25">Africa&apos;s</span>
+              <span className="block text-gray-400">Africa&apos;s</span>
               creative future.
             </motion.h2>
           </div>
@@ -103,7 +103,7 @@ export default function AboutSection() {
           <motion.div
             variants={itemVariants}
             className="flex flex-col justify-end lg:pb-3">
-            <p className="max-w-md text-base leading-7 text-white/55 sm:text-lg sm:leading-8">
+            <p className="max-w-md text-base leading-7 text-gray-600 sm:text-lg sm:leading-8">
               CBM Group is a multinational creative media, entertainment,
               streaming and conglomerate company advancing Africa through
               storytelling, entrepreneurship, digital innovation, technology and
@@ -120,14 +120,14 @@ export default function AboutSection() {
                 items-center
                 gap-3
                 border-b
-                border-white/20
+                border-gray-300
                 pb-2
                 text-sm
                 font-medium
-                text-white
+                text-black
                 transition-colors
-                hover:border-cyan-400
-                hover:text-cyan-400
+                hover:border-teal-400
+                hover:text-teal-400
               ">
               Discover what we do
               <ArrowUpRight
@@ -152,7 +152,7 @@ export default function AboutSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.8 }}
-          className="mt-16 flex flex-wrap items-center gap-2 border-t border-white/10 pt-6">
+          className="mt-16 flex flex-wrap items-center gap-2 border-t border-gray-200 pt-6">
           {aboutPills.map((pill) => (
             <motion.span
               key={pill}
@@ -160,16 +160,16 @@ export default function AboutSection() {
               className="
                 rounded-full
                 border
-                border-white/10
-                bg-white/[0.03]
+                border-gray-200
+                bg-gray-50
                 px-4
                 py-2
                 text-xs
                 uppercase
                 tracking-[0.12em]
-                text-white/45
+                text-gray-600
                 transition-colors
-                hover:bg-white/10
+                hover:bg-gray-100
                 cursor-default
               ">
               {pill}
@@ -178,7 +178,7 @@ export default function AboutSection() {
 
           <motion.span 
             variants={itemVariants}
-            className="ml-auto hidden text-xs text-white/25 sm:block">
+            className="ml-auto hidden text-xs text-gray-400 sm:block">
             Creativity → Culture → Impact
           </motion.span>
         </motion.div>
@@ -272,7 +272,7 @@ export default function AboutSection() {
             uppercase
             leading-none
             tracking-[-0.08em]
-            text-white/[0.02]
+            text-gray-200
           ">
           CBM GROUP CBM GROUP
         </motion.div>
@@ -287,8 +287,8 @@ export default function AboutSection() {
             {/* Number */}
             <motion.div
               variants={itemVariants}
-              className="text-sm text-white/25">
-              <span className="text-cyan-400">01</span>
+              className="text-sm text-gray-500">
+              <span className="text-teal-400">01</span>
               <span className="mx-2">/</span>
               About
             </motion.div>
@@ -302,7 +302,7 @@ export default function AboutSection() {
                   font-medium
                   leading-[1.15]
                   tracking-tight
-                  text-white/80
+                  text-gray-800
                   sm:text-4xl
                   lg:text-5xl
                 ">
@@ -311,13 +311,13 @@ export default function AboutSection() {
                 change.
               </p>
 
-              <div className="mt-10 flex items-center gap-3 text-sm text-white/40">
+              <div className="mt-10 flex items-center gap-3 text-sm text-gray-500">
                 <motion.span 
                   initial={{ width: 0 }}
                   whileInView={{ width: "2.5rem" }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
-                  className="h-px bg-cyan-400" 
+                  className="h-px bg-teal-400"
                 />
                 <motion.span
                   initial={{ opacity: 0 }}
@@ -356,9 +356,9 @@ export default function AboutSection() {
             text-xs
             uppercase
             tracking-[0.2em]
-            text-white/25
+            text-gray-500
             transition
-            hover:text-cyan-400
+              hover:text-teal-400
           ">
           <span>Scroll to explore</span>
 

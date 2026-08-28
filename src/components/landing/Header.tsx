@@ -12,9 +12,9 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
-        <nav className="flex flex-col items-center rounded-half border border-white/10 bg-white px-5 py-3 w-full backdrop-blur-xl">
+    <header className="sticky inset-x-0 top-0 z-[100] shrink-0 isolate">
+      <div className="mx-auto w-full max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
+        <nav className="flex w-full flex-col items-center rounded-3xl border border-gray-200 bg-white px-5 py-3 shadow-lg shadow-black/10 backdrop-blur-xl">
           <div className="w-full flex items-center justify-between">
             <div className="flex items-center">
               <button
@@ -26,7 +26,7 @@ export default function Header() {
               </button>
             </div>
 
-            <div className="flex-1 flex justify-center border-b-2">
+            <div className="flex flex-1 justify-center border-b-2 border-brand">
               <Link href="/" prefetch={false} className="inline-flex items-center">
                 <img src="/logo.png" alt="CBM" className="h-15 w-auto" />
               </Link>
@@ -43,7 +43,7 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   prefetch={false}
-                  className={`text-md transition hover:black-white ${isActive ? "text-black" : "text-black"}`}
+                  className={`text-md transition hover:text-brand-text ${isActive ? "text-brand-text" : "text-black"}`}
                 >
                   {item.label}
                 </Link>
@@ -58,7 +58,7 @@ export default function Header() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="mt-2 rounded-3xl border border-white/10 bg-black/90 p-5 backdrop-blur-xl md:hidden"
+              className="mt-2 rounded-3xl border border-gray-700 bg-gray-900 p-5 shadow-xl shadow-black/20 backdrop-blur-xl md:hidden"
             >
               <div className="flex flex-col gap-5">
                 {navItems.map((item) => {
@@ -69,7 +69,7 @@ export default function Header() {
                       href={item.href}
                       prefetch={false}
                       onClick={() => setOpen(false)}
-                      className={`text-base transition ${isActive ? "text-teal-400" : "text-white/70"} hover:text-white`}
+                      className={`text-base transition ${isActive ? "text-teal-300" : "text-white/70"} hover:text-teal-100`}
                     >
                       {item.label}
                     </Link>
