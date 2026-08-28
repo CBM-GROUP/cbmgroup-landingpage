@@ -83,26 +83,32 @@ export const brands: Brand[] = [
   {
     id: "cbm-tv",
     name: "CBM TV",
+    image: "/logo.png",
   },
   {
     id: "now-play",
     name: "Now Play",
+    image: "/logo.png",
   },
   {
     id: "cbm-radio",
     name: "CBM Radio",
+    image: "/logo.png",
   },
   {
     id: "cbm-advertising",
     name: "CBM Advertising",
+    image: "/logo.png",
   },
   {
     id: "cbm-events",
     name: "CBM Events",
+    image: "/logo.png",
   },
   {
     id: "cbm-film",
     name: "CBM Film",
+    image: "/logo.png",
   },
 ];
 
