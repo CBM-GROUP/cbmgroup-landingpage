@@ -10,23 +10,19 @@ import {
 
 export const navItems: NavItem[] = [
   {
-    label: "About Us",
-    href: "/about",
-  },
-  {
     label: "Companies",
     href: "/companies",
   },
   {
-    label: "Initiatives",
+    label: "About Us",
+    href: "/about",
+  },
+  {
+    label: "Purpose",
     href: "/initiatives",
   },
   {
-    label: "Team",
-    href: "/team",
-  },
-  {
-    label: "Careers",
+    label: "Work With CBM",
     href: "/careers",
   },
 ];

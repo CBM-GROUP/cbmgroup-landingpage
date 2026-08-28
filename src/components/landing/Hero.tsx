@@ -58,6 +58,7 @@ export function Hero() {
           >
             <Link
               href="/companies"
+              prefetch={false}
               className="group flex items-center gap-3 rounded-full bg-white px-6 py-3.5 font-semibold text-black transition hover:bg-cyan-300"
             >
               Explore our brands
@@ -69,6 +70,7 @@ export function Hero() {
 
             <Link
               href="/about"
+              prefetch={false}
               className="flex items-center gap-3 rounded-full border border-white/15 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10"
             >
               <Play size={17} fill="currentColor" />

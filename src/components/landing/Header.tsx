@@ -5,44 +5,51 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { navItems } from "@/data/site";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
-        <nav className="flex h-16 items-center justify-between rounded-full border border-white/10 bg-black/60 px-5 backdrop-blur-xl">
-          <Link href="/" className="text-xl font-black tracking-tight text-white">
-            CBM<span className="text-cyan-400">.</span>
-          </Link>
-
-          <div className="hidden items-center gap-8 md:flex">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm text-white/60 transition hover:text-white"
+        <nav className="flex flex-col items-center rounded-half border border-white/10 bg-white px-5 py-3 w-full backdrop-blur-xl">
+          <div className="w-full flex items-center justify-between">
+            <div className="flex items-center">
+              <button
+                onClick={() => setOpen((value) => !value)}
+                className="text-black md:hidden"
+                aria-label="Toggle navigation"
               >
-                {item.label}
+                {open ? <X /> : <Menu />}
+              </button>
+            </div>
+
+            <div className="flex-1 flex justify-center border-b-2">
+              <Link href="/" prefetch={false} className="inline-flex items-center">
+                <img src="/logo.png" alt="CBM" className="h-15 w-auto" />
               </Link>
-            ))}
+            </div>
+
+            
           </div>
 
-          <a
-            href="#contact"
-            className="hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-cyan-300 md:block"
-          >
-            Connect
-          </a>
-
-          <button
-            onClick={() => setOpen((value) => !value)}
-            className="text-white md:hidden"
-            aria-label="Toggle navigation"
-          >
-            {open ? <X /> : <Menu />}
-          </button>
+          <div className="mt-3 w-full hidden md:flex justify-center items-center gap-8">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href || pathname?.startsWith(item.href + "/");
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  prefetch={false}
+                  className={`text-md transition hover:black-white ${isActive ? "text-black" : "text-black"}`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </div>
         </nav>
 
         <AnimatePresence>
@@ -54,24 +61,22 @@ export default function Header() {
               className="mt-2 rounded-3xl border border-white/10 bg-black/90 p-5 backdrop-blur-xl md:hidden"
             >
               <div className="flex flex-col gap-5">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="text-white/70 hover:text-white"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                {navItems.map((item) => {
+                  const isActive = pathname === item.href || pathname?.startsWith(item.href + "/");
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      prefetch={false}
+                      onClick={() => setOpen(false)}
+                      className={`text-base transition ${isActive ? "text-teal-400" : "text-white/70"} hover:text-white`}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
 
-                <a
-                  href="#contact"
-                  onClick={() => setOpen(false)}
-                  className="rounded-full bg-white px-5 py-3 text-center font-semibold text-black"
-                >
-                  Connect
-                </a>
+                
               </div>
             </motion.div>
           )}
