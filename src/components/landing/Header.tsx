@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <header className="sticky inset-x-0 top-0 z-[100] shrink-0 isolate">
       <div className="mx-auto w-full max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
-        <nav className="flex w-full flex-col items-center rounded-[2rem] border border-white/20 bg-[#0d9a95]/90 px-5 py-4 shadow-[0_18px_50px_rgba(5,80,76,0.18)] backdrop-blur-xl">
+        <nav className="flex w-full flex-col items-center rounded-[2rem] border border-white/20 bg-[#36BEA3] px-5 py-4 shadow-[0_18px_50px_rgba(5,80,76,0.18)] backdrop-blur-xl">
           <div className="w-full flex items-center justify-between gap-4">
             <div className="flex items-center">
               <button

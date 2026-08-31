@@ -10,12 +10,12 @@ const socialLinks = [
   {
     label: "Instagram",
     href: "https://www.instagram.com/cbmgroup_/",
-    src: "/social/instagram.ico",
+    src: "/social/instagram_black_logo_icon_147122.svg",
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/company/122863899/admin/dashboard/",
-    src: "/social/linkedin.svg",
+    src: "/social/linkedin_black_logo_icon_147114.svg",
   },
   {
     label: "X",
