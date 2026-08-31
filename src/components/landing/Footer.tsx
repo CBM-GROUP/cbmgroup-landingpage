@@ -44,7 +44,7 @@ export default function Footer() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.15),transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(255,255,255,0.08),transparent_30%)]" />
 
       <div className="relative mx-auto max-w-7xl px-4 pb-10 pt-10 sm:px-6 lg:px-8">
-        <div className="rounded-[2.2rem] border border-white/15 bg-[#0c8b86]/80 px-6 py-8 shadow-[0_22px_60px_rgba(0,0,0,0.12)] backdrop-blur-sm sm:px-8 lg:px-10">
+        <div className="rounded-[2.2rem] border border-white/15 bg-[#36BEA3] px-6 py-8 shadow-[0_22px_60px_rgba(0,0,0,0.12)] backdrop-blur-sm sm:px-8 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-[1.3fr_0.9fr_0.9fr] lg:items-start">
             <div className="space-y-6">
               <div className="flex items-center gap-3">

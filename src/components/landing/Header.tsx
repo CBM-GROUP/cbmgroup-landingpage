@@ -26,7 +26,7 @@ export default function Header() {
               </button>
             </div>
 
-            <div className="flex flex-1 justify-center">
+            <div className="flex flex-1 justify-center border-b-2 p-1">
               <Link href="/" prefetch={false} className="inline-flex items-center rounded-full border border-white/20 bg-white/95 p-2.5 shadow-[inset_0_0_18px_rgba(255,255,255,0.12)]">
                 <img src="/logo.png" alt="CBM Group logo" className="h-12 w-auto md:h-14" />
               </Link>

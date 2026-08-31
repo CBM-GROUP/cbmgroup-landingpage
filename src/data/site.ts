@@ -186,3 +186,12 @@ export const careerDepartments = [
   "Technology (IT)",
   "Events",
 ];
+
+export const aboutUsInfo = {
+  whoWeAre:
+    "CBM Group is a multinational creative media, entertainment, streaming and conglomerate company advancing Africa's creative industry and other industries through storytelling, entrepreneurship, digital innovation, technology and streaming platforms.",
+  vision:
+    "To be the creative industries hub for storytelling, innovation, technology and streaming in Africa.",
+  mission:
+    "To build a dynamic ecosystem at the intersection of creativity, storytelling, innovation, technology, and streaming.",
+};

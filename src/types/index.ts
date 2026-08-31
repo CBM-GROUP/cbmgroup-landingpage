@@ -44,3 +44,8 @@ export interface NavItem {
   label: string;
   href: string;
 }
+
+export interface VisionMission {
+  vision: string;
+  mission: string;
+}
