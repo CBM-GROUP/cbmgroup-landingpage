@@ -29,12 +29,9 @@ const socialLinks = [
   },
 ];
 
-const helpfulLinks = ["Services", "Support 24/7", "Terms And Condition"];
-const services = ["Photography", "Support 24/7", "Guide"];
-
 const contactItems = [
   { icon: Phone, label: "+256 776789133", href: "tel:+256776789133" },
-  { icon: Mail, label: "cbmadvertisingads@gmail.com", href: "mailto:cbmadvertisingads@gmail.com" },
+  { icon: Mail, label: "cbmgroup02@gmail.com", href: "mailto:cbmgroup02@gmail.com" },
   { icon: MapPin, label: "National ICT Innovation Hub in Nakawa, Kampala, Uganda", href: "#map" },
 ];
 
