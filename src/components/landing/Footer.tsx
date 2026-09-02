@@ -45,43 +45,37 @@ export default function Footer() {
 
       <div className="relative mx-auto max-w-7xl px-4 pb-10 pt-10 sm:px-6 lg:px-8">
         <div className="rounded-[2.2rem] border border-white/15 bg-[#36BEA3] px-6 py-8 shadow-[0_22px_60px_rgba(0,0,0,0.12)] backdrop-blur-sm sm:px-8 lg:px-10">
-          <div className="grid gap-10 lg:grid-cols-[1.3fr_0.9fr_0.9fr] lg:items-start">
-            <div className="space-y-6">
-              <div className="flex items-center gap-3">
-                <div className="rounded-xl bg-white/95 p-2 shadow-[0_0_0_1px_rgba(255,255,255,0.35)]">
-                  <img src="/logo.png" alt="CBM Group logo" className="h-16 w-auto" />
-                </div>
-                <div className="text-left">
-                  <div className="text-2xl font-black tracking-tight">CBM Group</div>
-                </div>
+          <div className="flex w-full flex-col items-center justify-center gap-6 text-center">
+            <div className="flex items-center justify-center gap-3">
+              <div className="rounded-xl bg-white/95 p-2 shadow-[0_0_0_1px_rgba(255,255,255,0.35)]">
+                <img src="/logo.png" alt="CBM Group logo" className="h-16 w-auto" />
               </div>
-
-              <p className="max-w-md text-xl font-medium leading-snug text-white/95 sm:text-2xl">
-                Step into a Realm where Imagination knows no Bounds, and Unlocking endless possibilities.
-              </p>
-
-              <div className="space-y-3">
-                <h3 className="text-base font-medium italic text-white/80">Follow Us on:</h3>
-                <div className="flex flex-wrap items-center gap-3">
-                  {socialLinks.map(({ href, label, src }) => (
-                    <Link
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={label}
-                      className="group inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/70 bg-white/15 text-white shadow-[0_0_0_1px_rgba(255,255,255,0.12)] transition-transform duration-200 hover:scale-105 hover:bg-white/20"
-                    >
-                      <img src={src} alt={label} className="h-10 w-auto object-contain" />
-                    </Link>
-                  ))}
-                </div>
+              <div>
+                <div className="text-2xl font-black tracking-tight">CBM Group</div>
               </div>
             </div>
 
-            
+            <p className="max-w-md text-xl font-medium leading-snug text-white/95 sm:text-2xl">
+              We Are Cultural Creative.
+            </p>
 
-            
+            <div className="flex flex-col items-center justify-center text-center">
+              <h3 className="text-base font-medium italic text-white/80">Follow Us on:</h3>
+              <div className="mt-2 flex w-full flex-wrap items-center justify-center gap-3">
+                {socialLinks.map(({ href, label, src }) => (
+                  <Link
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={label}
+                    className="group inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/70 bg-white/15 text-white shadow-[0_0_0_1px_rgba(255,255,255,0.12)] transition-transform duration-200 hover:scale-105 hover:bg-white/20"
+                  >
+                    <img src={src} alt={label} className="h-10 w-auto object-contain" />
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="mt-10 flex flex-col gap-5 border-t border-white/20 pt-6 text-base text-white/90 md:flex-row md:items-center md:justify-between">
