@@ -35,10 +35,17 @@ export interface TeamMember {
   role: string;
 }
 
+export interface CareerTeam {
+  name: string;
+  description: string;
+  jobs: string[];
+}
+
 export interface CareerPath {
   id: string;
   title: string;
   description?: string;
+  teams?: CareerTeam[];
 }
 
 export interface NavItem {
