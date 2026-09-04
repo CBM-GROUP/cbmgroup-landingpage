@@ -139,7 +139,7 @@ export const initiatives: Initiative[] = [
     title: "Creative Entrepreneurs Fellowship",
     images: [
       "/initiatives/hackathon1.jpg",
-      "/initiatives/hackathon1.jpg",
+      "/initiatives/hackathon.jpg",
       "/initiatives/hackathon2.jpg",
     ],
     description:
@@ -150,9 +150,9 @@ export const initiatives: Initiative[] = [
     number: "02",
     title: "Creative Industry Innovation Hackathon",
     images: [
-      "/companies/Cbm Film.jpeg",
-      "/companies/Cbm Radio - 1.jpg.jpeg",
-      "/companies/NOW PLAY - 3.jpg.jpeg",
+      "/initiatives/fellowship.jpg",
+      "/initiatives/fellowship1.jpg",
+      "/initiatives/fellowship2.jpg",
     ],
     description:
       "We champion innovation through a program that brings together innovators, creators, and technology enthusiasts to develop practical solutions that address challenges within the music, fashion, film, and media industries.",

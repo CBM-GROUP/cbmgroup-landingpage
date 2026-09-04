@@ -18,18 +18,6 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
-            {[
-              { label: "Creative sectors", value: "6+" },
-              { label: "Strategic focus", value: "Media" },
-              { label: "Regional ambition", value: "Africa" },
-            ].map((item) => (
-              <div key={item.label} className="rounded-[1.25rem] border border-slate-200 bg-slate-50 p-5">
-                <div className="text-3xl font-semibold tracking-[-0.05em] text-slate-900">{item.value}</div>
-                <div className="mt-2 text-sm uppercase tracking-[0.12em] text-slate-500">{item.label}</div>
-              </div>
-            ))}
-          </div>
         </section>
 
         <section className="mt-20 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
