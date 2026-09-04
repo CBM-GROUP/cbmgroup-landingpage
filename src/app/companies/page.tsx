@@ -15,27 +15,34 @@ export default function Page() {
           </p>
         </section>
 
-        <section className="mt-20">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <section className="mt-20 p-10">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-1 lg:grid-cols-3">
             {brands.map((brand) => (
               <a
                 key={brand.id}
                 href={brand.href}
                 target="_blank"
                 rel="noreferrer"
-                className="group overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.02)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(15,23,42,0.08)]"
+                className="group mx-auto block w-full max-w-[380px] bg-[#f4e7e6] p-0 transition-transform duration-200 hover:-translate-y-0.5"
               >
-                <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
-                  <Image
-                    src={brand.image ?? "/logo.png"}
-                    alt={`${brand.name} logo`}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="flex items-center justify-between gap-4 p-5">
-                  <span className="text-lg font-semibold tracking-[-0.04em] text-slate-900">{brand.name}</span>
-                  <span className="text-sm font-medium text-teal-600">Visit</span>
+                <div className="flex h-[360px] flex-col border border-[#f1d5d1] bg-[#f9f8f7]">
+                  <div className="flex flex-1 items-center justify-center p-4">
+                    <div className="relative h-[240px] w-full max-w-[340px]">
+                      <Image
+                        src={brand.image ?? "/logo.png"}
+                        alt={`${brand.name} logo`}
+                        fill
+                        className="object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-3 px-6 pb-6 pt-2 text-slate-800">
+                    <span className="text-[1.4rem] font-medium tracking-[-0.06em] sm:text-[1.7rem]">
+                      {brand.name}
+                    </span>
+                    <span className="text-[1.8rem] leading-none text-[#d7262d]">›</span>
+                  </div>
                 </div>
               </a>
             ))}

@@ -113,13 +113,21 @@ export const brands: Brand[] = [
   {
     id: "cbm-events",
     name: "CBM Events",
-    image: "/companies/CBM Events.jpeg",
+    images: [
+      "/companies/CBM Events.jpeg",
+      "/companies/CBM Advertising Logo - 7 (1).jpg.jpeg",
+      "/companies/CBM Records Logo - 17.jpg.jpeg",
+    ],
     href: "https://events.cbmgroupco.com"
   },
   {
     id: "cbm-film",
     name: "CBM Film",
-    image: "/companies/Cbm Film.jpeg",
+    images: [
+      "/companies/Cbm Film.jpeg",
+      "/companies/Cbm Radio - 1.jpg.jpeg",
+      "/companies/NOW PLAY - 3.jpg.jpeg",
+    ],
     href: "https://film.cbmgroupco.com"
   },
 ];
@@ -129,6 +137,11 @@ export const initiatives: Initiative[] = [
     id: "fellowship",
     number: "01",
     title: "Creative Entrepreneurs Fellowship",
+    images: [
+      "/initiatives/hackathon1.jpg",
+      "/initiatives/hackathon1.jpg",
+      "/initiatives/hackathon2.jpg",
+    ],
     description:
       "We identify, nurture, and accelerate creative businesses and startups across the music, fashion, film, and media industries, equipping them with the skills, networks, and opportunities needed to thrive.",
   },
@@ -136,6 +149,11 @@ export const initiatives: Initiative[] = [
     id: "hackathon",
     number: "02",
     title: "Creative Industry Innovation Hackathon",
+    images: [
+      "/companies/Cbm Film.jpeg",
+      "/companies/Cbm Radio - 1.jpg.jpeg",
+      "/companies/NOW PLAY - 3.jpg.jpeg",
+    ],
     description:
       "We champion innovation through a program that brings together innovators, creators, and technology enthusiasts to develop practical solutions that address challenges within the music, fashion, film, and media industries.",
   },

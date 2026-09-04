@@ -16,7 +16,7 @@ export interface Brand {
   id: string;
   name: string;
   description?: string;
-  image?: string;
+  images: string[];
   href?: string;
 }
 
@@ -25,6 +25,7 @@ export interface Initiative {
   title: string;
   description: string;
   number: string;
+  images: string[];
   href?: string;
 }
 

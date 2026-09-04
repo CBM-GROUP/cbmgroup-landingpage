@@ -28,7 +28,7 @@ export default function Page() {
           </div>
 
           <div className="rounded-[1.75rem] border border-slate-200 bg-[#0f172a] p-7 text-white shadow-[0_20px_60px_rgba(15,23,42,0.15)]">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-teal-300">Departments</p>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-teal-300">Teams</p>
             <div className="mt-6 flex flex-wrap gap-3">
               {careerDepartments.map((department) => (
                 <span key={department} className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-medium text-slate-100">
