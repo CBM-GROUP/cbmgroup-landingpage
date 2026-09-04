@@ -121,9 +121,7 @@ export const brands: Brand[] = [
   {
     id: "cbm-film",
     name: "CBM Film",
-    images: [
-      "/companies/Cbm Film.jpeg",
-    ],
+    image: "/companies/Cbm Film.jpeg",
     href: "https://cbm-films-cinematic-vision.vercel.app/"
   },
 ];
