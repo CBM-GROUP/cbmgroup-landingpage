@@ -104,7 +104,7 @@ export const brands: Brand[] = [
     id: "cbm-records",
     name: "CBM Records",
     image: "/companies/CBM Records Logo - 17.jpg.jpeg",
-    href: "https://cbmgroup-landingpage.vercel.app/"
+    href: "https://cbm-record.vercel.app/"
   },
   {
     id: "cbm-advertising",
