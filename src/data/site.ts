@@ -98,13 +98,13 @@ export const brands: Brand[] = [
     id: "cbm-radio",
     name: "CBM Radio",
     image: "/companies/Cbm Radio - 1.jpg.jpeg",
-    href: "https://cbmradio.cbmgroupco.com"
+    href: "https://radio.cbmgroupco.com"
   },
   {
     id: "cbm-records",
     name: "CBM Records",
     image: "/companies/CBM Records Logo - 17.jpg.jpeg",
-    href: "https://records.cbmgroupco.com"
+    href: "https://cbmgroup-landingpage.vercel.app/"
   },
   {
     id: "cbm-advertising",
@@ -115,11 +115,7 @@ export const brands: Brand[] = [
   {
     id: "cbm-events",
     name: "CBM Events",
-    images: [
-      "/companies/CBM Events.jpeg",
-      "/companies/CBM Advertising Logo - 7 (1).jpg.jpeg",
-      "/companies/CBM Records Logo - 17.jpg.jpeg",
-    ],
+    image: "/companies/CBM Events.jpeg",
     href: "https://events.cbmgroupco.com"
   },
   {
@@ -127,10 +123,8 @@ export const brands: Brand[] = [
     name: "CBM Film",
     images: [
       "/companies/Cbm Film.jpeg",
-      "/companies/Cbm Radio - 1.jpg.jpeg",
-      "/companies/NOW PLAY - 3.jpg.jpeg",
     ],
-    href: "https://film.cbmgroupco.com"
+    href: "https://cbm-films-cinematic-vision.vercel.app/"
   },
 ];
 
