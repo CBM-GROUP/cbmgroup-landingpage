@@ -36,14 +36,14 @@ export default function Page() {
           </p>
         </section>
 
-        <section className="mt-20 overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.04)]">
-          <div className="border-b border-slate-200 px-6 py-7 sm:px-10">
+        <section className="mt-20 overflow-hidden rounded-[2rem] border border-[#164e4a] bg-[#edf2ef] shadow-[0_20px_60px_rgba(15,23,42,0.05)]">
+          <div className="bg-[#164e4a] px-6 py-8 text-white sm:px-10 sm:py-10">
             <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">Opportunities</p>
-                <h2 className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-slate-900">Find your place at CBM</h2>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-200">Opportunities</p>
+                <h2 className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-white">Find your place at CBM</h2>
               </div>
-              <p className="max-w-md text-sm leading-6 text-slate-500">Choose a programme, then explore the teams and roles where you can make an impact.</p>
+              <p className="max-w-md text-sm leading-6 text-teal-50/75">Choose a programme, then explore the teams and roles where you can make an impact.</p>
             </div>
 
             <div className="mt-7 grid gap-3 sm:grid-cols-2">
@@ -56,11 +56,11 @@ export default function Page() {
                     const nextProgram = careerPrograms.find((program) => program.id === path.id) ?? careerPrograms[0];
                     setActiveDepartment(nextProgram.teams[0].name);
                   }}
-                  className={`flex items-center gap-4 border-b-2 px-1 pb-3 text-left transition-colors ${
-                    activeProgram === path.id ? "border-teal-600 text-slate-900" : "border-slate-200 text-slate-500 hover:border-slate-300 hover:text-slate-900"
+                    className={`flex items-center gap-4 border px-4 py-3 text-left transition-colors ${
+                    activeProgram === path.id ? "border-white bg-white text-[#164e4a]" : "border-white/20 text-teal-50/75 hover:border-white/50 hover:text-white"
                   }`}
                 >
-                  <span className="text-xs font-semibold tracking-[0.16em] text-teal-600">0{index + 1}</span>
+                  <span className={`text-xs font-semibold tracking-[0.16em] ${activeProgram === path.id ? "text-teal-600" : "text-teal-200"}`}>0{index + 1}</span>
                   <span className="text-base font-semibold">{path.title}</span>
                 </button>
               ))}
@@ -68,19 +68,19 @@ export default function Page() {
           </div>
 
           <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
-            <div className="border-b border-slate-200 p-6 sm:p-10 lg:border-b-0 lg:border-r">
+            <div className="border-b border-[#d6e0db] p-6 sm:p-10 lg:border-b-0 lg:border-r">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Teams</p>
-              <h3 className="mt-3 text-xl font-semibold tracking-[-0.04em] text-slate-900">{selectedProgram.title}</h3>
+              <h3 className="mt-3 text-xl font-semibold tracking-[-0.04em] text-[#164e4a]">{selectedProgram.title}</h3>
               <p className="mt-3 text-sm leading-6 text-slate-600">{selectedProgram.description}</p>
 
-              <div className="mt-8 border-t border-slate-200">
+              <div className="mt-8 border-t border-[#d6e0db]">
                 {selectedProgram.teams.map((team, index) => (
                   <button
                     key={team.name}
                     type="button"
                     onClick={() => setActiveDepartment(team.name)}
-                    className={`flex w-full items-center justify-between gap-4 border-b border-slate-200 py-4 text-left transition-colors ${
-                      activeDepartment === team.name ? "text-teal-700" : "text-slate-600 hover:text-slate-900"
+                    className={`flex w-full items-center justify-between gap-4 border-b border-[#d6e0db] py-4 text-left transition-colors ${
+                      activeDepartment === team.name ? "border-l-4 border-l-teal-600 bg-white pl-4 text-teal-700" : "text-slate-600 hover:text-slate-900"
                     }`}
                   >
                     <span className="flex items-center gap-4">
@@ -93,24 +93,24 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="bg-[#0f172a] p-6 text-white sm:p-10">
+            <div className="bg-white p-6 sm:p-10">
               <div className="flex items-center justify-between gap-3">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-300">Team profile</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-700">Team profile</p>
                 <span className="text-xs text-slate-400">{selectedProgram.teams.length} areas</span>
               </div>
               <div className="mt-12 max-w-xl animate-[fadeIn_0.25s_ease-out]">
-                <h3 className="text-3xl font-semibold tracking-[-0.05em] text-white">{selectedTeam.name}</h3>
-                <p className="mt-4 text-base leading-7 text-slate-300">{selectedTeam.description}</p>
+                <h3 className="text-3xl font-semibold tracking-[-0.05em] text-[#164e4a]">{selectedTeam.name}</h3>
+                <p className="mt-4 text-base leading-7 text-slate-600">{selectedTeam.description}</p>
 
                 <div className="mt-8 grid gap-3 sm:grid-cols-2">
                   {selectedTeam.jobs.map((job) => (
-                    <div key={job} className="border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-100">
+                    <div key={job} className="border border-[#d6e0db] bg-[#edf2ef] px-4 py-3 text-sm text-slate-700">
                       {job}
                     </div>
                   ))}
                 </div>
 
-                <a href={applicationMailto} className="mt-8 inline-flex items-center border border-teal-300 bg-teal-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-teal-200">
+                <a href={applicationMailto} className="mt-8 inline-flex items-center bg-[#164e4a] px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-700">
                   Apply for this team <span className="ml-3 text-base">↗</span>
                 </a>
               </div>
