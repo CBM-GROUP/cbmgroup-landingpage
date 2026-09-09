@@ -52,7 +52,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <h3 className="max-w-md font-medium sm:text-5xl leading-snug text-white/95">
+            <h3 className="w-full font-medium text-5xl leading-[0.9] text-white/95">
               We Are Cultural Creative.
             </h3>
 
