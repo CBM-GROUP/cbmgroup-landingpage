@@ -50,6 +50,13 @@ export const pillars: Pillar[] = [
     description:
       "We leverage technology to distribute live and on-demand content, ensuring seamless access and wider reach across Africa and beyond.",
   },
+  {
+    id: "entrepreneurship",
+    number: "04",
+    title: "Entrepreneurship",
+    description:
+      "We build innovative platforms, tools, and solutions that empower creators, enhance user experiences, and drive the growth of Africa's creative economy.",
+  },
 ];
 
 export const coreValues: CoreValue[] = [

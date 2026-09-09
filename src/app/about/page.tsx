@@ -7,8 +7,9 @@ export default function Page() {
         <section className="rounded-[2rem] border border-slate-200 bg-white px-6 py-8 shadow-[0_20px_60px_rgba(15,23,42,0.04)] sm:px-10 lg:px-14 lg:py-12">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
-              <p className="text-xs font-medium uppercase tracking-[0.22em] text-teal-600">About CBM Group</p>
-              <h1 className="mt-4 text-4xl font-semibold tracking-[-0.06em] text-slate-900 sm:text-5xl lg:text-7xl">
+<h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">
+              About CBM Group
+            </h2>              <h1 className="mt-4 text-4xl font-semibold tracking-[-0.06em] text-slate-900 sm:text-5xl lg:text-7xl">
                 We build the stories, systems, and platforms that move culture forward.
               </h1>
             </div>
@@ -22,10 +23,13 @@ export default function Page() {
 
         <section className="mt-20 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-teal-600">Who we are</p>
             <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">
-              A creative ecosystem designed for long-term impact.
+              Who we are
             </h2>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-teal-600">              
+              A creative ecosystem designed for long-term impact.
+          </p>
+            
           </div>
 
           <div className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.03)]">
@@ -35,8 +39,7 @@ export default function Page() {
 
         <section className="mt-20">
           <div className="mb-8">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-teal-600">Our pillars</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">The core of our work</h2>
+            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">Our pillars</h2>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -52,22 +55,21 @@ export default function Page() {
 
         <section className="mt-20 grid gap-6 lg:grid-cols-2">
           <div className="rounded-[1.75rem] border border-slate-200 bg-[#0f172a] p-7 text-white shadow-[0_20px_60px_rgba(15,23,42,0.15)]">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-teal-300">Vision</p>
-            <h3 className="mt-4 text-3xl font-semibold tracking-[-0.05em]">To be the creative industries hub for storytelling, innovation, technology, and streaming in Africa.</h3>
-            <p className="mt-5 text-base leading-7 text-slate-300">{aboutUsInfo.vision}</p>
+            <h3 className="mt-4 text-2xl font-semibold tracking-[-0.05em] text-teal-400">Vision</h3>
+            <p className="mt-5 text-lg leading-7 text-slate-300">{aboutUsInfo.vision}</p>
           </div>
 
           <div className="rounded-[1.75rem] border border-slate-200 bg-white p-7 shadow-[0_18px_50px_rgba(15,23,42,0.03)]">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-teal-600">Mission</p>
-            <h3 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-slate-900">To build a dynamic ecosystem at the intersection of creativity and technology.</h3>
+            <h3 className="mt-4 text-2xl font-semibold tracking-[-0.05em] text-teal-600">Mission</h3>
             <p className="mt-5 text-base leading-7 text-slate-600">{aboutUsInfo.mission}</p>
           </div>
         </section>
 
         <section className="mt-20">
           <div className="mb-8">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-teal-600">Our values</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">What guides every decision we make</h2>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">
+              Our Values
+            </h2>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
@@ -83,8 +85,7 @@ export default function Page() {
         <section className="mt-20">
           <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-xs font-medium uppercase tracking-[0.2em] text-teal-600">Our people</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">The team behind the vision</h2>
+              <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">Our Team</h2>
             </div>
             <p className="max-w-xl text-sm leading-7 text-slate-600">Meet the creative minds and strategic operators shaping the CBM ecosystem across media, design, technology, and production.</p>
           </div>
