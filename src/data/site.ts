@@ -2,7 +2,6 @@ import {
   Brand,
   CareerPath,
   CareerProgram,
-  CareerTeam,
   CoreValue,
   Initiative,
   NavItem,

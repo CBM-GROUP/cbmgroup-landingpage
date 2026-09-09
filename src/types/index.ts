@@ -48,6 +48,11 @@ export interface CareerPath {
   teams?: CareerTeam[];
 }
 
+export interface CareerProgram extends CareerPath {
+  description: string;
+  teams: CareerTeam[];
+}
+
 export interface NavItem {
   label: string;
   href: string;
