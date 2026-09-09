@@ -52,9 +52,9 @@ export default function Footer() {
               </div>
             </div>
 
-            <p className="max-w-md text-xl font-medium leading-snug text-white/95 sm:text-2xl">
+            <h3 className="max-w-md font-medium sm:text-5xl leading-snug text-white/95">
               We Are Cultural Creative.
-            </p>
+            </h3>
 
             <div className="flex flex-col items-center justify-center text-center">
               <h3 className="text-base font-medium italic text-white/80">Follow Us on:</h3>
