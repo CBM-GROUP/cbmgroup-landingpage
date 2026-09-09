@@ -1,21 +1,30 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { initiatives } from "@/data/site";
 
 function InitiativeCard({ initiative }: { initiative: (typeof initiatives)[number] }) {
   const [selectedImage, setSelectedImage] = useState(0);
+
+  useEffect(() => {
+    const shuffleImages = window.setInterval(() => {
+      setSelectedImage((currentImage) => (currentImage + 1) % initiative.images.length);
+    }, 4500);
+
+    return () => window.clearInterval(shuffleImages);
+  }, [initiative.images.length]);
 
   return (
     <article className="group mx-auto w-[85%] overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.03)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_22px_60px_rgba(15,23,42,0.06)]">
       <div className="grid min-h-[357px] lg:grid-cols-[minmax(0,1fr)_289px]">
         <div className="relative min-h-[238px] bg-slate-100 lg:min-h-0">
           <Image
+            key={initiative.images[selectedImage]}
             src={initiative.images[selectedImage]}
             alt={`${initiative.title} initiative`}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            className="animate-[fadeIn_0.7s_ease-out] object-cover transition-transform duration-500 group-hover:scale-[1.02]"
           />
         </div>
 

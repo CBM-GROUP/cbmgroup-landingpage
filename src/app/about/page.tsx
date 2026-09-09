@@ -14,26 +14,29 @@ export default function Page() {
               </h1>
             </div>
 
-            <div className="max-w-md rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 text-sm leading-7 text-slate-600">
-              CBM Group brings together media, entertainment, technology, and entrepreneurship to create a more connected, innovative, and opportunity-rich creative economy in Africa.
-            </div>
+            
           </div>
 
         </section>
 
-        <section className="mt-20 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+        <section className="mt-20">
           <div>
             <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">
               Who we are
             </h2>
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-teal-600">              
               A creative ecosystem designed for long-term impact.
-          </p>
-            
+            </p>
           </div>
-
-          <div className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.03)]">
-            <p className="text-lg leading-8 text-slate-700">{aboutUsInfo.whoWeAre}</p>
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 text-sm leading-7 text-slate-600">
+              <p className="text-lg leading-8 text-slate-700">
+              CBM Group brings together media, entertainment, technology, and entrepreneurship to create a more connected, innovative, and opportunity-rich creative economy in Africa.
+              </p>
+            </div>
+            <div className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.03)]">
+              <p className="text-lg leading-8 text-slate-700">{aboutUsInfo.whoWeAre}</p>
+            </div>
           </div>
         </section>
 
