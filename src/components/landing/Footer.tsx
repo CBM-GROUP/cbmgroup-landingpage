@@ -43,12 +43,9 @@ export default function Footer() {
       <div className="relative mx-auto max-w-7xl px-4 pb-10 pt-10 sm:px-6 lg:px-8">
         <div className="rounded-[2.2rem] border border-white/15 bg-[#36BEA3] px-6 py-8 shadow-[0_22px_60px_rgba(0,0,0,0.12)] backdrop-blur-sm sm:px-8 lg:px-10">
           <div className="flex w-full flex-col items-center justify-center gap-6 text-center">
-            <div className="flex items-center justify-center gap-3">
-              <div className="rounded-xl bg-white/95 p-2 shadow-[0_0_0_1px_rgba(255,255,255,0.35)]">
-                <img src="/logo.png" alt="CBM Group logo" className="h-16 w-auto" />
-              </div>
-              <div>
-                <div className="text-2xl font-black tracking-tight">CBM Group</div>
+            <div className="flex items-center justify-center">
+              <div className="rounded-2xl border border-white/15 bg-[#073b42] px-5 py-4 shadow-[0_12px_30px_rgba(7,59,66,0.28)]">
+                <img src="/footerLogo.png" alt="CBM Group logo" className="h-15 w-16 object-contain" />
               </div>
             </div>
 
