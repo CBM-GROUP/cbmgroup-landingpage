@@ -32,10 +32,10 @@ export default function Page() {
 
   const applicationMailto = selectedTeam
     ? `mailto:cbmgroup02@gmail.com?subject=${encodeURIComponent(
-        `Application for ${selectedProgram.title} - ${selectedTeam.name}`,
-      )}&body=${encodeURIComponent(
-        `Hello CBM Team,\n\nI am interested in the ${selectedProgram.title} opportunity for the ${selectedTeam.name} team.\n\nPlease share the next steps for my application.\n\nBest regards,\n[Your Name]`,
-      )}`
+      `Application for ${selectedProgram.title} - ${selectedTeam.name}`,
+    )}&body=${encodeURIComponent(
+      `Hello CBM Team,\n\nI am interested in the ${selectedProgram.title} opportunity for the ${selectedTeam.name} team.\n\nPlease share the next steps for my application.\n\nBest regards,\n[Your Name]`,
+    )}`
     : "#";
 
   const chooseProgram = (programId: string) => {
@@ -90,11 +90,10 @@ export default function Page() {
                   key={program.id}
                   type="button"
                   onClick={() => chooseProgram(program.id)}
-                  className={`group relative overflow-hidden rounded-3xl border p-6 text-left transition duration-300 ${
-                    isActive
-                      ? "border-[#36bea3] bg-[#102b2d] text-white shadow-[0_18px_40px_rgba(16,43,45,0.18)]"
-                      : "border-slate-200 bg-white text-slate-900 hover:-translate-y-1 hover:border-teal-200 hover:shadow-[0_18px_40px_rgba(15,23,42,0.08)]"
-                  }`}
+                  className={`group relative overflow-hidden rounded-3xl border p-6 text-left transition duration-300 ${isActive
+                    ? "border-[#36bea3] bg-[#102b2d] text-white shadow-[0_18px_40px_rgba(16,43,45,0.18)]"
+                    : "border-slate-200 bg-white text-slate-900 hover:-translate-y-1 hover:border-teal-200 hover:shadow-[0_18px_40px_rgba(15,23,42,0.08)]"
+                    }`}
                 >
                   <div className="flex items-start justify-between">
                     <span className={`inline-flex h-11 w-11 items-center justify-center rounded-2xl ${isActive ? "bg-[#36bea3] text-[#102b2d]" : "bg-teal-50 text-teal-700"}`}>
@@ -127,7 +126,7 @@ export default function Page() {
           </div>
 
           <div>
-            <div className="p-6 sm:p-10 lg:p-12">
+            <div className="p-6 m-6 sm:p-10 lg:p-12">
               <p className="max-w-md text-sm leading-6 text-slate-500">{selectedProgram.description}</p>
               <div className="mt-8 grid gap-3">
                 {selectedProgram.teams.map((team, index) => {
@@ -139,9 +138,8 @@ export default function Page() {
                         type="button"
                         onClick={() => setActiveDepartment(isActive ? null : team.name)}
                         aria-expanded={isActive}
-                        className={`flex w-full items-center gap-4 rounded-2xl border p-4 text-left transition ${
-                          isActive ? "rounded-b-none border-teal-200 bg-teal-50 text-teal-900" : "border-transparent bg-slate-50 text-slate-600 hover:border-slate-200 hover:bg-white"
-                        }`}
+                        className={`flex w-full items-center gap-4 rounded-2xl border p-4 text-left transition ${isActive ? "rounded-b-none border-teal-200 bg-teal-50 text-teal-900" : "border-transparent bg-slate-50 text-slate-600 hover:border-slate-200 hover:bg-white"
+                          }`}
                       >
                         <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${isActive ? "bg-[#36bea3] text-[#102b2d]" : "bg-white text-slate-400"}`}>
                           <Icon className="h-4 w-4" />

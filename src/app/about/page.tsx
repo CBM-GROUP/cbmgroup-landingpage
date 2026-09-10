@@ -31,14 +31,14 @@ export default function Page() {
         >
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
-<h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">
-              About CBM Group
-            </h2>              <h1 className="mt-4 text-4xl font-semibold tracking-[-0.06em] text-slate-900 sm:text-5xl lg:text-7xl">
+              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">
+                About CBM Group
+              </h2>              <h1 className="mt-4 text-4xl font-semibold tracking-[-0.06em] text-slate-900 sm:text-5xl lg:text-7xl">
                 We build the stories, systems, and platforms that move culture forward.
               </h1>
             </div>
 
-            
+
           </div>
 
         </motion.section>
@@ -54,18 +54,17 @@ export default function Page() {
             <motion.h2 variants={revealVariants} className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">
               Who we are
             </motion.h2>
-            <motion.p variants={revealVariants} className="text-xs font-medium uppercase tracking-[0.2em] text-teal-600">
-              A creative ecosystem designed for long-term impact.
-            </motion.p>
           </div>
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            <motion.div variants={revealVariants} className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 text-sm leading-7 text-slate-600">
-              <p className="text-lg leading-8 text-slate-700">
-              CBM Group brings together media, entertainment, technology, and entrepreneurship to create a more connected, innovative, and opportunity-rich creative economy in Africa.
-              </p>
-            </motion.div>
+
             <motion.div variants={revealVariants} className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.03)]">
               <p className="text-lg leading-8 text-slate-700">{aboutUsInfo.whoWeAre}</p>
+            </motion.div>
+
+            <motion.div variants={revealVariants} className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 text-sm leading-7 text-slate-600">
+              <p className="text-lg leading-8 text-slate-700">
+                CBM Group brings together media, entertainment, technology, and entrepreneurship to create a more connected, innovative, and opportunity-rich creative economy in Africa.
+              </p>
             </motion.div>
           </div>
         </motion.section>
