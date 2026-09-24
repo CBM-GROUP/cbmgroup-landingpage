@@ -2,6 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import { teamMembers, pillars, coreValues, aboutUsInfo } from "@/data/site";
+import InteractiveTeamSection from "@/components/team/InteractiveTeamSection";
 
 const revealVariants: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -117,26 +118,18 @@ export default function Page() {
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }} variants={staggerVariants} className="mt-20">
           <motion.div variants={revealVariants} className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-teal-700">
+                <span className="h-2 w-2 rounded-full bg-teal-500 animate-pulse" />
+                The People Behind The Vision
+              </div>
               <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">Our Team</h2>
             </div>
-            <p className="max-w-xl text-sm leading-7 text-slate-600">Meet the creative minds and strategic operators shaping the CBM ecosystem across media, design, technology, and production.</p>
+            <p className="max-w-xl text-sm leading-7 text-slate-600">
+              Meet the creative minds and strategic operators shaping the CBM ecosystem across media, design, technology, and production. Flip any card for confidential dossiers, stats, and superpowers!
+            </p>
           </motion.div>
 
-          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-            {teamMembers.map((member) => (
-              <motion.article key={member.id} variants={revealVariants} className="rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-[0_18px_50px_rgba(15,23,42,0.02)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(15,23,42,0.06)]">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-teal-50 text-lg font-semibold text-teal-700">
-                  {member.name
-                    .split(" ")
-                    .map((word) => word[0])
-                    .slice(0, 2)
-                    .join("")}
-                </div>
-                <h3 className="mt-5 text-xl font-semibold tracking-[-0.04em] text-slate-900">{member.name}</h3>
-                <p className="mt-2 text-sm uppercase tracking-[0.12em] text-slate-500">{member.role}</p>
-              </motion.article>
-            ))}
-          </div>
+          <InteractiveTeamSection members={teamMembers} />
         </motion.section>
       </div>
     </main>
