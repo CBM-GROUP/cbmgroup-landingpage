@@ -94,7 +94,7 @@ export default function AboutSection() {
                 lg:text-[7.5rem]
               ">
               We are building
-              <span className="block text-gray-400">Africa&apos;s</span>
+              <span className="block">Africa&apos;s</span>
               creative future.
             </motion.h2>
           </div>
