@@ -193,6 +193,7 @@ export const teamMembers: TeamMember[] = [
     superpower: "Translating wild creative dreams into unbreakable systems",
     tools: ["Next.js", "Docker", "Mechanical Keeb", "Dark Mode"],
     favoriteTrack: "Daft Punk — Harder, Better, Faster, Stronger",
+    avatarImage: "/team/philp.jpeg",
     avatarColor: "from-cyan-500 via-blue-600 to-indigo-700",
     stats: {
       creativity: 93,
@@ -255,6 +256,7 @@ export const teamMembers: TeamMember[] = [
     superpower: "Injecting 60fps joy and buttery micro-interactions into every click",
     tools: ["TypeScript", "Tailwind CSS", "Framer Motion", "Figma"],
     favoriteTrack: "Rema — Calm Down",
+    avatarImage: "/team/peterson.jpeg",
     avatarColor: "from-teal-500 via-emerald-600 to-cyan-700",
     stats: {
       creativity: 97,
