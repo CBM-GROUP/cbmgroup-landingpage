@@ -742,10 +742,10 @@ export default function InteractiveTeamSection({ members }: InteractiveTeamSecti
         )}
       </AnimatePresence>
 
-      {/* Team Cards Grid */}
+      {/* Team Cards Multi-Row Responsive Grid */}
       <motion.div
         layout
-        className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
+        className="flex flex-wrap justify-center gap-6 lg:gap-8"
       >
         <AnimatePresence>
           {filteredMembers.map((member, index) => (
@@ -756,6 +756,7 @@ export default function InteractiveTeamSection({ members }: InteractiveTeamSecti
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
+              className="w-full sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] max-w-[380px]"
             >
               <InteractiveTeamCard
                 member={member}
