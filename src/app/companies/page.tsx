@@ -5,11 +5,11 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-[#f5f5f1] text-slate-900">
       <div className="mx-auto max-w-7xl px-6 pb-20 pt-20 sm:px-8 lg:px-10">
-        <h1 className="mb-10 text-center text-5xl font-bold tracking-[-0.02em] text-slate-900">
+        <h1 className="mb-10 text-center text-4xl font-bold tracking-[-0.02em] text-slate-900 sm:text-5xl">
           Our companies
         </h1>
         <section className="flex flex-col items-center text-center rounded-[2rem] border border-slate-200 bg-white px-6 py-8 shadow-[0_20px_60px_rgba(15,23,42,0.04)] sm:px-10 lg:px-14 lg:py-12">
-          <h2 className="mt-4 max-w-3xl text-4xl font-semibold tracking-[-0.06em] text-slate-900 sm:text-5xl lg:text-7xl">
+          <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.06em] text-slate-900 sm:text-4xl lg:text-6xl">
             Brands built to inspire, entertain, and connect.
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">

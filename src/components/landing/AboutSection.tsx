@@ -83,14 +83,14 @@ export default function AboutSection() {
               variants={itemVariants}
               className="
                 max-w-5xl
-                text-5xl
+                text-4xl
                 font-medium
                 leading-[0.92]
                 tracking-[-0.055em]
                 text-black
-                sm:text-6xl
-                md:text-7xl
-                lg:text-[7.5rem]
+                sm:text-5xl
+                md:text-6xl
+                lg:text-[6rem]
               ">
               We are building
               <span className="block">Africa&apos;s</span>

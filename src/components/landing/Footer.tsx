@@ -49,7 +49,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <h3 className="w-full font-medium text-5xl leading-[0.9] text-white/95">
+            <h3 className="w-full font-medium text-3xl leading-[0.9] text-white/95 sm:text-4xl">
               We Are Cultural Creative.
             </h3>
 

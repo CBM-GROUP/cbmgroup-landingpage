@@ -22,7 +22,7 @@ export default function SectionHeading({
         </p>
       )}
 
-      <h2 className="text-4xl font-semibold tracking-tight text-black sm:text-5xl lg:text-6xl">
+      <h2 className="text-3xl font-semibold tracking-tight text-black sm:text-4xl lg:text-5xl">
         {title}
       </h2>
 

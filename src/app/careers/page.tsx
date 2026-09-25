@@ -74,7 +74,7 @@ export default function Page() {
       <div className="mx-auto max-w-7xl px-4 pb-24 pt-20 sm:px-6 lg:px-8">
 
         {/* ── PAGE HEADING ── */}
-        <h1 className="mb-10 text-center text-5xl font-bold tracking-[-0.02em] text-slate-900">
+        <h1 className="mb-10 text-center text-4xl font-bold tracking-[-0.02em] text-slate-900 sm:text-5xl">
           Careers
         </h1>
 
@@ -87,7 +87,7 @@ export default function Page() {
               <span className="h-1.5 w-1.5 rounded-full bg-[#8ce5d3]" />
               Build with CBM
             </div>
-            <h2 className="mt-6 max-w-2xl text-4xl font-semibold leading-[1.05] tracking-[-0.06em] sm:text-6xl lg:text-7xl">
+            <h2 className="mt-6 max-w-2xl text-3xl font-semibold leading-[1.05] tracking-[-0.06em] sm:text-5xl lg:text-6xl">
               Your next big idea belongs here.
             </h2>
             <p className="mt-6 max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
@@ -110,7 +110,7 @@ export default function Page() {
           {/* Section label */}
           <div className="mb-12 text-center">
             <p className="text-xs font-bold uppercase tracking-[0.25em] text-teal-600">Find your fit</p>
-            <h2 className="mt-3 text-4xl font-semibold tracking-[-0.05em] sm:text-5xl">
+            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] sm:text-4xl">
               Choose your way in.
             </h2>
             <p className="mt-4 text-base text-slate-500">

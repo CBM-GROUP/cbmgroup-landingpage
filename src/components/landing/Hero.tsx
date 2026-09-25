@@ -30,7 +30,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="headline-tan w-full text-[4.2rem] leading-[0.78] tracking-[-0.08em] text-black sm:text-[6rem] lg:text-[8rem]"
+            className="headline-tan w-full text-[3rem] leading-[0.82] tracking-[-0.08em] text-black sm:text-[4.5rem] lg:text-[6.5rem]"
           >
             Building the future of creativity
           </motion.h1>
