@@ -118,204 +118,188 @@ export default function Page() {
             </p>
           </div>
 
-          {/* Program selector tabs */}
-          <div className="grid gap-4 md:grid-cols-3">
-            {careerPrograms.map((program, index) => {
-              const Icon = programIcons[index] ?? BriefcaseBusiness;
-              const acc = programAccents[index] ?? programAccents[0];
-              const isActive = activeProgram === program.id;
-              return (
-                <motion.button
-                  key={program.id}
-                  type="button"
-                  onClick={() => chooseProgram(program.id)}
-                  whileHover={{ y: isActive ? 0 : -4 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`relative overflow-hidden rounded-[1.75rem] border p-6 text-left transition-all duration-300 ${
-                    isActive
-                      ? `border-transparent bg-[#0d1f21] text-white shadow-2xl ${acc.glow}`
-                      : "border-slate-200 bg-white text-slate-900 hover:border-slate-300 hover:shadow-lg"
-                  }`}
-                >
-                  {/* Active glow blob */}
-                  {isActive && (
-                    <div className={`absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br ${acc.bg} opacity-20 blur-2xl`} />
-                  )}
+          {/* Two-column layout: vertical program tabs left, teams panel right */}
+          <div className="flex flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.06)] lg:flex-row">
 
-                  <div className="relative">
-                    <div className="flex items-start justify-between">
-                      <span className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${acc.bg} shadow-lg`}>
-                        <Icon className="h-5 w-5 text-white" />
-                      </span>
-                      <span className={`text-xs font-bold tracking-[0.2em] ${isActive ? "text-white/40" : "text-slate-300"}`}>
-                        0{index + 1}
-                      </span>
-                    </div>
-
-                    <h3 className="mt-6 text-xl font-semibold tracking-[-0.04em]">
-                      {program.title}
-                    </h3>
-                    <p className={`mt-2.5 text-sm leading-6 ${isActive ? "text-slate-300" : "text-slate-500"}`}>
-                      {program.description}
-                    </p>
-
-                    <div className={`mt-6 inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-bold ${isActive ? acc.badge : "border-slate-200 bg-slate-50 text-slate-500"}`}>
-                      {isActive ? (
-                        <>
-                          <Sparkles className="h-3 w-3" />
-                          Currently viewing
-                        </>
-                      ) : (
-                        <>
-                          <ChevronRight className="h-3 w-3" />
-                          Explore programme
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </motion.button>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* ── TEAMS EXPLORER ── */}
-        <AnimatePresence mode="wait">
-          <motion.section
-            key={activeProgram}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8"
-          >
-            {/* Explorer header */}
-            <div className="relative overflow-hidden rounded-t-[2rem] bg-[#0d1f21] px-8 py-8 sm:px-12">
-              <div className={`absolute -left-16 -top-16 h-56 w-56 rounded-full bg-gradient-to-br ${accent.bg} opacity-15 blur-3xl`} />
-              <div className="relative flex flex-wrap items-center justify-between gap-4">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-teal-400">
-                    Explore teams
-                  </p>
-                  <h2 className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-white sm:text-4xl">
-                    {selectedProgram.title}
-                  </h2>
-                  <p className="mt-2 max-w-md text-sm leading-6 text-slate-400">
-                    {selectedProgram.description}
-                  </p>
-                </div>
-                <span className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold ${accent.badge}`}>
-                  <span className="h-1.5 w-1.5 rounded-full bg-current" />
-                  {selectedProgram.teams.length} teams available
-                </span>
-              </div>
-            </div>
-
-            {/* Department cards grid */}
-            <div className="rounded-b-[2rem] border border-t-0 border-slate-200 bg-white p-6 sm:p-8">
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-                {selectedProgram.teams.map((team, index) => {
-                  const Icon = teamIcons[index] ?? Building2;
-                  const isActive = activeDepartment === team.name;
-                  return (
-                    <motion.button
-                      key={team.name}
-                      type="button"
-                      onClick={() => setActiveDepartment(isActive ? null : team.name)}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.97 }}
-                      className={`relative flex flex-col rounded-2xl border p-5 text-left transition-all duration-200 ${
-                        isActive
-                          ? `border-transparent bg-[#0d1f21] text-white ring-2 ${accent.ring}`
-                          : "border-slate-100 bg-slate-50 text-slate-700 hover:border-slate-200 hover:bg-white hover:shadow-md"
-                      }`}
-                    >
-                      {isActive && (
-                        <div className={`absolute -right-4 -top-4 h-24 w-24 rounded-full bg-gradient-to-br ${accent.bg} opacity-20 blur-xl`} />
-                      )}
-                      <span className={`relative inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${accent.bg} shadow-md`}>
+            {/* ── LEFT: Vertical program tabs ── */}
+            <div className="flex flex-row gap-2 border-b border-slate-100 p-4 lg:w-72 lg:shrink-0 lg:flex-col lg:border-b-0 lg:border-r lg:p-5">
+              {careerPrograms.map((program, index) => {
+                const Icon = programIcons[index] ?? BriefcaseBusiness;
+                const acc = programAccents[index] ?? programAccents[0];
+                const isActive = activeProgram === program.id;
+                return (
+                  <motion.button
+                    key={program.id}
+                    type="button"
+                    onClick={() => chooseProgram(program.id)}
+                    whileTap={{ scale: 0.97 }}
+                    className={`relative flex flex-1 flex-col overflow-hidden rounded-[1.25rem] border p-4 text-left transition-all duration-300 lg:flex-none lg:p-5 ${
+                      isActive
+                        ? `border-transparent bg-[#0d1f21] text-white shadow-xl ${acc.glow}`
+                        : "border-slate-100 bg-slate-50 text-slate-700 hover:border-slate-200 hover:bg-white hover:shadow-md"
+                    }`}
+                  >
+                    {isActive && (
+                      <div className={`absolute -right-8 -top-8 h-32 w-32 rounded-full bg-gradient-to-br ${acc.bg} opacity-20 blur-2xl`} />
+                    )}
+                    <div className="relative flex items-center gap-3 lg:gap-3.5">
+                      <span className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${acc.bg} shadow-md`}>
                         <Icon className="h-4 w-4 text-white" />
                       </span>
-                      <span className="relative mt-4 block text-sm font-bold leading-tight">
-                        {team.name}
-                      </span>
-                      <span className={`relative mt-1 block text-xs ${isActive ? "text-slate-400" : "text-slate-400"}`}>
-                        {team.jobs.length} open roles
-                      </span>
-                      <ChevronRight className={`relative mt-3 h-3.5 w-3.5 transition-transform duration-200 ${isActive ? "rotate-90 text-teal-400" : "text-slate-300"}`} />
-                    </motion.button>
-                  );
-                })}
-              </div>
-
-              {/* Department detail panel */}
-              <AnimatePresence>
-                {selectedTeam && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                    animate={{ opacity: 1, height: "auto", marginTop: 24 }}
-                    exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className="overflow-hidden"
-                  >
-                    <div className={`relative overflow-hidden rounded-[1.5rem] bg-[#0d1f21] p-6 sm:p-8`}>
-                      {/* Glow blobs */}
-                      <div className={`absolute -right-16 -top-16 h-56 w-56 rounded-full bg-gradient-to-br ${accent.bg} opacity-20 blur-3xl`} />
-                      <div className="absolute bottom-0 left-1/4 h-40 w-40 rounded-full bg-teal-500/10 blur-2xl" />
-
-                      <div className="relative grid gap-8 lg:grid-cols-[1fr_auto]">
-                        <div>
-                          <div className="flex flex-wrap items-center gap-3">
-                            <span className={`inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br ${accent.bg} shadow-md`}>
-                              {(() => { const Icon = teamIcons[selectedProgram.teams.findIndex(t => t.name === activeDepartment)] ?? Building2; return <Icon className="h-4 w-4 text-white" />; })()}
-                            </span>
-                            <h3 className="text-xl font-semibold text-white">{selectedTeam.name}</h3>
-                            <span className={`rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.15em] ${accent.badge}`}>
-                              {selectedProgram.title}
-                            </span>
-                          </div>
-
-                          <p className="mt-4 max-w-lg text-sm leading-7 text-slate-300">
-                            {selectedTeam.description}
-                          </p>
-
-                          <div className="mt-6 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-                            {selectedTeam.jobs.map((job) => (
-                              <div
-                                key={job}
-                                className="flex items-center gap-2.5 rounded-xl border border-white/8 bg-white/5 px-4 py-3 text-xs font-medium text-slate-200"
-                              >
-                                <span className={`h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br ${accent.bg}`} />
-                                {job}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* CTA */}
-                        <div className="flex items-end">
-                          <a
-                            href={applicationMailto}
-                            className={`group inline-flex shrink-0 items-center gap-2.5 rounded-2xl bg-gradient-to-br ${accent.bg} px-6 py-4 text-sm font-bold text-white shadow-xl transition hover:opacity-90 hover:shadow-2xl`}
-                          >
-                            Start a conversation
-                            <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                          </a>
-                        </div>
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-bold leading-tight">{program.title}</p>
+                        <p className={`mt-0.5 text-[11px] leading-none ${isActive ? "text-slate-400" : "text-slate-400"}`}>
+                          {program.teams.length} teams
+                        </p>
                       </div>
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {!activeDepartment && (
-                <p className="mt-6 text-center text-sm text-slate-400">
-                  Select a team above to see open roles.
-                </p>
-              )}
+                    <p className={`relative mt-3 hidden text-xs leading-5 lg:block ${isActive ? "text-slate-300" : "text-slate-500"}`}>
+                      {program.description}
+                    </p>
+                    {isActive && (
+                      <span className={`relative mt-4 hidden w-fit items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-bold lg:inline-flex ${acc.badge}`}>
+                        <Sparkles className="h-2.5 w-2.5" />
+                        Viewing
+                      </span>
+                    )}
+                  </motion.button>
+                );
+              })}
             </div>
-          </motion.section>
-        </AnimatePresence>
+
+            {/* ── RIGHT: Teams panel (animates on program change) ── */}
+            <div className="relative min-w-0 flex-1">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeProgram}
+                  initial={{ opacity: 0, x: 16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -16 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  className="flex h-full flex-col"
+                >
+                  {/* Right header */}
+                  <div className="relative overflow-hidden bg-[#0d1f21] px-6 py-6 sm:px-8">
+                    <div className={`absolute -right-12 -top-12 h-48 w-48 rounded-full bg-gradient-to-br ${accent.bg} opacity-20 blur-3xl`} />
+                    <div className="relative flex flex-wrap items-center justify-between gap-3">
+                      <div>
+                        <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-teal-400">Explore teams</p>
+                        <h3 className="mt-1 text-xl font-semibold tracking-[-0.04em] text-white sm:text-2xl">
+                          {selectedProgram.title}
+                        </h3>
+                      </div>
+                      <span className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-bold ${accent.badge}`}>
+                        <span className="h-1.5 w-1.5 rounded-full bg-current" />
+                        {selectedProgram.teams.length} teams
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Department tiles */}
+                  <div className="flex-1 p-5 sm:p-6">
+                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-5">
+                      {selectedProgram.teams.map((team, index) => {
+                        const Icon = teamIcons[index] ?? Building2;
+                        const isActive = activeDepartment === team.name;
+                        return (
+                          <motion.button
+                            key={team.name}
+                            type="button"
+                            onClick={() => setActiveDepartment(isActive ? null : team.name)}
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.96 }}
+                            className={`relative flex flex-col overflow-hidden rounded-2xl border p-4 text-left transition-all duration-200 ${
+                              isActive
+                                ? `border-transparent bg-[#0d1f21] text-white ring-2 ${accent.ring}`
+                                : "border-slate-100 bg-slate-50 text-slate-700 hover:border-slate-200 hover:bg-white hover:shadow-md"
+                            }`}
+                          >
+                            {isActive && (
+                              <div className={`absolute -right-4 -top-4 h-20 w-20 rounded-full bg-gradient-to-br ${accent.bg} opacity-25 blur-xl`} />
+                            )}
+                            <span className={`relative inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br ${accent.bg} shadow-md`}>
+                              <Icon className="h-3.5 w-3.5 text-white" />
+                            </span>
+                            <span className="relative mt-3 block text-xs font-bold leading-snug">
+                              {team.name}
+                            </span>
+                            <span className="relative mt-0.5 block text-[10px] text-slate-400">
+                              {team.jobs.length} roles
+                            </span>
+                            <ChevronRight className={`relative mt-2 h-3 w-3 transition-transform duration-200 ${isActive ? "rotate-90 text-teal-400" : "text-slate-300"}`} />
+                          </motion.button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Detail panel */}
+                    <AnimatePresence>
+                      {selectedTeam && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                          animate={{ opacity: 1, height: "auto", marginTop: 16 }}
+                          exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                          className="overflow-hidden"
+                        >
+                          <div className="relative overflow-hidden rounded-2xl bg-[#0d1f21] p-5 sm:p-6">
+                            <div className={`absolute -right-12 -top-12 h-44 w-44 rounded-full bg-gradient-to-br ${accent.bg} opacity-20 blur-3xl`} />
+                            <div className="absolute bottom-0 left-1/3 h-32 w-32 rounded-full bg-teal-500/10 blur-2xl" />
+
+                            <div className="relative">
+                              <div className="flex flex-wrap items-center gap-2.5">
+                                <span className={`inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br ${accent.bg} shadow-md`}>
+                                  {(() => { const Icon = teamIcons[selectedProgram.teams.findIndex(t => t.name === activeDepartment)] ?? Building2; return <Icon className="h-3.5 w-3.5 text-white" />; })()}
+                                </span>
+                                <h4 className="text-base font-semibold text-white">{selectedTeam.name}</h4>
+                                <span className={`rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] ${accent.badge}`}>
+                                  {selectedProgram.title}
+                                </span>
+                              </div>
+
+                              <p className="mt-3 text-xs leading-6 text-slate-300">
+                                {selectedTeam.description}
+                              </p>
+
+                              <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                                {selectedTeam.jobs.map((job) => (
+                                  <div
+                                    key={job}
+                                    className="flex items-center gap-2 rounded-xl border border-white/8 bg-white/5 px-3 py-2.5 text-xs font-medium text-slate-200"
+                                  >
+                                    <span className={`h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br ${accent.bg}`} />
+                                    {job}
+                                  </div>
+                                ))}
+                              </div>
+
+                              <div className="mt-5 flex justify-end">
+                                <a
+                                  href={applicationMailto}
+                                  className={`group inline-flex items-center gap-2 rounded-xl bg-gradient-to-br ${accent.bg} px-5 py-3 text-xs font-bold text-white shadow-lg transition hover:opacity-90 hover:shadow-xl`}
+                                >
+                                  Start a conversation
+                                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    {!activeDepartment && (
+                      <p className="mt-5 text-center text-xs text-slate-400">
+                        Select a team above to see open roles.
+                      </p>
+                    )}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+          </div>
+        </section>
 
       </div>
     </main>
