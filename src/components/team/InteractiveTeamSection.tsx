@@ -4,13 +4,9 @@ import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   RotateCw,
-  Code2,
-  Palette,
-  Crown,
   Quote,
   ShieldCheck,
   Wrench,
-  Sparkles,
 } from "lucide-react";
 import { TeamMember } from "@/types";
 
@@ -18,12 +14,6 @@ interface InteractiveTeamCardProps {
   member: TeamMember;
   index: number;
 }
-
-const departmentIcons: Record<string, typeof Crown> = {
-  Leadership: Crown,
-  Technology: Code2,
-  "Creative & Media": Palette,
-};
 
 const departmentColors: Record<string, string> = {
   Leadership: "from-amber-500 to-orange-600",
@@ -65,7 +55,6 @@ export function InteractiveTeamCard({
     setIsFlipped(!isFlipped);
   };
 
-  const DeptIcon = member.department ? departmentIcons[member.department] || Crown : Crown;
   const deptGrad = member.department ? departmentColors[member.department] || "from-teal-500 to-emerald-600" : "from-teal-500 to-emerald-600";
 
   return (
@@ -108,13 +97,8 @@ export function InteractiveTeamCard({
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 via-35% to-transparent" />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/50 to-transparent" />
 
-          {/* Top Row: Department Badge & Flip Action */}
-          <div className="relative z-10 flex items-center justify-between">
-            <span className={`inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-br ${deptGrad} px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-lg backdrop-blur-md`}>
-              <DeptIcon className="h-3 w-3" />
-              {member.department || "Core"}
-            </span>
-
+          {/* Top Row: Flip Action (top-right) */}
+          <div className="relative z-10 flex items-center justify-end">
             <button
               type="button"
               onClick={handleFlip}
@@ -216,10 +200,7 @@ export function InteractiveTeamCard({
             </div>
 
             {/* Back controls */}
-            <div className="flex items-center justify-between border-t border-slate-800/80 pt-4">
-              <span className={`rounded-md bg-gradient-to-br ${deptGrad} px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white`}>
-                {member.department || "Core"}
-              </span>
+            <div className="flex items-center justify-end border-t border-slate-800/80 pt-4">
               <button
                 type="button"
                 onClick={handleFlip}
