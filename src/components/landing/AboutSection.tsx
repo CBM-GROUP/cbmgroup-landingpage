@@ -50,15 +50,13 @@ export default function AboutSection() {
     offset: ["start end", "end start"],
   });
 
-  // Increased Parallax movement for a more dramatic effect
-  const imageY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["30px", "-30px"]);
 
   return (
     <section
       ref={sectionRef}
       id="about"
-      className="relative overflow-hidden bg-white">
+      className="relative bg-white">
       {/* =====================================================
           INTRODUCTION
       ====================================================== */}
@@ -183,75 +181,34 @@ export default function AboutSection() {
         </motion.div>
       </div>
 
-      <div className="relative mx-auto max-w-[1600px] px-4 pb-20 sm:px-6 sm:pb-28 lg:px-8 lg:pb-36">
+      <div className="relative mx-auto max-w-4xl lg:max-w-5xl px-4 pb-16 pt-6 sm:px-6 sm:pb-24 lg:px-8 lg:pb-32">
         <motion.div
-          initial={{
-            opacity: 0,
-            scale: 0.9,
-            filter: "blur(10px)",
-          }}
-          whileInView={{
-            opacity: 1,
-            scale: 1,
-            filter: "blur(0px)",
-          }}
-          viewport={{
-            once: true,
-            amount: 0.3,
-          }}
-          transition={{
-            duration: 1.2,
-            ease: [0.25, 1, 0.5, 1],
-          }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
           className="
             relative
-            h-[55vh]
-            min-h-[420px]
-            max-h-[760px]
+            aspect-video
+            w-full
+            max-h-[60vh]
+            mx-auto
             overflow-hidden
             rounded-[1.5rem]
             sm:rounded-[2rem]
+            bg-black
+            shadow-[0_20px_50px_rgba(0,0,0,0.12)]
+            border
+            border-slate-200/60
           ">
-          {/* Image with increased Parallax */}
-          <motion.div style={{ y: imageY }} className="absolute -inset-[12%]">
-            <div
-              className="
-                h-full
-                w-full
-                bg-cover
-                bg-center
-              "
-              style={{
-                backgroundImage: "url('/images/about/cbm-about.jpg')",
-              }}
-            />
-          </motion.div>
-
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-black/25" />
-
-          {/* Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/10" />
-
-          {/* Image label */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="absolute bottom-6 left-6 right-6 flex items-end justify-between sm:bottom-8 sm:left-8 sm:right-8">
-            <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-white/50">
-                CBM Group
-              </p>
-
-              <p className="mt-2 text-sm text-white/80">
-                Stories that move Africa forward.
-              </p>
-            </div>
-
-            <span className="hidden text-xs text-white/40 sm:block">2026</span>
-          </motion.div>
+          <video
+            src="/cbm advert.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-full w-full object-cover"
+          />
         </motion.div>
       </div>
     </section>
