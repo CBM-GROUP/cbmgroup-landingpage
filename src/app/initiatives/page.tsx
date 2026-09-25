@@ -16,9 +16,9 @@ function InitiativeCard({ initiative }: { initiative: (typeof initiatives)[numbe
   }, [initiative.images.length]);
 
   return (
-    <article className="group mx-auto w-[85%] overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.03)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_22px_60px_rgba(15,23,42,0.06)]">
+    <article className="group mx-auto w-[85%] overflow-hidden rounded-[1.75rem] border border-[#2fa88f] bg-[#36bea3] shadow-[0_18px_50px_rgba(15,23,42,0.03)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_22px_60px_rgba(15,23,42,0.06)]">
       <div className="grid min-h-[357px] lg:grid-cols-[minmax(0,1fr)_289px]">
-        <div className="relative min-h-[238px] bg-slate-100 lg:min-h-0">
+        <div className="relative min-h-[238px] bg-[#2aa88d] lg:min-h-0">
           <Image
             key={initiative.images[selectedImage]}
             src={initiative.images[selectedImage]}
@@ -28,16 +28,15 @@ function InitiativeCard({ initiative }: { initiative: (typeof initiatives)[numbe
           />
         </div>
 
-        <div className="border-t border-slate-200 p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-9">
-          <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-teal-600">{initiative.number}</div>
-          <h2 className="mt-3 text-[1.75rem] font-semibold leading-tight tracking-[-0.04em] text-slate-900 sm:text-[2.1rem]">
+        <div className="border-t border-[#2fa88f] bg-[#36bea3] p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-9">
+          <h2 className="text-[1.75rem] font-semibold leading-tight tracking-[-0.04em] text-[#0b1f1e] sm:text-[2.1rem]">
             {initiative.title}
           </h2>
-          <p className="mt-4 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">{initiative.description}</p>
+          <p className="mt-4 text-sm leading-6 text-[#0f2d2d] sm:text-base sm:leading-7">{initiative.description}</p>
         </div>
       </div>
 
-      <div className="flex gap-3 border-t border-slate-200 bg-slate-50 p-3 sm:p-4">
+      <div className="flex gap-3 border-t border-[#2fa88f] bg-[#2aa88d] p-3 sm:p-4">
         {initiative.images.map((image, index) => (
           <button
             key={`${initiative.id}-${index}`}

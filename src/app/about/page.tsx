@@ -71,10 +71,9 @@ export default function Page() {
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {pillars.map((pillar) => (
-              <motion.article key={pillar.id} variants={revealVariants} className="group rounded-[1.5rem] border border-slate-200 bg-white p-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(15,23,42,0.05)]">
-                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">{pillar.number}</div>
-                <h3 className="mt-4 text-2xl font-semibold tracking-[-0.04em] text-slate-900">{pillar.title}</h3>
-                <p className="mt-4 text-base leading-7 text-slate-600">{pillar.description}</p>
+              <motion.article key={pillar.id} variants={revealVariants} className="group rounded-[1.5rem] border border-[#2fa88f] bg-[#36bea3] p-6 text-[#0b1f1e] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(15,23,42,0.08)]">
+                <h3 className="text-2xl font-semibold tracking-[-0.04em] text-[#0b1f1e]">{pillar.title}</h3>
+                <p className="mt-4 text-base leading-7 text-[#0f2d2d]">{pillar.description}</p>
               </motion.article>
             ))}
           </div>
@@ -101,9 +100,8 @@ export default function Page() {
 
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
             {coreValues.map((value) => (
-              <motion.div key={value.id} variants={revealVariants} className="rounded-[1.25rem] border border-slate-200 bg-white p-5 transition-transform duration-300 hover:-translate-y-1">
-                <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{value.number}</div>
-                <h3 className="mt-4 text-lg font-semibold tracking-[-0.03em] text-slate-900">{value.title}</h3>
+              <motion.div key={value.id} variants={revealVariants} className="rounded-[1.25rem] border border-[#2fa88f] bg-[#36bea3] p-5 text-[#0b1f1e] transition-transform duration-300 hover:-translate-y-1">
+                <h3 className="text-lg font-semibold tracking-[-0.03em] text-[#0b1f1e]">{value.title}</h3>
               </motion.div>
             ))}
           </div>

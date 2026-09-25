@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Manrope, Paytone_One } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/landing/Header";
 import Footer from "@/components/landing/Footer";
 
 const manrope = Manrope({
   variable: "--font-manrope",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const paytone = Paytone_One({
-  variable: "--font-display",
-  weight: "400",
   subsets: ["latin"],
   display: "swap",
 });
@@ -27,7 +20,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${paytone.variable} h-full antialiased`}
+      className={`${manrope.variable} h-full antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-[#f5f5f1] text-slate-900">
         <Header />

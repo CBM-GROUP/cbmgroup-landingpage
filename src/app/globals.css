@@ -1,8 +1,17 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Tan Headline";
+  src: url("/fonts/TANHEADLINE-Regular.otf") format("opentype"),
+       url("/fonts/TANHEADLINE-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --font-body: var(--font-manrope), "Segoe UI", sans-serif;
-  --font-display: "Arial Rounded MT Bold", "Trebuchet MS", "Segoe UI", sans-serif;
+  --font-display: "Tan Headline", "Times New Roman", serif;
 }
 
 html {
@@ -23,7 +32,9 @@ h6,
 .headline-tan {
   font-family: var(--font-display);
   font-weight: 400;
-  letter-spacing: -0.08em;
-  line-height: 0.88;
+  letter-spacing: -0.72px;
+  line-height: 0.95;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
   text-wrap: balance;
 }

@@ -6,8 +6,7 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen text-center overflow-hidden bg-white">
-      {/* Background */}
+    <section className="relative flex min-h-screen overflow-hidden bg-white text-center">
       <div className="absolute inset-0">
         <div className="absolute left-1/2 top-1/2 h-175 w-175 -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-500/10 blur-[140px]" />
 
@@ -27,12 +26,11 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 pt-32 lg:px-8">
         <div className="w-full flex flex-col items-center text-center">
-
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="headline-tan w-full text-5xl text-black sm:text-6xl lg:text-[7rem]"
+            className="headline-tan w-full text-[4.2rem] leading-[0.78] tracking-[-0.08em] text-black sm:text-[6rem] lg:text-[8rem]"
           >
             Building the future of creativity
           </motion.h1>
@@ -76,7 +74,6 @@ export function Hero() {
             </Link>
           </motion.div>
         </div>
-
       </div>
     </section>
   );
