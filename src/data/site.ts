@@ -1,6 +1,5 @@
 import {
   Brand,
-  CareerPath,
   CareerProgram,
   CoreValue,
   Initiative,
@@ -92,43 +91,43 @@ export const brands: Brand[] = [
     id: "cbm-tv",
     name: "CBM TV",
     image: "/companies/CBM Advertising Logo - 7 (1).jpg.jpeg",
-    href: "https://cbmtv.cbmgroupco.com"
+    href: "https://cbmtv.cbmgroupco.com",
   },
   {
     id: "now-play",
     name: "Now Play",
     image: "/companies/NOW PLAY - 3.jpg.jpeg",
-    href: "https://nowplay.cbmgroupco.com"
+    href: "https://nowplay.cbmgroupco.com",
   },
   {
     id: "cbm-radio",
     name: "CBM Radio",
     image: "/companies/Cbm Radio - 1.jpg.jpeg",
-    href: "https://radio.cbmgroupco.com"
+    href: "https://radio.cbmgroupco.com",
   },
   {
     id: "cbm-records",
     name: "CBM Records",
     image: "/companies/CBM Records Logo - 17.jpg.jpeg",
-    href: "https://cbm-record.vercel.app/"
+    href: "https://cbm-record.vercel.app/",
   },
   {
     id: "cbm-advertising",
     name: "CBM Advertising",
     image: "/companies/CBM Advertising Logo - 3 (1).jpg.jpeg",
-    href: "https://adverts.cbmgroupco.com"
+    href: "https://adverts.cbmgroupco.com",
   },
   {
     id: "cbm-events",
     name: "CBM Events",
     image: "/companies/CBM Events.jpeg",
-    href: "https://events.cbmgroupco.com"
+    href: "https://events.cbmgroupco.com",
   },
   {
     id: "cbm-film",
     name: "CBM Film",
     image: "/companies/Cbm Film.jpeg",
-    href: "https://cbm-films-cinematic-vision.vercel.app/"
+    href: "https://cbm-films-cinematic-vision.vercel.app/",
   },
 ];
 
@@ -163,107 +162,52 @@ export const teamMembers: TeamMember[] = [
   {
     id: "bwire-ronald",
     name: "Bwire Ronald aka Bienald Ronald",
-    nickname: "Bienald",
     role: "Founder and Team Lead",
     department: "Leadership",
-    vibeRole: "Vision Architect & Chief Dreamer",
     bio: "Guiding the creative, technological, and strategic evolution of CBM Group across Africa.",
     quote: "Culture isn't made by accident; it's engineered with bold ideas and heart.",
-    superpower: "Turning ambitious visions into thriving creative engines",
-    tools: ["Keynote", "Notion", "Triple Espresso", "Strategic Playbooks"],
-    favoriteTrack: "Burna Boy — City Boys",
+    tools: ["Strategic Playbooks", "Keynote", "Notion", "Creative Direction"],
     avatarImage: "/team/ronald.jpeg",
-    avatarColor: "from-amber-500 via-amber-600 to-emerald-700",
-    stats: {
-      creativity: 99,
-      caffeine: 95,
-      tech: 88,
-      vibe: 100,
-    },
   },
   {
     id: "kalinzi-philp",
     name: "Kalinzi Philp Louis",
-    nickname: "Philp",
     role: "CTO",
     department: "Technology",
-    vibeRole: "Cloud Overlord & Code Sorcerer",
     bio: "Architecting resilient digital infrastructure, streaming systems, and technical innovation.",
     quote: "If it compiles on the first try, don't trust it. Test it twice.",
-    superpower: "Translating wild creative dreams into unbreakable systems",
-    tools: ["Next.js", "Docker", "Mechanical Keeb", "Dark Mode"],
-    favoriteTrack: "Daft Punk — Harder, Better, Faster, Stronger",
+    tools: ["Next.js", "Docker", "Cloud Systems", "Full-Stack"],
     avatarImage: "/team/philp.jpeg",
-    avatarColor: "from-cyan-500 via-blue-600 to-indigo-700",
-    stats: {
-      creativity: 93,
-      caffeine: 98,
-      tech: 100,
-      vibe: 95,
-    },
   },
   {
     id: "wejuli-christopher",
     name: "Wejuli Christopher",
-    nickname: "Chris",
     role: "Graphics Designer and Photo Editor",
     department: "Creative & Media",
-    vibeRole: "Pixel Alchemist & Vector Samurai",
     bio: "Sculpting visual identities, brand stories, and editorial imagery that define contemporary African aesthetics.",
     quote: "Good design is invisible; great design is unforgettable.",
-    superpower: "Crafting iconic visual branding out of a single sketch",
-    tools: ["Photoshop", "Illustrator", "Wacom Stylus", "Color Palettes"],
-    favoriteTrack: "Asake — Lonely At The Top",
+    tools: ["Photoshop", "Illustrator", "Brand Identity", "Editorial"],
     avatarImage: "/team/christopher.jpeg",
-    avatarColor: "from-purple-500 via-fuchsia-600 to-pink-700",
-    stats: {
-      creativity: 100,
-      caffeine: 92,
-      tech: 87,
-      vibe: 98,
-    },
   },
   {
     id: "ssenabulya-trevor",
     name: "Ssenabulya Trevor Venasio",
-    nickname: "Trevor",
     role: "Cinematographer and Video Editor",
     department: "Creative & Media",
-    vibeRole: "Frame Maestro & 4K Conjurer",
     bio: "Directing cinematic narratives, grading visuals, and packaging high-impact video experiences.",
     quote: "Every frame must speak before the audio even kicks in.",
-    superpower: "Making any room or landscape look like a movie set",
-    tools: ["Sony FX6", "DaVinci Resolve", "Gimbals", "Color LUTs"],
-    favoriteTrack: "Wizkid & Tems — Essence",
+    tools: ["Sony FX6", "DaVinci Resolve", "Color Grading", "Cinematography"],
     avatarImage: "/team/travor-web.jpeg",
-    avatarColor: "from-orange-500 via-rose-600 to-red-700",
-    stats: {
-      creativity: 98,
-      caffeine: 94,
-      tech: 92,
-      vibe: 99,
-    },
   },
   {
     id: "katende-peterson",
     name: "Katende Peterson",
-    nickname: "Peterson",
     role: "Web Developer and UI/UX Designer",
     department: "Technology",
-    vibeRole: "Frontend Virtuoso & Motion Alchemist",
     bio: "Crafting fluid interactive interfaces, digital platforms, and immersive web experiences.",
     quote: "Websites shouldn't just be viewed; they should be felt.",
-    superpower: "Injecting 60fps joy and buttery micro-interactions into every click",
-    tools: ["TypeScript", "Tailwind CSS", "Framer Motion", "Figma"],
-    favoriteTrack: "Rema — Calm Down",
+    tools: ["TypeScript", "Tailwind CSS", "Framer Motion", "UI/UX Design"],
     avatarImage: "/team/peterson.jpeg",
-    avatarColor: "from-teal-500 via-emerald-600 to-cyan-700",
-    stats: {
-      creativity: 97,
-      caffeine: 99,
-      tech: 98,
-      vibe: 100,
-    },
   },
 ];
 
@@ -383,14 +327,6 @@ export const careerPrograms: CareerProgram[] = [
     ],
   },
 ];
-
-export const careerPaths: CareerPath[] = careerPrograms.map(({ id, title, description }) => ({
-  id,
-  title,
-  description,
-}));
-
-export const careerDepartments = careerPrograms[0].teams.map((team) => team.name);
 
 export const aboutUsInfo = {
   whoWeAre:

@@ -90,7 +90,7 @@ export function InteractiveTeamCard({
               className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
             />
           ) : (
-            <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${member.avatarColor || "from-teal-700 via-slate-900 to-black"}`} />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-teal-700 via-slate-900 to-black" />
           )}
 
           {/* Clean Bottom Scrim - Only over the bottom 40% for text readability */}

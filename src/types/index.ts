@@ -34,22 +34,11 @@ export interface TeamMember {
   id: string;
   name: string;
   role: string;
-  nickname?: string;
   department?: "Leadership" | "Technology" | "Creative & Media";
-  vibeRole?: string;
   bio?: string;
   quote?: string;
-  superpower?: string;
   tools?: string[];
-  favoriteTrack?: string;
   avatarImage?: string;
-  avatarColor?: string;
-  stats?: {
-    creativity: number;
-    caffeine: number;
-    tech: number;
-    vibe: number;
-  };
 }
 
 export interface CareerTeam {
@@ -58,14 +47,9 @@ export interface CareerTeam {
   jobs: string[];
 }
 
-export interface CareerPath {
+export interface CareerProgram {
   id: string;
   title: string;
-  description?: string;
-  teams?: CareerTeam[];
-}
-
-export interface CareerProgram extends CareerPath {
   description: string;
   teams: CareerTeam[];
 }
@@ -73,9 +57,4 @@ export interface CareerProgram extends CareerPath {
 export interface NavItem {
   label: string;
   href: string;
-}
-
-export interface VisionMission {
-  vision: string;
-  mission: string;
 }
