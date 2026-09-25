@@ -4,10 +4,29 @@ import Image from "next/image";
 export default function Page() {
   return (
     <main className="min-h-screen bg-[#f5f5f1] text-slate-900">
-      <div className="mx-auto max-w-7xl px-6 pb-20 pt-20 sm:px-8 lg:px-10">
-        <h1 className="mb-10 text-center text-4xl font-bold tracking-[-0.02em] text-slate-900 sm:text-5xl">
-          Our companies
-        </h1>
+      <div className="mx-auto max-w-7xl px-6 pb-20 pt-16 sm:px-8 lg:px-10">
+        <section className="mb-12">
+          <div className="relative overflow-hidden rounded-[30px] border border-white/20 bg-[#36BEA3] shadow-[0_24px_80px_rgba(15,23,42,0.14)]">
+            <img
+              src="/assets/nature.jpg"
+              alt="Our Companies background"
+              className="absolute inset-0 h-full w-full object-cover opacity-45"
+            />
+            <div className="absolute inset-0 bg-[#36BEA3]/80" />
+            <div
+              className="absolute inset-0 opacity-40"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 60% 30%, rgba(255,255,255,0.18) 0 18%, transparent 19%), repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12) 0 18px, transparent 18px 60px)",
+              }}
+            />
+            <div className="relative flex min-h-[360px] sm:min-h-[420px] items-center justify-center p-6 sm:p-10 lg:p-12">
+              <h1 className="text-center text-[clamp(2.4rem,6vw,5.5rem)] font-bold leading-[0.8] tracking-[-0.06em] text-white drop-shadow-sm uppercase">
+                OUR COMPANIES
+              </h1>
+            </div>
+          </div>
+        </section>
         <section className="flex flex-col items-center text-center rounded-[2rem] border border-slate-200 bg-white px-6 py-8 shadow-[0_20px_60px_rgba(15,23,42,0.04)] sm:px-10 lg:px-14 lg:py-12">
           <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.06em] text-slate-900 sm:text-4xl lg:text-6xl">
             Brands built to inspire, entertain, and connect.
