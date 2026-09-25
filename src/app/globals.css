@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+:root {
+  --font-body: var(--font-manrope), "Segoe UI", sans-serif;
+  --font-display: "Arial Rounded MT Bold", "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.tan-headline,
+.headline-tan {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.08em;
+  line-height: 0.88;
+  text-wrap: balance;
+}
