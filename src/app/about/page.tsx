@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
+import { Users } from "lucide-react";
 import { teamMembers, pillars, coreValues, aboutUsInfo } from "@/data/site";
 import InteractiveTeamSection from "@/components/team/InteractiveTeamSection";
 
@@ -107,18 +108,39 @@ export default function Page() {
           </div>
         </motion.section>
 
-        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }} variants={staggerVariants} className="mt-20">
-          <motion.div variants={revealVariants} className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-teal-700">
-                <span className="h-2 w-2 rounded-full bg-teal-500 animate-pulse" />
-                The People Behind The Vision
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }} variants={staggerVariants} className="mt-24">
+          <motion.div
+            variants={revealVariants}
+            className="mb-8 rounded-[2rem] border border-slate-200 bg-white p-7 sm:p-9 shadow-[0_18px_50px_rgba(15,23,42,0.03)]"
+          >
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-teal-500/25 bg-teal-50 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-teal-800">
+                  <Users className="h-3.5 w-3.5 text-teal-600" />
+                  The People Behind The Vision
+                </div>
+                <h2 className="mt-3 text-3xl font-bold tracking-[-0.04em] text-slate-900 sm:text-4xl lg:text-5xl">
+                  Our Team
+                </h2>
               </div>
-              <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">Our Team</h2>
+
+              <div className="max-w-lg lg:border-l lg:border-slate-200 lg:pl-8">
+                <p className="text-sm sm:text-base leading-relaxed text-slate-600">
+                  Meet the creative minds and strategic operators shaping the CBM ecosystem across media, design, technology, and production.
+                </p>
+                <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-medium">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-amber-800">
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-500" /> Leadership
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1 text-cyan-800">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" /> Technology
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-teal-800">
+                    <span className="h-1.5 w-1.5 rounded-full bg-teal-500" /> Creative & Media
+                  </span>
+                </div>
+              </div>
             </div>
-            <p className="max-w-xl text-sm leading-7 text-slate-600">
-              Meet the creative minds and strategic operators shaping the CBM ecosystem across media, design, technology, and production.
-            </p>
           </motion.div>
 
           <InteractiveTeamSection members={teamMembers} />
