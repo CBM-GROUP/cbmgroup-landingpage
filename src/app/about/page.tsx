@@ -119,7 +119,7 @@ export default function Page() {
               <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">Our Team</h2>
             </div>
             <p className="max-w-xl text-sm leading-7 text-slate-600">
-              Meet the creative minds and strategic operators shaping the CBM ecosystem across media, design, technology, and production. Flip any card for confidential dossiers, stats, and superpowers!
+              Meet the creative minds and strategic operators shaping the CBM ecosystem across media, design, technology, and production.
             </p>
           </motion.div>
 

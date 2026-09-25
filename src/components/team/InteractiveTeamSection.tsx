@@ -1,106 +1,22 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Sparkles,
-  Zap,
-  Briefcase,
   RotateCw,
-  Flame,
-  Volume2,
-  VolumeX,
-  Shuffle,
-  Coffee,
   Code2,
   Palette,
   Crown,
-  Check,
-  Disc3,
   Quote,
+  ShieldCheck,
+  Wrench,
+  Sparkles,
 } from "lucide-react";
 import { TeamMember } from "@/types";
-
-// Safe Web Audio API sound generator for tactile feedback
-function playSound(type: "pop" | "flip" | "cheer" | "swoosh", enabled: boolean) {
-  if (!enabled || typeof window === "undefined") return;
-  try {
-    const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-    if (!AudioCtx) return;
-    const ctx = new AudioCtx();
-    if (ctx.state === "suspended") {
-      ctx.resume();
-    }
-    const now = ctx.currentTime;
-
-    if (type === "pop") {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = "sine";
-      osc.frequency.setValueAtTime(480, now);
-      osc.frequency.exponentialRampToValueAtTime(800, now + 0.08);
-      gain.gain.setValueAtTime(0.15, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start(now);
-      osc.stop(now + 0.08);
-    } else if (type === "flip") {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = "triangle";
-      osc.frequency.setValueAtTime(320, now);
-      osc.frequency.exponentialRampToValueAtTime(600, now + 0.12);
-      gain.gain.setValueAtTime(0.12, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start(now);
-      osc.stop(now + 0.12);
-    } else if (type === "cheer") {
-      [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(freq, now + i * 0.05);
-        gain.gain.setValueAtTime(0.08, now + i * 0.05);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.05 + 0.18);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now + i * 0.05);
-        osc.stop(now + i * 0.05 + 0.18);
-      });
-    } else if (type === "swoosh") {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = "sine";
-      osc.frequency.setValueAtTime(700, now);
-      osc.frequency.exponentialRampToValueAtTime(300, now + 0.15);
-      gain.gain.setValueAtTime(0.1, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start(now);
-      osc.stop(now + 0.15);
-    }
-  } catch {
-    // Audio context may be restricted by browser autoplay policy
-  }
-}
-
-interface Particle {
-  id: number;
-  x: number;
-  y: number;
-  emoji: string;
-}
 
 interface InteractiveTeamCardProps {
   member: TeamMember;
   index: number;
-  globalVibe: boolean;
-  soundEnabled: boolean;
-  isSpotlighted: boolean;
 }
 
 const departmentIcons: Record<string, typeof Crown> = {
@@ -109,40 +25,30 @@ const departmentIcons: Record<string, typeof Crown> = {
   "Creative & Media": Palette,
 };
 
+const departmentColors: Record<string, string> = {
+  Leadership: "from-amber-500 to-orange-600",
+  Technology: "from-cyan-500 to-blue-600",
+  "Creative & Media": "from-teal-500 to-emerald-600",
+};
+
 export function InteractiveTeamCard({
   member,
   index,
-  globalVibe,
-  soundEnabled,
-  isSpotlighted,
 }: InteractiveTeamCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [localVibe, setLocalVibe] = useState(false);
-  const [kudos, setKudos] = useState(12 + (index * 7) % 23);
-  const [hasCheered, setHasCheered] = useState(false);
-  const [particles, setParticles] = useState<Particle[]>([]);
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  // Sync with global vibe state
-  useEffect(() => {
-    setLocalVibe(globalVibe);
-  }, [globalVibe]);
-
-  // 3D Tilt calculation
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = ((y - centerY) / centerY) * -10;
-    const rotateY = ((x - centerX) / centerX) * 10;
-
-    setRotate({ x: rotateX, y: rotateY });
+    setRotate({
+      x: ((y - rect.height / 2) / rect.height) * -5,
+      y: ((x - rect.width / 2) / rect.width) * 5,
+    });
   };
 
   const handleMouseLeave = () => {
@@ -157,41 +63,10 @@ export function InteractiveTeamCard({
   const handleFlip = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     setIsFlipped(!isFlipped);
-    playSound("flip", soundEnabled);
   };
 
-  const handleKudos = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setKudos((prev) => prev + 1);
-    setHasCheered(true);
-    playSound("cheer", soundEnabled);
-
-    // Spawn floating particle burst
-    const emojis = ["✋", "🔥", "⚡", "✨", "☕", "🚀"];
-    const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-    const newParticle: Particle = {
-      id: Date.now() + Math.random(),
-      x: (Math.random() - 0.5) * 60,
-      y: -20 - Math.random() * 30,
-      emoji: randomEmoji,
-    };
-
-    setParticles((prev) => [...prev.slice(-6), newParticle]);
-    setTimeout(() => {
-      setParticles((prev) => prev.filter((p) => p.id !== newParticle.id));
-    }, 1200);
-  };
-
-  const isVibeActive = localVibe;
   const DeptIcon = member.department ? departmentIcons[member.department] || Crown : Crown;
-
-  // Split initials
-  const initials = member.name
-    .split(" ")
-    .map((w) => w[0])
-    .filter(Boolean)
-    .slice(0, 2)
-    .join("");
+  const deptGrad = member.department ? departmentColors[member.department] || "from-teal-500 to-emerald-600" : "from-teal-500 to-emerald-600";
 
   return (
     <div
@@ -199,404 +74,161 @@ export function InteractiveTeamCard({
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`group relative h-[520px] w-full select-none [perspective:1200px] ${
-        isSpotlighted ? "z-20 ring-4 ring-teal-400 ring-offset-4 ring-offset-[#f5f5f1] rounded-[2rem]" : ""
-      }`}
+      className="group relative h-[490px] w-full max-w-[330px] mx-auto select-none [perspective:1200px]"
     >
-      {/* Floating Particles for Kudos */}
-      <div className="pointer-events-none absolute inset-0 z-50 overflow-visible">
-        <AnimatePresence>
-          {particles.map((p) => (
-            <motion.span
-              key={p.id}
-              initial={{ opacity: 1, scale: 0.6, x: "50%", y: "70%" }}
-              animate={{
-                opacity: 0,
-                scale: 1.5,
-                x: `calc(50% + ${p.x}px)`,
-                y: `calc(30% + ${p.y}px)`,
-              }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="absolute text-2xl"
-            >
-              {p.emoji}
-            </motion.span>
-          ))}
-        </AnimatePresence>
-      </div>
-
-      {/* The 3D Flipping Card Container */}
+      {/* 3D Flip Container */}
       <motion.div
         animate={{
           rotateY: isFlipped ? 180 : 0,
           rotateX: isHovered ? rotate.x : 0,
-          rotateZ: 0,
         }}
         transition={{
           rotateY: { duration: 0.6, ease: [0.23, 1, 0.32, 1] },
           rotateX: { duration: 0.15, ease: "easeOut" },
         }}
-        className="relative h-full w-full rounded-[2rem] [transform-style:preserve-3d] transition-shadow duration-300 hover:shadow-[0_24px_60px_rgba(13,148,136,0.2)]"
+        className="relative h-full w-full [transform-style:preserve-3d]"
       >
-        {/* ====================================================
-            FRONT OF CARD: Full-Bleed Portrait Background
-        ==================================================== */}
+        {/* ── FRONT: Vertical Full-Image Background Card ── */}
         <div
-          className={`absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[2rem] border [backface-visibility:hidden] transition-all duration-500 ${
-            isVibeActive
-              ? "border-amber-400/80 shadow-[0_0_35px_rgba(251,191,36,0.3)]"
-              : "border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.35)]"
-          }`}
+          className={`absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[1.75rem] border border-white/10 bg-slate-900 p-5 shadow-2xl [backface-visibility:hidden] ${isFlipped ? "pointer-events-none select-none z-0" : "pointer-events-auto z-10"
+            }`}
         >
-          {/* Background Portrait Image */}
-          <div className="absolute inset-0 z-0 overflow-hidden bg-slate-950">
-            {member.avatarImage ? (
-              <img
-                src={member.avatarImage}
-                alt={member.name}
-                className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-            ) : (
-              <div
-                className={`h-full w-full bg-gradient-to-br ${
-                  member.avatarColor || "from-teal-700 via-slate-900 to-black"
-                }`}
-              />
-            )}
-
-            {/* Top gradient scrim for header readability */}
-            <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/85 via-black/40 to-transparent pointer-events-none" />
-
-            {/* Bottom gradient scrim for text & actions readability */}
-            <div className="absolute inset-x-0 bottom-0 h-80 bg-gradient-to-t from-black via-slate-950/90 to-transparent pointer-events-none" />
-
-            {/* Ambient mood wash when in Vibe Mode */}
-            {isVibeActive && (
-              <div className="absolute inset-0 bg-gradient-to-t from-teal-950/60 via-transparent to-amber-950/30 mix-blend-color-dodge pointer-events-none" />
-            )}
-
-            {/* Dynamic Holographic Spotlight Glare on Hover */}
-            {isHovered && (
-              <div
-                className="pointer-events-none absolute -inset-full opacity-35 transition-opacity duration-300"
-                style={{
-                  background: `radial-gradient(circle at ${50 + rotate.y * 3}% ${
-                    50 - rotate.x * 3
-                  }%, rgba(20, 184, 166, 0.35), transparent 60%)`,
-                }}
-              />
-            )}
-          </div>
-
-          {/* Top Bar: Department Badge & Work/Vibe Segmented Switch */}
-          <div className="relative z-10 flex items-center justify-between gap-2 p-5">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/55 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white shadow-lg backdrop-blur-md">
-              <DeptIcon className="h-3.5 w-3.5 text-teal-400" />
-              {member.department || "Core"}
-            </span>
-
-            {/* Micro Toggle: Work vs Vibe */}
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                setLocalVibe(!localVibe);
-                playSound("pop", soundEnabled);
-              }}
-              title="Toggle Work vs Vibe persona"
-              className={`flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium backdrop-blur-md transition-all duration-300 active:scale-95 ${
-                isVibeActive
-                  ? "border-amber-300 bg-amber-400 text-slate-950 font-bold shadow-[0_0_16px_rgba(251,191,36,0.6)]"
-                  : "border-white/20 bg-black/55 text-white/90 hover:bg-black/75 hover:border-white/40"
-              }`}
-            >
-              {isVibeActive ? (
-                <>
-                  <Zap className="h-3 w-3 fill-slate-950" />
-                  <span>Vibe Mode</span>
-                </>
-              ) : (
-                <>
-                  <Briefcase className="h-3 w-3 text-teal-400" />
-                  <span>Work Mode</span>
-                </>
-              )}
-            </button>
-          </div>
-
-          {/* Center: Playful Sticker in Vibe Mode */}
-          <div className="relative z-10 flex flex-1 items-center justify-center pointer-events-none">
-            {isVibeActive && (
-              <motion.div
-                initial={{ scale: 0, rotate: -20 }}
-                animate={{ scale: 1, rotate: [0, -4, 4, 0] }}
-                transition={{ duration: 0.5, rotate: { repeat: Infinity, duration: 4, ease: "easeInOut" } }}
-                className="flex items-center gap-2 rounded-full border border-amber-300/60 bg-black/65 px-4 py-1.5 text-xs font-bold text-amber-300 shadow-2xl backdrop-blur-md"
-              >
-                <span className="text-base">🕶️</span>
-                <span>AFTER HOURS</span>
-              </motion.div>
-            )}
-          </div>
-
-          {/* Bottom Card Info & Actions */}
-          <div className="relative z-10 p-5 sm:p-6">
-            {/* Member Name */}
-            <h3 className="line-clamp-1 text-xl font-bold tracking-tight text-white drop-shadow-md sm:text-2xl">
-              {member.name}
-            </h3>
-
-            {/* Dynamic Role / Alter Ego */}
-            <AnimatePresence mode="wait">
-              {isVibeActive ? (
-                <motion.div
-                  key="vibe-role"
-                  initial={{ opacity: 0, y: 4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -4 }}
-                  className="mt-1"
-                >
-                  <span className="inline-flex items-center gap-1 rounded-md bg-amber-400 px-2.5 py-0.5 text-xs font-bold text-slate-950 shadow-sm">
-                    ⚡ {member.vibeRole || "Secret Agent"}
-                  </span>
-                  <p className="mt-2 line-clamp-2 text-xs text-teal-200 italic leading-relaxed">
-                    &ldquo;{member.superpower}&rdquo;
-                  </p>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="work-role"
-                  initial={{ opacity: 0, y: 4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -4 }}
-                  className="mt-1"
-                >
-                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-teal-400">
-                    {member.role}
-                  </span>
-                  <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-slate-300">
-                    {member.bio}
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Music pill in Vibe mode */}
-            {isVibeActive && member.favoriteTrack && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="mt-3 flex items-center gap-2 rounded-full border border-teal-500/40 bg-black/75 px-3 py-1 text-[11px] text-teal-300 shadow-md backdrop-blur-md"
-              >
-                <Disc3 className="h-3.5 w-3.5 animate-spin [animation-duration:4s] text-teal-400 shrink-0" />
-                <span className="line-clamp-1 font-medium">{member.favoriteTrack}</span>
-                {/* Micro equalizer animation */}
-                <div className="flex items-end gap-0.5 h-2.5 shrink-0 ml-auto">
-                  <span className="w-0.5 h-full bg-teal-400 rounded-full animate-pulse" />
-                  <span className="w-0.5 h-2 bg-amber-400 rounded-full animate-ping" />
-                  <span className="w-0.5 h-1.5 bg-teal-300 rounded-full animate-pulse" />
-                </div>
-              </motion.div>
-            )}
-
-            {/* Bottom Controls: Kudos & Flip Button */}
-            <div className="mt-4 flex items-center justify-between border-t border-white/15 pt-3">
-              {/* Give Kudos Button */}
-              <button
-                type="button"
-                onClick={handleKudos}
-                title="Give props to this team member"
-                className={`flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-xs font-semibold backdrop-blur-md transition-all active:scale-90 ${
-                  hasCheered
-                    ? "border-amber-400 bg-amber-400 text-slate-950 shadow-[0_0_12px_rgba(251,191,36,0.6)]"
-                    : "border-white/20 bg-black/55 text-white hover:border-teal-400 hover:bg-black/75"
-                }`}
-              >
-                <span className="text-sm">✋</span>
-                <span>{kudos}</span>
-                <span className="hidden text-[10px] text-slate-300 sm:inline">props</span>
-              </button>
-
-              {/* Flip Card Action */}
-              <button
-                type="button"
-                onClick={handleFlip}
-                className="flex items-center gap-1.5 rounded-full bg-teal-400 px-4 py-1.5 text-xs font-bold text-slate-950 shadow-lg transition-all hover:bg-teal-300 active:scale-95"
-              >
-                <span>Dossier</span>
-                <RotateCw className="h-3 w-3 transition-transform group-hover:rotate-180" />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* ====================================================
-            BACK OF CARD: Collectible Dossier & Creative RPG Stats
-        ==================================================== */}
-        <div
-          className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[2rem] border border-slate-700 bg-slate-950 p-6 text-white shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]"
-        >
-          {/* Blurred Background of Member on Back */}
-          {member.avatarImage && (
+          {/* Background Image - Clear & Bright */}
+          {member.avatarImage ? (
             <img
               src={member.avatarImage}
-              alt=""
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top opacity-20 filter blur-md scale-110"
+              alt={member.name}
+              className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
             />
+          ) : (
+            <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${member.avatarColor || "from-teal-700 via-slate-900 to-black"}`} />
           )}
 
-          {/* Deep dark gradient overlay */}
-          <div className="pointer-events-none absolute inset-0 bg-slate-950/85" />
-          {/* Subtle grid pattern */}
-          <div
-            className="pointer-events-none absolute inset-0 opacity-15"
-            style={{
-              backgroundImage:
-                "radial-gradient(#14b8a6 1px, transparent 1px), radial-gradient(#14b8a6 1px, transparent 1px)",
-              backgroundSize: "20px 20px",
-              backgroundPosition: "0 0, 10px 10px",
-            }}
-          />
+          {/* Clean Bottom Scrim - Only over the bottom 40% for text readability */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 via-35% to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/50 to-transparent" />
 
-          {/* Dossier Header */}
-          <div className="relative z-10 flex items-center justify-between border-b border-slate-800 pb-3">
-            <div className="flex items-center gap-1.5">
-              <Sparkles className="h-3.5 w-3.5 text-teal-400" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-teal-400">
-                DOSSIER #0{index + 1}
-              </span>
-            </div>
-            <span className="rounded bg-teal-950/80 px-2 py-0.5 font-mono text-[10px] text-teal-300 border border-teal-800/60">
-              TOP SECRET
+          {/* Top Row: Department Badge & Flip Action */}
+          <div className="relative z-10 flex items-center justify-between">
+            <span className={`inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-br ${deptGrad} px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-lg backdrop-blur-md`}>
+              <DeptIcon className="h-3 w-3" />
+              {member.department || "Core"}
             </span>
-          </div>
-
-          {/* Dossier Quote / Motto */}
-          <div className="relative z-10 my-2">
-            <div className="flex items-start gap-2">
-              <Quote className="h-4 w-4 shrink-0 text-teal-400 rotate-180 opacity-60" />
-              <p className="text-xs italic text-slate-300 leading-relaxed">
-                {member.quote || "Pushing the boundary of African storytelling."}
-              </p>
-            </div>
-          </div>
-
-          {/* Creative Stat Bars */}
-          <div className="relative z-10 space-y-2.5">
-            <span className="block font-mono text-[10px] uppercase tracking-wider text-slate-400">
-              RPG VIBE STATS
-            </span>
-
-            {/* Creativity */}
-            <div>
-              <div className="flex justify-between text-[11px] font-medium text-slate-300">
-                <span className="flex items-center gap-1">
-                  <Palette className="h-3 w-3 text-amber-400" /> Creativity
-                </span>
-                <span className="font-mono text-teal-400">{member.stats?.creativity || 95}%</span>
-              </div>
-              <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${member.stats?.creativity || 95}%` }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="h-full rounded-full bg-gradient-to-r from-amber-400 to-teal-400"
-                />
-              </div>
-            </div>
-
-            {/* Caffeine Dependency */}
-            <div>
-              <div className="flex justify-between text-[11px] font-medium text-slate-300">
-                <span className="flex items-center gap-1">
-                  <Coffee className="h-3 w-3 text-amber-600" /> Caffeine Drive
-                </span>
-                <span className="font-mono text-teal-400">{member.stats?.caffeine || 92}%</span>
-              </div>
-              <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${member.stats?.caffeine || 92}%` }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  className="h-full rounded-full bg-gradient-to-r from-amber-600 to-orange-400"
-                />
-              </div>
-            </div>
-
-            {/* Tech / Craft Sorcery */}
-            <div>
-              <div className="flex justify-between text-[11px] font-medium text-slate-300">
-                <span className="flex items-center gap-1">
-                  <Code2 className="h-3 w-3 text-cyan-400" /> Craft Sorcery
-                </span>
-                <span className="font-mono text-teal-400">{member.stats?.tech || 90}%</span>
-              </div>
-              <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${member.stats?.tech || 90}%` }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-500"
-                />
-              </div>
-            </div>
-
-            {/* Vibe Check */}
-            <div>
-              <div className="flex justify-between text-[11px] font-medium text-slate-300">
-                <span className="flex items-center gap-1">
-                  <Flame className="h-3 w-3 text-rose-400" /> Vibe Check
-                </span>
-                <span className="font-mono text-teal-400">{member.stats?.vibe || 100}%</span>
-              </div>
-              <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${member.stats?.vibe || 100}%` }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                  className="h-full rounded-full bg-gradient-to-r from-rose-500 to-teal-400"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Tools of the trade */}
-          <div className="relative z-10 mt-2">
-            <span className="block font-mono text-[10px] uppercase tracking-wider text-slate-400 mb-1.5">
-              WEAPONS OF CHOICE
-            </span>
-            <div className="flex flex-wrap gap-1.5">
-              {member.tools?.map((tool) => (
-                <span
-                  key={tool}
-                  className="rounded-md border border-slate-800 bg-slate-900/90 px-2 py-0.5 font-mono text-[10px] text-teal-300"
-                >
-                  {tool}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Back Controls */}
-          <div className="relative z-10 flex items-center justify-between border-t border-slate-800 pt-3">
-            <a
-              href={`mailto:careers@cbmgroup.africa?subject=Hello%20${encodeURIComponent(
-                member.name
-              )}%20via%20CBM%20Website`}
-              className="text-xs text-teal-400 hover:text-teal-300 font-medium underline underline-offset-4 transition-colors"
-            >
-              Say hello →
-            </a>
 
             <button
               type="button"
               onClick={handleFlip}
-              className="flex items-center gap-1.5 rounded-full border border-teal-500/40 bg-teal-500/10 px-3.5 py-1.5 text-xs font-medium text-teal-300 transition-all hover:bg-teal-500/20 active:scale-95"
+              className="cursor-pointer flex items-center gap-1.5 rounded-xl border border-white/30 bg-black/60 px-3 py-1.5 text-[11px] font-semibold text-white shadow-lg backdrop-blur-md transition-all hover:border-white/60 hover:bg-black/80 active:scale-95"
             >
-              <span>Flip Back</span>
-              <RotateCw className="h-3 w-3" />
+              <span>Profile</span>
+              <RotateCw className="h-3 w-3 transition-transform duration-300 group-hover:rotate-180" />
             </button>
+          </div>
+
+          {/* Bottom Content Panel */}
+          <div className="relative z-10 mt-auto pt-4">
+            <h3 className="line-clamp-1 text-xl font-bold tracking-tight text-white drop-shadow-md">
+              {member.name}
+            </h3>
+
+            <span className={`mt-1 block text-xs font-semibold uppercase tracking-[0.16em] bg-gradient-to-r ${deptGrad} bg-clip-text text-transparent`}>
+              {member.role}
+            </span>
+
+            <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-slate-200 drop-shadow">
+              {member.bio}
+            </p>
+          </div>
+        </div>
+
+        {/* ── BACK: Clean Executive Dossier ── */}
+        <div
+          className={`absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[2rem] border border-slate-700/80 bg-slate-950 p-6 [backface-visibility:hidden] [transform:rotateY(180deg)] ${isFlipped ? "pointer-events-auto z-10" : "pointer-events-none select-none z-0"
+            }`}
+        >
+          {member.avatarImage && (
+            <img
+              src={member.avatarImage}
+              alt=""
+              className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top opacity-10 blur-md scale-110"
+            />
+          )}
+          <div className="pointer-events-none absolute inset-0 bg-[#090e13]/94" />
+          <div
+            className="pointer-events-none absolute inset-0 opacity-10"
+            style={{ backgroundImage: "radial-gradient(#14b8a6 1px, transparent 1px)", backgroundSize: "18px 18px" }}
+          />
+
+          <div className="relative z-10 flex h-full flex-col justify-between">
+            {/* Header */}
+            <div>
+              <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
+                <div className="flex items-center gap-1.5">
+                  <ShieldCheck className="h-3.5 w-3.5 text-teal-400" />
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-teal-400">
+                    MEMBER PROFILE #{String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleFlip}
+                  className="cursor-pointer flex items-center gap-1 rounded-lg border border-slate-700 bg-slate-800/80 px-2.5 py-1 text-[10px] font-medium text-slate-300 transition-colors hover:bg-slate-700 hover:text-white"
+                  title="Close Profile"
+                >
+                  <RotateCw className="h-2.5 w-2.5" />
+                  <span>Close</span>
+                </button>
+              </div>
+
+              {/* Name & Role */}
+              <div className="mt-4">
+                <h4 className="text-lg font-bold text-white">{member.name}</h4>
+                <p className="text-xs font-medium text-teal-400">{member.role}</p>
+              </div>
+
+              {/* Quote / Statement */}
+              <div className="mt-4 flex items-start gap-2.5 rounded-2xl bg-slate-900/80 p-3.5 border border-slate-800/80">
+                <Quote className="h-4 w-4 shrink-0 rotate-180 text-teal-500/80 mt-0.5" />
+                <p className="text-xs italic leading-relaxed text-slate-300">
+                  {member.quote || "Pushing the boundary of African storytelling and innovation."}
+                </p>
+              </div>
+
+              {/* Focus Tools / Competencies */}
+              {member.tools && member.tools.length > 0 && (
+                <div className="mt-4">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">
+                    <Wrench className="h-3 w-3 text-teal-400" />
+                    <span>Focus & Expertise</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {member.tools.map((tool) => (
+                      <span
+                        key={tool}
+                        className="rounded-lg border border-teal-500/20 bg-teal-950/50 px-2.5 py-1 text-[11px] font-medium text-teal-200"
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Back controls */}
+            <div className="flex items-center justify-between border-t border-slate-800/80 pt-4">
+              <span className={`rounded-md bg-gradient-to-br ${deptGrad} px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white`}>
+                {member.department || "Core"}
+              </span>
+              <button
+                type="button"
+                onClick={handleFlip}
+                className="cursor-pointer flex items-center gap-1.5 rounded-xl border border-teal-500/40 bg-teal-500/15 px-4 py-2 text-xs font-semibold text-teal-300 transition-all hover:bg-teal-500/25 active:scale-95"
+              >
+                <span>Flip Back</span>
+                <RotateCw className="h-3 w-3" />
+              </button>
+            </div>
           </div>
         </div>
       </motion.div>
@@ -610,81 +242,38 @@ interface InteractiveTeamSectionProps {
 
 export default function InteractiveTeamSection({ members }: InteractiveTeamSectionProps) {
   const [activeFilter, setActiveFilter] = useState<string>("All");
-  const [globalVibe, setGlobalVibe] = useState(false);
-  const [soundEnabled, setSoundEnabled] = useState(true);
-  const [spotlightedId, setSpotlightedId] = useState<string | null>(null);
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const departments = ["All", "Leadership", "Technology", "Creative & Media"];
 
-  const filteredMembers = members.filter((m) => {
-    if (activeFilter === "All") return true;
-    return m.department === activeFilter;
-  });
-
-  const triggerToast = (msg: string) => {
-    setToastMessage(msg);
-    setTimeout(() => {
-      setToastMessage(null);
-    }, 2800);
-  };
-
-  const handleGlobalVibeToggle = () => {
-    const nextState = !globalVibe;
-    setGlobalVibe(nextState);
-    playSound(nextState ? "cheer" : "pop", soundEnabled);
-    triggerToast(
-      nextState
-        ? "⚡ Vibe Mode Activated for all team members!"
-        : "💼 Switched back to Professional Mode"
-    );
-  };
-
-  const handleSurpriseMe = () => {
-    playSound("swoosh", soundEnabled);
-    const randomIndex = Math.floor(Math.random() * members.length);
-    const luckyMember = members[randomIndex];
-    setSpotlightedId(luckyMember.id);
-    triggerToast(`🎲 Spotlight on ${luckyMember.name.split(" ")[0]}!`);
-
-    setTimeout(() => {
-      setSpotlightedId(null);
-    }, 3500);
-  };
+  const filteredMembers = members.filter((m) =>
+    activeFilter === "All" ? true : m.department === activeFilter
+  );
 
   return (
     <div className="relative">
-      {/* Interactive Controls Bar */}
-      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-2xl border border-slate-200/90 bg-white/80 p-4 backdrop-blur-md shadow-sm">
-        {/* Department Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-1.5">
+      {/* ── Controls Bar: Clean Filter Bar ── */}
+      <div className="mb-8 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-800 bg-[#0c1218] px-5 py-4">
+        {/* Filter tabs */}
+        <div className="flex flex-wrap items-center gap-2">
           {departments.map((dept) => {
             const isActive = activeFilter === dept;
-            const count =
-              dept === "All"
-                ? members.length
-                : members.filter((m) => m.department === dept).length;
-
+            const count = dept === "All" ? members.length : members.filter((m) => m.department === dept).length;
+            const color = departmentColors[dept];
             return (
               <button
                 key={dept}
                 type="button"
-                onClick={() => {
-                  setActiveFilter(dept);
-                  playSound("pop", soundEnabled);
-                }}
-                className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all duration-200 active:scale-95 ${
-                  isActive
-                    ? "bg-slate-900 text-white shadow-sm"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900"
-                }`}
+                onClick={() => setActiveFilter(dept)}
+                className={`flex items-center gap-2 rounded-xl px-3.5 py-1.5 text-xs font-semibold transition-all duration-200 active:scale-95 ${isActive
+                    ? "bg-white text-slate-900 shadow-md"
+                    : "border border-white/10 bg-white/5 text-slate-400 hover:border-white/20 hover:bg-white/10 hover:text-white"
+                  }`}
               >
                 <span>{dept}</span>
-                <span
-                  className={`rounded-full px-1.5 py-0.2 text-[10px] ${
-                    isActive ? "bg-teal-500 text-slate-950 font-bold" : "bg-slate-200 text-slate-500"
-                  }`}
-                >
+                <span className={`rounded-full px-1.5 py-0.5 text-[9px] font-bold ${isActive
+                    ? color ? `bg-gradient-to-r ${color} text-white` : "bg-teal-500 text-white"
+                    : "bg-white/10 text-slate-400"
+                  }`}>
                   {count}
                 </span>
               </button>
@@ -692,108 +281,37 @@ export default function InteractiveTeamSection({ members }: InteractiveTeamSecti
           })}
         </div>
 
-        {/* Fun Action Buttons */}
-        <div className="flex flex-wrap items-center gap-2">
-          {/* Surprise Me / Roulette Button */}
-          <button
-            type="button"
-            onClick={handleSurpriseMe}
-            title="Pick a random team member"
-            className="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm transition-all hover:border-teal-400 hover:bg-teal-50/50 active:scale-95"
-          >
-            <Shuffle className="h-3.5 w-3.5 text-teal-600" />
-            <span>Surprise Me</span>
-          </button>
-
-          {/* Global Vibe Mode Switch */}
-          <button
-            type="button"
-            onClick={handleGlobalVibeToggle}
-            className={`flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-xs font-medium transition-all duration-300 active:scale-95 ${
-              globalVibe
-                ? "border-teal-400 bg-teal-600 text-white shadow-[0_0_15px_rgba(20,184,166,0.35)]"
-                : "border-slate-200 bg-white text-slate-700 hover:border-teal-300"
-            }`}
-          >
-            <Zap className={`h-3.5 w-3.5 ${globalVibe ? "text-amber-300 fill-amber-300 animate-bounce" : "text-amber-500"}`} />
-            <span>{globalVibe ? "Party Mode ON" : "Vibe Mode"}</span>
-          </button>
-
-          {/* Sound FX Toggle */}
-          <button
-            type="button"
-            onClick={() => {
-              const next = !soundEnabled;
-              setSoundEnabled(next);
-              playSound("pop", next);
-            }}
-            title={soundEnabled ? "Mute interactive audio feedback" : "Enable sound FX"}
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition-all hover:bg-slate-50 active:scale-95"
-          >
-            {soundEnabled ? (
-              <Volume2 className="h-3.5 w-3.5 text-teal-600" />
-            ) : (
-              <VolumeX className="h-3.5 w-3.5 text-slate-400" />
-            )}
-          </button>
+        {/* Member count indicator */}
+        <div className="text-xs text-slate-400">
+          Showing <span className="font-semibold text-white">{filteredMembers.length}</span> team members
         </div>
       </div>
 
-      {/* Floating Action Toast */}
-      <AnimatePresence>
-        {toastMessage && (
-          <motion.div
-            initial={{ opacity: 0, y: -16, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -16, scale: 0.95 }}
-            className="pointer-events-none fixed top-6 left-1/2 z-50 -translate-x-1/2 rounded-full border border-teal-200 bg-slate-900/90 px-4 py-2 text-xs font-medium text-white shadow-xl backdrop-blur-md"
-          >
-            <span className="flex items-center gap-2">
-              <Sparkles className="h-3.5 w-3.5 text-amber-400" />
-              {toastMessage}
-            </span>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Team Cards Multi-Row Responsive Grid */}
-      <motion.div
-        layout
-        className="flex flex-wrap justify-center gap-6 lg:gap-8"
-      >
+      {/* ── Team Cards: Vertical Portrait Grid ── */}
+      <motion.div layout className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 justify-center">
         <AnimatePresence>
           {filteredMembers.map((member, index) => (
             <motion.div
               layout
               key={member.id}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              initial={{ opacity: 0, scale: 0.95, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="w-full sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] max-w-[380px]"
+              exit={{ opacity: 0, scale: 0.95, y: 16 }}
+              transition={{ duration: 0.35, delay: index * 0.05 }}
             >
               <InteractiveTeamCard
                 member={member}
                 index={index}
-                globalVibe={globalVibe}
-                soundEnabled={soundEnabled}
-                isSpotlighted={spotlightedId === member.id}
               />
             </motion.div>
           ))}
         </AnimatePresence>
       </motion.div>
 
-      {/* Interactive Helper Hint */}
-      <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400">
+      {/* ── Subtle Helper Hint ── */}
+      <div className="mt-8 flex items-center justify-center text-[11px] text-slate-400">
         <span className="flex items-center gap-1.5">
-          <RotateCw className="h-3.5 w-3.5 text-teal-600" /> Click <strong>Dossier</strong> to flip card
-        </span>
-        <span className="flex items-center gap-1.5">
-          <span>✋</span> Click <strong>Props</strong> to cheer
-        </span>
-        <span className="flex items-center gap-1.5">
-          <Zap className="h-3.5 w-3.5 text-amber-500" /> Toggle <strong>Vibe Mode</strong> for alter egos
+          <RotateCw className="h-3.5 w-3.5 text-teal-500" /> Click <strong className="text-slate-300">Profile</strong> on any card to view detailed background & expertise
         </span>
       </div>
     </div>
