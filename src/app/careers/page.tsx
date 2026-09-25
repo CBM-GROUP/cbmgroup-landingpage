@@ -121,8 +121,39 @@ export default function Page() {
           {/* Two-column layout: vertical program tabs left, teams panel right */}
           <div className="flex flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.06)] lg:flex-row">
 
-            {/* ── LEFT: Vertical program tabs ── */}
-            <div className="flex flex-row gap-2 border-b border-slate-100 p-4 lg:w-72 lg:shrink-0 lg:flex-col lg:border-b-0 lg:border-r lg:p-5">
+            {/* ── Mobile: Horizontal scrollable program tabs ── */}
+            <div className="no-scrollbar flex w-full gap-2.5 overflow-x-auto border-b border-slate-100 p-3 sm:gap-3 sm:p-4 lg:hidden">
+              {careerPrograms.map((program, index) => {
+                const Icon = programIcons[index] ?? BriefcaseBusiness;
+                const acc = programAccents[index] ?? programAccents[0];
+                const isActive = activeProgram === program.id;
+                return (
+                  <button
+                    key={program.id}
+                    type="button"
+                    onClick={() => chooseProgram(program.id)}
+                    className={`flex shrink-0 items-center gap-2.5 rounded-2xl border px-3.5 py-2.5 text-left transition-all duration-200 active:scale-95 ${
+                      isActive
+                        ? `border-transparent bg-[#0d1f21] text-white shadow-md ${acc.glow}`
+                        : "border-slate-200/80 bg-slate-50 text-slate-700 hover:border-slate-300 hover:bg-white"
+                    }`}
+                  >
+                    <span className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${acc.bg} shadow-sm`}>
+                      <Icon className="h-4 w-4 text-white" />
+                    </span>
+                    <div className="min-w-0 pr-1">
+                      <p className="whitespace-nowrap text-xs font-bold leading-tight sm:text-sm">{program.title}</p>
+                      <p className="mt-0.5 text-[10px] text-slate-400">
+                        {program.teams.length} teams
+                      </p>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* ── Desktop: Vertical program sidebar ── */}
+            <div className="hidden lg:flex lg:w-72 lg:shrink-0 lg:flex-col lg:border-r lg:border-slate-100 lg:p-5 lg:gap-2">
               {careerPrograms.map((program, index) => {
                 const Icon = programIcons[index] ?? BriefcaseBusiness;
                 const acc = programAccents[index] ?? programAccents[0];
@@ -133,7 +164,7 @@ export default function Page() {
                     type="button"
                     onClick={() => chooseProgram(program.id)}
                     whileTap={{ scale: 0.97 }}
-                    className={`relative flex flex-1 flex-col overflow-hidden rounded-[1.25rem] border p-4 text-left transition-all duration-300 lg:flex-none lg:p-5 ${
+                    className={`relative flex flex-col overflow-hidden rounded-[1.25rem] border p-5 text-left transition-all duration-300 ${
                       isActive
                         ? `border-transparent bg-[#0d1f21] text-white shadow-xl ${acc.glow}`
                         : "border-slate-100 bg-slate-50 text-slate-700 hover:border-slate-200 hover:bg-white hover:shadow-md"
@@ -142,22 +173,22 @@ export default function Page() {
                     {isActive && (
                       <div className={`absolute -right-8 -top-8 h-32 w-32 rounded-full bg-gradient-to-br ${acc.bg} opacity-20 blur-2xl`} />
                     )}
-                    <div className="relative flex items-center gap-3 lg:gap-3.5">
+                    <div className="relative flex items-center gap-3.5">
                       <span className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${acc.bg} shadow-md`}>
                         <Icon className="h-4 w-4 text-white" />
                       </span>
                       <div className="min-w-0">
-                        <p className="truncate text-sm font-bold leading-tight">{program.title}</p>
-                        <p className={`mt-0.5 text-[11px] leading-none ${isActive ? "text-slate-400" : "text-slate-400"}`}>
+                        <p className="text-sm font-bold leading-tight">{program.title}</p>
+                        <p className="mt-0.5 text-[11px] leading-none text-slate-400">
                           {program.teams.length} teams
                         </p>
                       </div>
                     </div>
-                    <p className={`relative mt-3 hidden text-xs leading-5 lg:block ${isActive ? "text-slate-300" : "text-slate-500"}`}>
+                    <p className={`relative mt-3 text-xs leading-5 ${isActive ? "text-slate-300" : "text-slate-500"}`}>
                       {program.description}
                     </p>
                     {isActive && (
-                      <span className={`relative mt-4 hidden w-fit items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-bold lg:inline-flex ${acc.badge}`}>
+                      <span className={`relative mt-4 inline-flex w-fit items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-bold ${acc.badge}`}>
                         <Sparkles className="h-2.5 w-2.5" />
                         Viewing
                       </span>
@@ -179,7 +210,7 @@ export default function Page() {
                   className="flex h-full flex-col"
                 >
                   {/* Right header */}
-                  <div className="relative overflow-hidden bg-[#0d1f21] px-6 py-6 sm:px-8">
+                  <div className="relative overflow-hidden bg-[#0d1f21] px-5 py-5 sm:px-8 sm:py-6">
                     <div className={`absolute -right-12 -top-12 h-48 w-48 rounded-full bg-gradient-to-br ${accent.bg} opacity-20 blur-3xl`} />
                     <div className="relative flex flex-wrap items-center justify-between gap-3">
                       <div>
@@ -196,8 +227,8 @@ export default function Page() {
                   </div>
 
                   {/* Department tiles */}
-                  <div className="flex-1 p-5 sm:p-6">
-                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-5">
+                  <div className="flex-1 p-4 sm:p-6">
+                    <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 xl:grid-cols-5 [&>*:last-child:nth-child(odd)]:col-span-2 sm:[&>*:last-child:nth-child(odd)]:col-span-1">
                       {selectedProgram.teams.map((team, index) => {
                         const Icon = teamIcons[index] ?? Building2;
                         const isActive = activeDepartment === team.name;
@@ -206,9 +237,9 @@ export default function Page() {
                             key={team.name}
                             type="button"
                             onClick={() => setActiveDepartment(isActive ? null : team.name)}
-                            whileHover={{ scale: 1.03 }}
+                            whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.96 }}
-                            className={`relative flex flex-col overflow-hidden rounded-2xl border p-4 text-left transition-all duration-200 ${
+                            className={`relative flex flex-col overflow-hidden rounded-2xl border p-3.5 sm:p-4 text-left transition-all duration-200 ${
                               isActive
                                 ? `border-transparent bg-[#0d1f21] text-white ring-2 ${accent.ring}`
                                 : "border-slate-100 bg-slate-50 text-slate-700 hover:border-slate-200 hover:bg-white hover:shadow-md"
@@ -217,10 +248,10 @@ export default function Page() {
                             {isActive && (
                               <div className={`absolute -right-4 -top-4 h-20 w-20 rounded-full bg-gradient-to-br ${accent.bg} opacity-25 blur-xl`} />
                             )}
-                            <span className={`relative inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br ${accent.bg} shadow-md`}>
+                            <span className={`relative inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-gradient-to-br ${accent.bg} shadow-md`}>
                               <Icon className="h-3.5 w-3.5 text-white" />
                             </span>
-                            <span className="relative mt-3 block text-xs font-bold leading-snug">
+                            <span className="relative mt-2.5 block text-xs font-bold leading-snug">
                               {team.name}
                             </span>
                             <span className="relative mt-0.5 block text-[10px] text-slate-400">
