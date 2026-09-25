@@ -24,24 +24,18 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-[#f5f5f1] text-slate-900">
       <div className="mx-auto max-w-7xl px-6 pb-20 pt-20 sm:px-8 lg:px-10">
+        <h1 className="mb-10 text-center text-5xl font-bold tracking-[-0.02em] text-slate-900">
+          About us
+        </h1>
         <motion.section
           initial="hidden"
           animate="visible"
           variants={revealVariants}
-          className="rounded-[2rem] border border-slate-200 bg-white px-6 py-8 shadow-[0_20px_60px_rgba(15,23,42,0.04)] sm:px-10 lg:px-14 lg:py-12"
+          className="flex flex-col items-center text-center rounded-[2rem] border border-slate-200 bg-white px-6 py-8 shadow-[0_20px_60px_rgba(15,23,42,0.04)] sm:px-10 lg:px-14 lg:py-12"
         >
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-3xl">
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">
-                About CBM Group
-              </h2>              <h1 className="mt-4 text-4xl font-semibold tracking-[-0.06em] text-slate-900 sm:text-5xl lg:text-7xl">
-                We build the stories, systems, and platforms that move culture forward.
-              </h1>
-            </div>
-
-
-          </div>
-
+          <h2 className="mt-4 max-w-3xl text-4xl font-semibold tracking-[-0.06em] text-slate-900 sm:text-5xl lg:text-7xl">
+            We build the stories, systems, and platforms that move culture forward.
+          </h2>
         </motion.section>
 
         <motion.section

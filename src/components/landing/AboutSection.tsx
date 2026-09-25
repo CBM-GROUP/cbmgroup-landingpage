@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
-import { ArrowDownRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 
 const aboutPills = [
@@ -53,7 +53,6 @@ export default function AboutSection() {
   // Increased Parallax movement for a more dramatic effect
   const imageY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["30px", "-30px"]);
-  const textX = useTransform(scrollYProgress, [0, 1], ["5%", "-15%"]);
 
   return (
     <section
@@ -184,7 +183,7 @@ export default function AboutSection() {
         </motion.div>
       </div>
 
-      <div className="relative mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-[1600px] px-4 pb-20 sm:px-6 sm:pb-28 lg:px-8 lg:pb-36">
         <motion.div
           initial={{
             opacity: 0,
@@ -254,116 +253,6 @@ export default function AboutSection() {
             <span className="hidden text-xs text-white/40 sm:block">2026</span>
           </motion.div>
         </motion.div>
-      </div>
-
-      <div className="relative overflow-hidden py-24 sm:py-32 lg:py-44">
-        {/* Oversized moving background text */}
-        <motion.div
-          style={{ x: textX }}
-          className="
-            pointer-events-none
-            absolute
-            left-0
-            top-1/2
-            -translate-y-1/2
-            whitespace-nowrap
-            text-[18vw]
-            font-bold
-            uppercase
-            leading-none
-            tracking-[-0.08em]
-            text-gray-200
-          ">
-          CBM GROUP CBM GROUP
-        </motion.div>
-
-        <div className="relative mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.4 }}
-            className="grid gap-12 lg:grid-cols-[0.35fr_1fr]">
-            {/* Number */}
-            <motion.div
-              variants={itemVariants}
-              className="text-sm text-gray-500">
-              <span className="text-teal-400">01</span>
-              <span className="mx-2">/</span>
-              About
-            </motion.div>
-
-            {/* Statement */}
-            <motion.div variants={itemVariants}>
-              <p
-                className="
-                  max-w-5xl
-                  text-3xl
-                  font-medium
-                  leading-[1.15]
-                  tracking-tight
-                  text-gray-800
-                  sm:text-4xl
-                  lg:text-5xl
-                ">
-                At CBM, we believe creativity is more than content. It is a
-                force for connection, opportunity, innovation and meaningful
-                change.
-              </p>
-
-              <div className="mt-10 flex items-center gap-3 text-sm text-gray-500">
-                <motion.span 
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "2.5rem" }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
-                  className="h-px bg-teal-400"
-                />
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.8, duration: 0.5 }}
-                >
-                  Creativity with purpose
-                </motion.span>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* =====================================================
-          SCROLL INDICATOR
-      ====================================================== */}
-
-      <div className="flex justify-center pb-16">
-        <motion.a
-          href="/companies"
-          animate={{
-            y: [0, 8, 0],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="
-            flex
-            flex-col
-            items-center
-            gap-3
-            text-xs
-            uppercase
-            tracking-[0.2em]
-            text-gray-500
-            transition
-              hover:text-teal-400
-          ">
-          <span>Scroll to explore</span>
-
-          <ArrowDownRight size={18} className="rotate-45" />
-        </motion.a>
       </div>
     </section>
   );
