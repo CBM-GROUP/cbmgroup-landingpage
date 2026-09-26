@@ -62,8 +62,8 @@ export default function Page() {
           Initiatives
         </h1>
         <section className="flex flex-col items-center text-center rounded-[2rem] border border-slate-200 bg-white px-6 py-8 shadow-[0_20px_60px_rgba(15,23,42,0.04)] sm:px-10 lg:px-14 lg:py-12">
-          <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.06em] text-slate-900 sm:text-4xl lg:text-6xl">
-            Driving opportunity through creative innovation.
+          <h2 className="max-w-4xl text-2xl font-semibold tracking-[-0.04em] text-slate-900 sm:text-3xl lg:text-4xl leading-snug sm:leading-relaxed">
+            We invest in people, ideas, and ecosystems that unlock long-term value across culture, media, entertainment, entrepreneurship and technology.
           </h2>
         </section>
 

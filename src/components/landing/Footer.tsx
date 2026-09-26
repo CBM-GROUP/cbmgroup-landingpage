@@ -30,9 +30,27 @@ const socialLinks = [
 ];
 
 const contactItems = [
-  { icon: Phone, label: "+256 776789133", href: "tel:+256776789133" },
-  { icon: Mail, label: "cbmgroup02@gmail.com", href: "mailto:cbmgroup02@gmail.com" },
-  { icon: MapPin, label: "National ICT Innovation Hub in Nakawa, Kampala, Uganda", href: "#map" },
+  {
+    title: "Phone",
+    value: "+256 776789133",
+    href: "tel:+256776789133",
+    icon: Phone,
+    isExternal: false,
+  },
+  {
+    title: "Email",
+    value: "cbmgroup02@gmail.com",
+    href: "mailto:cbmgroup02@gmail.com",
+    icon: Mail,
+    isExternal: false,
+  },
+  {
+    title: "Location",
+    value: "National ICT Innovation Hub in Nakawa, Kampala, Uganda",
+    href: "https://maps.google.com/?q=National+ICT+Innovation+Hub+Nakawa+Kampala+Uganda",
+    icon: MapPin,
+    isExternal: true,
+  },
 ];
 
 export default function Footer() {
@@ -72,14 +90,25 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="mt-10 flex flex-col gap-5 border-t border-white/20 pt-6 text-base text-white/90 md:flex-row md:items-center md:justify-between">
-            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-8">
-              {contactItems.map(({ icon: Icon, label, href }) => (
-                <a key={label} href={href} className="inline-flex items-center gap-2 text-white/90 transition hover:text-white">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/60 bg-white/10 text-white">
-                    <Icon className="h-4 w-4" />
+          <div className="mt-10 border-t border-white/20 pt-8">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-6">
+              {contactItems.map(({ title, value, href, icon: Icon, isExternal }) => (
+                <a
+                  key={title}
+                  href={href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noreferrer" : undefined}
+                  className="group flex flex-col items-center justify-center rounded-2xl border border-white/20 bg-white/10 p-4 text-center text-white backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/20 sm:p-5"
+                >
+                  <div className="mb-2.5 flex h-10 w-10 items-center justify-center rounded-full border border-white/50 bg-white/20 text-white shadow-xs transition-transform duration-200 group-hover:scale-110">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-white/80">
+                    {title}
                   </span>
-                  <span>{label}</span>
+                  <span className="mt-1 text-sm font-medium leading-snug text-white/95 sm:text-base">
+                    {value}
+                  </span>
                 </a>
               ))}
             </div>
