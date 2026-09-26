@@ -91,7 +91,7 @@ export default function Footer() {
           </div>
 
           <div className="mt-10 border-t border-white/20 pt-8">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div className="flex flex-col items-center justify-center gap-5 sm:gap-6 md:flex-row md:flex-wrap md:gap-8 lg:gap-12">
               {contactItems.map(({ value, href, icon: Icon, isExternal }) => (
                 <a
                   key={href}
