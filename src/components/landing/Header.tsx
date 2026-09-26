@@ -34,8 +34,8 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Navigation Links Row - Spaced between Companies, About Us, Purpose, Work At CBM */}
-          <div className="mt-3.5 w-full hidden md:flex items-center justify-center gap-12 sm:gap-16 lg:gap-24">
+          {/* Navigation Links Row - Extra Spaced between Companies, About Us, Purpose, Work At CBM */}
+          <div className="mt-4 w-full max-w-5xl hidden md:flex items-center justify-evenly gap-8 sm:gap-16 lg:gap-32 px-4">
             {navItems.map((item) => {
               const isActive = pathname === item.href || (item.href !== "/" && pathname?.startsWith(item.href));
               return (
