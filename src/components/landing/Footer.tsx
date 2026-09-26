@@ -98,12 +98,12 @@ export default function Footer() {
                   href={href}
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noreferrer" : undefined}
-                  className="group flex items-center justify-center gap-3 text-center text-white/90 transition-colors duration-200 hover:text-white"
+                  className="group flex items-center justify-center gap-2.5 text-center text-white/90 transition-colors duration-200 hover:text-white"
                 >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/60 bg-white/10 text-white transition-all duration-200 group-hover:scale-110 group-hover:bg-white/20">
-                    <Icon className="h-4 w-4" />
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/60 bg-white/10 text-white transition-all duration-200 group-hover:scale-105 group-hover:bg-white/20">
+                    <Icon className="h-3.5 w-3.5" />
                   </span>
-                  <span className="text-sm font-medium leading-snug sm:text-base">
+                  <span className="text-xs font-medium leading-tight sm:text-sm">
                     {value}
                   </span>
                 </a>
