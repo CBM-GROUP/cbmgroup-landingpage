@@ -4,9 +4,9 @@ import Image from "next/image";
 export default function Page() {
   return (
     <main className="min-h-screen bg-[#f5f5f1] text-slate-900">
-      <div className="mx-auto max-w-7xl px-4 pb-20 pt-16 sm:px-6 sm:pb-24 lg:px-8">
-        <section className="mb-12">
-          <div className="relative overflow-hidden rounded-[2rem] sm:rounded-[30px] border border-white/20 bg-[#36BEA3] shadow-[0_24px_80px_rgba(15,23,42,0.14)]">
+      <div className="mx-auto max-w-7xl px-4 pb-20 pt-4 sm:px-6 sm:pb-24 lg:px-8">
+        <section className="-mt-[175px] sm:-mt-[210px] lg:-mt-[225px] mb-12">
+          <div className="relative overflow-hidden rounded-[2.2rem] sm:rounded-[2.5rem] border border-white/20 bg-[#36BEA3] shadow-[0_24px_80px_rgba(15,23,42,0.14)]">
             <img
               src="/assets/nature.jpg"
               alt="Our Companies background"
@@ -20,7 +20,7 @@ export default function Page() {
                   "radial-gradient(circle at 60% 30%, rgba(255,255,255,0.18) 0 18%, transparent 19%), repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12) 0 18px, transparent 18px 60px)",
               }}
             />
-            <div className="relative flex min-h-[280px] sm:min-h-[360px] lg:min-h-[420px] items-center justify-center p-6 sm:p-10 lg:p-12">
+            <div className="relative flex min-h-[280px] sm:min-h-[360px] lg:min-h-[420px] items-center justify-center p-6 pt-48 sm:p-10 sm:pt-56 lg:p-12 lg:pt-60">
               <h1 className="text-center text-[clamp(2.2rem,6vw,5.5rem)] font-bold leading-[0.85] tracking-[-0.06em] text-white drop-shadow-sm uppercase">
                 OUR COMPANIES
               </h1>
