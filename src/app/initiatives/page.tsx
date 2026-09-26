@@ -29,10 +29,10 @@ function InitiativeCard({ initiative }: { initiative: (typeof initiatives)[numbe
         </div>
 
         <div className="flex flex-col justify-center border-t border-[#2fa88f] bg-[#36bea3] p-4 sm:p-5 lg:border-l lg:border-t-0 lg:p-6">
-          <h2 className="text-base font-semibold leading-snug tracking-[-0.03em] text-[#0b1f1e] sm:text-lg">
+          <h2 className="text-base font-bold leading-snug tracking-[-0.03em] text-black sm:text-lg">
             {initiative.title}
           </h2>
-          <p className="mt-2 text-xs leading-relaxed text-[#0f2d2d] sm:text-sm sm:leading-normal">{initiative.description}</p>
+          <p className="mt-2 text-xs leading-relaxed text-white/95 sm:text-sm sm:leading-normal">{initiative.description}</p>
         </div>
       </div>
 
