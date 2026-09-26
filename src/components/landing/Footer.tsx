@@ -91,22 +91,19 @@ export default function Footer() {
           </div>
 
           <div className="mt-10 border-t border-white/20 pt-8">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-6">
-              {contactItems.map(({ title, value, href, icon: Icon, isExternal }) => (
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              {contactItems.map(({ value, href, icon: Icon, isExternal }) => (
                 <a
-                  key={title}
+                  key={href}
                   href={href}
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noreferrer" : undefined}
-                  className="group flex flex-col items-center justify-center rounded-2xl border border-white/20 bg-white/10 p-4 text-center text-white backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/20 sm:p-5"
+                  className="group flex items-center justify-center gap-3 text-center text-white/90 transition-colors duration-200 hover:text-white"
                 >
-                  <div className="mb-2.5 flex h-10 w-10 items-center justify-center rounded-full border border-white/50 bg-white/20 text-white shadow-xs transition-transform duration-200 group-hover:scale-110">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-white/80">
-                    {title}
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/60 bg-white/10 text-white transition-all duration-200 group-hover:scale-110 group-hover:bg-white/20">
+                    <Icon className="h-4 w-4" />
                   </span>
-                  <span className="mt-1 text-sm font-medium leading-snug text-white/95 sm:text-base">
+                  <span className="text-sm font-medium leading-snug sm:text-base">
                     {value}
                   </span>
                 </a>
