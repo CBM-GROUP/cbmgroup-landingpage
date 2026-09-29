@@ -97,11 +97,6 @@ export default function Page() {
               Explore opportunities <span aria-hidden="true">↓</span>
             </a>
           </div>
-          <div className="relative mx-auto mt-12 grid max-w-2xl grid-cols-3 gap-2 border-t border-white/15 pt-6 text-center sm:gap-8">
-            <Stat value="03" label="ways to join" />
-            <Stat value="05" label="creative teams" />
-            <Stat value="15+" label="open roles" />
-          </div>
         </section>
 
         {/* ── OPPORTUNITIES SECTION ── */}
@@ -337,11 +332,3 @@ export default function Page() {
   );
 }
 
-function Stat({ value, label }: { value: string; label: string }) {
-  return (
-    <div>
-      <p className="text-2xl font-semibold tracking-[-0.05em] text-white sm:text-3xl">{value}</p>
-      <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-slate-400 sm:text-xs">{label}</p>
-    </div>
-  );
-}
