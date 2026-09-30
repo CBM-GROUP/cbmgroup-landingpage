@@ -53,7 +53,7 @@ export default function Page() {
           variants={revealVariants}
           className="flex flex-col items-center text-center rounded-[2rem] border border-slate-200 bg-white px-6 py-8 shadow-[0_20px_60px_rgba(15,23,42,0.04)] sm:px-10 lg:px-14 lg:py-12"
         >
-          <p className="max-w-4xl text-base sm:text-lg lg:text-xl font-normal leading-relaxed text-slate-600">
+          <p className="max-w-4xl text-base sm:text-lg lg:text-xl font-bold leading-relaxed text-slate-600">
             We build the stories, systems, and platforms that move culture forward.
           </p>
         </motion.section>
@@ -72,12 +72,12 @@ export default function Page() {
           </div>
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
 
-            <motion.div variants={revealVariants} className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.03)]">
-              <p className="text-lg leading-8 text-slate-700">{aboutUsInfo.whoWeAre}</p>
+            <motion.div variants={revealVariants} className="rounded-[1.75rem] border border-slate-200 bg-[#0f172a] p-7 text-white shadow-[0_20px_60px_rgba(15,23,42,0.15)]">
+              <p className="text-lg leading-7 text-slate-300">{aboutUsInfo.whoWeAre}</p>
             </motion.div>
 
-            <motion.div variants={revealVariants} className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 text-sm leading-7 text-slate-600">
-              <p className="text-lg leading-8 text-slate-700">
+            <motion.div variants={revealVariants} className="rounded-[1.75rem] border border-slate-200 bg-white p-7 shadow-[0_18px_50px_rgba(15,23,42,0.03)]">
+              <p className="text-base font-bold leading-7 text-[#167765]">
                 CBM Group brings together media, entertainment, technology, and entrepreneurship to create a more connected, innovative, and opportunity-rich creative economy in Africa.
               </p>
             </motion.div>
@@ -125,7 +125,7 @@ export default function Page() {
                 variants={revealVariants}
                 className="aspect-square flex flex-col items-center justify-center p-5 text-center rounded-2xl border border-[#2fa88f] bg-[#36bea3] transition-transform duration-300 hover:-translate-y-1 shadow-sm"
               >
-                <p className="text-base sm:text-lg font-normal text-white leading-snug">
+                <p className="text-base sm:text-lg font-bold text-white leading-snug">
                   {value.title}
                 </p>
               </motion.div>
