@@ -19,6 +19,8 @@ const departmentColors: Record<string, string> = {
   Leadership: "from-amber-500 to-orange-600",
   Technology: "from-cyan-500 to-blue-600",
   "Creative & Media": "from-teal-500 to-emerald-600",
+  "Marketing & Communications": "from-teal-500 to-emerald-600",
+  "Events": "from-teal-500 to-emerald-600",
 };
 
 export function InteractiveTeamCard({
@@ -224,7 +226,7 @@ interface InteractiveTeamSectionProps {
 export default function InteractiveTeamSection({ members }: InteractiveTeamSectionProps) {
   const [activeFilter, setActiveFilter] = useState<string>("All");
 
-  const departments = ["All", "Leadership", "Technology", "Creative & Media"];
+  const departments = ["All", "Leadership", "Technology", "Creative & Media", "Marketing & Communications", "Events"];
 
   const filteredMembers = members.filter((m) =>
     activeFilter === "All" ? true : m.department === activeFilter
@@ -246,14 +248,14 @@ export default function InteractiveTeamSection({ members }: InteractiveTeamSecti
                 type="button"
                 onClick={() => setActiveFilter(dept)}
                 className={`flex items-center gap-2 rounded-xl px-3.5 py-1.5 text-xs font-semibold transition-all duration-200 active:scale-95 ${isActive
-                    ? "bg-white text-slate-900 shadow-md"
-                    : "border border-white/10 bg-white/5 text-slate-400 hover:border-white/20 hover:bg-white/10 hover:text-white"
+                  ? "bg-white text-slate-900 shadow-md"
+                  : "border border-white/10 bg-white/5 text-slate-400 hover:border-white/20 hover:bg-white/10 hover:text-white"
                   }`}
               >
                 <span>{dept}</span>
                 <span className={`rounded-full px-1.5 py-0.5 text-[9px] font-bold ${isActive
-                    ? color ? `bg-gradient-to-r ${color} text-white` : "bg-teal-500 text-white"
-                    : "bg-white/10 text-slate-400"
+                  ? color ? `bg-gradient-to-r ${color} text-white` : "bg-teal-500 text-white"
+                  : "bg-white/10 text-slate-400"
                   }`}>
                   {count}
                 </span>

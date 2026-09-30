@@ -34,7 +34,7 @@ export interface TeamMember {
   id: string;
   name: string;
   role: string;
-  department?: "Leadership" | "Technology" | "Creative & Media";
+  department?: "Leadership" | "Technology" | "Creative & Media" | "Marketing & Communications" | "Events";
   bio?: string;
   quote?: string;
   tools?: string[];
