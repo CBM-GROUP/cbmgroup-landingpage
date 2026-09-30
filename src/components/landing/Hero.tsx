@@ -31,7 +31,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="w-full max-w-4xl text-3xl font-bold leading-[0.95] tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl drop-shadow-sm"
             >
-              Become one of us
+              Become One Of Us
             </motion.h1>
 
             <motion.div

@@ -98,18 +98,15 @@ export default function Page() {
         </section>
 
         {/* ── HERO ── */}
-        <section className="relative overflow-hidden rounded-[2.5rem] bg-[#102b2d] px-6 py-12 text-white shadow-[0_24px_70px_rgba(15,23,42,0.14)] sm:px-10 sm:py-16 lg:px-16 lg:py-20">
+        <section className="relative overflow-hidden rounded-[2.5rem] bg-[#36bea3] px-6 py-12 text-white shadow-[0_24px_70px_rgba(15,23,42,0.14)] sm:px-10 sm:py-16 lg:px-16 lg:py-20">
           <div className="absolute -right-24 -top-32 h-80 w-80 rounded-full bg-[#36bea3]/30 blur-3xl" />
           <div className="absolute -bottom-40 left-1/3 h-80 w-80 rounded-full bg-[#f6b85c]/15 blur-3xl" />
           <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#8ce5d3]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#8ce5d3]" />
-              Build with CBM
-            </div>
+
             <h2 className="mt-6 max-w-2xl text-3xl font-semibold leading-[1.05] tracking-[-0.06em] sm:text-5xl lg:text-6xl">
               Your next big Team belongs here.
             </h2>
-            <p className="mt-6 max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
+            <p className="mt-6 max-w-xl text-base font-semibold leading-7 text-white sm:text-lg">
               Join a curious, creative team shaping culture through media, technology, events, and experiences made in Africa.
             </p>
             <a href="#opportunities" className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#8ce5d3] px-5 py-3 text-sm font-bold text-[#102b2d] transition hover:bg-white">
@@ -147,8 +144,8 @@ export default function Page() {
                     type="button"
                     onClick={() => chooseProgram(program.id)}
                     className={`flex shrink-0 items-center gap-2.5 rounded-2xl border px-3.5 py-2.5 text-left transition-all duration-200 active:scale-95 ${isActive
-                        ? `border-transparent bg-[#0d1f21] text-white shadow-md ${acc.glow}`
-                        : "border-slate-200/80 bg-slate-50 text-slate-700 hover:border-slate-300 hover:bg-white"
+                      ? `border-transparent bg-[#0d1f21] text-white shadow-md ${acc.glow}`
+                      : "border-slate-200/80 bg-slate-50 text-slate-700 hover:border-slate-300 hover:bg-white"
                       }`}
                   >
                     <span className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${acc.bg} shadow-sm`}>
@@ -178,8 +175,8 @@ export default function Page() {
                     onClick={() => chooseProgram(program.id)}
                     whileTap={{ scale: 0.97 }}
                     className={`relative flex flex-col overflow-hidden rounded-[1.25rem] border p-5 text-left transition-all duration-300 ${isActive
-                        ? `border-transparent bg-[#0d1f21] text-white shadow-xl ${acc.glow}`
-                        : "border-slate-100 bg-slate-50 text-slate-700 hover:border-slate-200 hover:bg-white hover:shadow-md"
+                      ? `border-transparent bg-[#0d1f21] text-white shadow-xl ${acc.glow}`
+                      : "border-slate-100 bg-slate-50 text-slate-700 hover:border-slate-200 hover:bg-white hover:shadow-md"
                       }`}
                   >
                     {isActive && (
@@ -222,7 +219,7 @@ export default function Page() {
                   className="flex h-full flex-col"
                 >
                   {/* Right header */}
-                  <div className="relative overflow-hidden bg-[#0d1f21] px-5 py-5 sm:px-8 sm:py-6">
+                  <div className="relative overflow-hidden bg-gradient-to-r from-[#36bea3] to-[#1c7865] px-5 py-5 sm:px-8 sm:py-6">
                     <div className={`absolute -right-12 -top-12 h-48 w-48 rounded-full bg-gradient-to-br ${accent.bg} opacity-20 blur-3xl`} />
                     <div className="relative flex flex-wrap items-center justify-between gap-3">
                       <div>
@@ -252,8 +249,8 @@ export default function Page() {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.96 }}
                             className={`relative flex flex-col overflow-hidden rounded-2xl border p-3.5 sm:p-4 text-left transition-all duration-200 ${isActive
-                                ? `border-transparent bg-[#0d1f21] text-white ring-2 ${accent.ring}`
-                                : "border-slate-100 bg-slate-50 text-slate-700 hover:border-slate-200 hover:bg-white hover:shadow-md"
+                              ? `border-transparent bg-[#0d1f21] text-white ring-2 ${accent.ring}`
+                              : "border-slate-100 bg-slate-50 text-slate-700 hover:border-slate-200 hover:bg-white hover:shadow-md"
                               }`}
                           >
                             {isActive && (
@@ -284,7 +281,7 @@ export default function Page() {
                           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                           className="overflow-hidden"
                         >
-                          <div className="relative overflow-hidden rounded-2xl bg-[#0d1f21] p-5 sm:p-6">
+                          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#36bea3] to-[#1c7865] p-5 sm:p-6">
                             <div className={`absolute -right-12 -top-12 h-44 w-44 rounded-full bg-gradient-to-br ${accent.bg} opacity-20 blur-3xl`} />
                             <div className="absolute bottom-0 left-1/3 h-32 w-32 rounded-full bg-teal-500/10 blur-2xl" />
 
