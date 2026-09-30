@@ -27,7 +27,7 @@ export default function Header() {
               </button>
             </div>
 
-            <div className="flex flex-1 p-1 justify-center border-[#000] sm:border-b-2">
+            <div className="flex flex-1 p-1 justify-center border-[#36BEA3] sm:border-b-2">
               <Link href="/" prefetch={false} className="inline-flex items-center">
                 <img src="/logo.png" alt="CBM Group logo" className="h-10 sm:h-12 w-auto object-contain" />
               </Link>
@@ -46,7 +46,7 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   prefetch={false}
-                  className={`text-base font-medium tracking-tight transition ${isActive ? "text-slate-950 font-semibold" : "text-slate-600 hover:text-slate-950"
+                  className={`text-base font-medium tracking-tight transition ${isActive ? "text-[#1a7d67] font-semibold" : "text-slate-600 hover:text-[#1a7d67]"
                     }`}
                 >
                   {item.label}
@@ -74,7 +74,7 @@ export default function Header() {
                       href={item.href}
                       prefetch={false}
                       onClick={() => setOpen(false)}
-                      className={`text-base font-medium transition ${isActive ? "text-slate-950 font-semibold" : "text-slate-600 hover:text-slate-950"
+                      className={`text-base font-medium transition ${isActive ? "text-[#1a7d67] font-semibold" : "text-slate-600 hover:text-[#1a7d67]"
                         }`}
                     >
                       {item.label}
