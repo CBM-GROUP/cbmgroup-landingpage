@@ -121,7 +121,14 @@ export function InteractiveTeamCard({
 
           {/* Bottom Content Panel */}
           <div className="relative z-10 mt-auto pt-4">
-            <h3 className="line-clamp-1 text-xl font-bold tracking-tight text-white drop-shadow-md font-[family-name:var(--font-body)]">
+            <h3
+              style={{
+                fontFamily: "var(--font-manrope), var(--font-body), sans-serif",
+                letterSpacing: "-0.02em",
+                lineHeight: "1.25",
+              }}
+              className="member-name line-clamp-1 text-xl font-bold text-white drop-shadow-md"
+            >
               {member.name}
             </h3>
 
@@ -187,7 +194,14 @@ export function InteractiveTeamCard({
 
               {/* Name & Role */}
               <div className="mt-2.5">
-                <h4 className="text-lg font-bold text-white leading-tight font-[family-name:var(--font-body)] tracking-tight">
+                <h4
+                  style={{
+                    fontFamily: "var(--font-manrope), var(--font-body), sans-serif",
+                    letterSpacing: "-0.02em",
+                    lineHeight: "1.25",
+                  }}
+                  className="member-name text-lg font-bold text-white"
+                >
                   {member.name}
                 </h4>
                 <p className={`mt-0.5 text-xs font-semibold uppercase tracking-[0.14em] bg-gradient-to-r ${deptGrad} bg-clip-text text-transparent`}>
