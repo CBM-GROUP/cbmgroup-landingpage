@@ -164,20 +164,11 @@ export const teamMembers: TeamMember[] = [
     name: "Bienald Ronald",
     role: "Founder and Team Lead ",
     department: "Leadership",
-    bio: "Guiding the creative, technological, and strategic evolution of CBM Group across Africa.",
+    bio:
+      "Ronald aka Bienald Ronald is a multi-talented Ugandan creative entrepreneur excelling in various fields. He is a filmmaker, film and TV producer, media innovator, scriptwriter, content creator, mentor, and songwriter. He is also known as Bwire Ronald. Bienald's passion for the creative industry led him to found CBM Group, a Creative Media, Entertainment, Entrepreneurship and Streaming. Through CBM Group, he strives to make a positive impact, fostering talent, entrepreneurship and innovation in the creative industry. With his artistic prowess and dedication to empowering others, Bienald continues to be a driving force in Uganda's creative landscape, inspiring and uplifting aspiring artists and entrepreneurs alike.",
     quote: "Culture isn't made by accident; it's engineered with bold ideas and heart.",
     tools: ["Founder", "CEO & Team lead at CBM Group", "Film Maker & Producer", "Media Innovator", "Creative Entrepreneur"],
     avatarImage: "/team/ronald.jpeg",
-  },
-  {
-    id: "kalinzi-philp",
-    name: "Kalinzi Philp Louis",
-    role: "CTO",
-    department: "Technology",
-    bio: "Architecting resilient digital infrastructure, streaming systems, and technical innovation.",
-    quote: "If it compiles on the first try, don't trust it. Test it twice.",
-    tools: ["Next.js", "Docker", "Cloud Systems", "Full-Stack"],
-    avatarImage: "/team/philp.jpeg",
   },
   {
     id: "wejuli-christopher",
@@ -202,11 +193,11 @@ export const teamMembers: TeamMember[] = [
   {
     id: "katende-peterson",
     name: "Katende Peterson",
-    role: "Web Developer and UI/UX Designer",
+    role: "Software Developer",
     department: "Technology",
-    bio: "Crafting fluid interactive interfaces, digital platforms, and immersive web experiences.",
-    quote: "Websites shouldn't just be viewed; they should be felt.",
-    tools: ["TypeScript", "Tailwind CSS", "Framer Motion", "UI/UX Design"],
+    bio: "As a Software Developer, I specialize in creating seamless, intuitive digital experiences that blend functionality with aesthetic excellence. I focus on building user-centric interfaces that enhance engagement and drive meaningful interactions across platforms.",
+    quote: "Surpass Your Limits, Here and Now",
+    tools: [""],
     avatarImage: "/team/peterson.jpg",
   },
   {
@@ -222,7 +213,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: "mukama-shafic",
     name: "Mukama Shafic",
-    role: "Frontend Develo per",
+    role: "Frontend Developer & UI/UX Designer",
     department: "Technology",
     bio: "As a Frontend Developer, I focus on bringing designs to life through clean, efficient, and user-centric web interfaces. I specialize in transforming concepts into seamless digital experiences that prioritize performance, accessibility, and intuitive navigation.",
     quote: "",
@@ -247,7 +238,7 @@ export const teamMembers: TeamMember[] = [
     bio: "As a Digital Community Lead, I specialize in building and nurturing vibrant online communities around brands and initiatives. My focus is on fostering meaningful connections, driving engagement, and creating platforms where communities can thrive, collaborate, and grow together.",
     quote: "",
     tools: ["Content Creation", "Social Media Strategy", "Engagement"],
-    avatarImage: "",
+    avatarImage: "/team/amoding.jpeg",
   },
   {
     id: "namutaawe-patience",
@@ -256,7 +247,7 @@ export const teamMembers: TeamMember[] = [
     quote: "",
     bio: "As a Host & Content Creator for CBM Radio, I specialize in crafting engaging audio experiences that inform, entertain, and inspire our listeners. My focus is on creating content that resonates with our audience, builds meaningful connections, and reflects the vibrant spirit of CBM Radio.",
     tools: ["Content Creation", "Social Media Strategy", "Engagement"],
-    avatarImage: "",
+    avatarImage: "/team/patience.jpeg",
     department: "Marketing & Communications",
   }
 ];
