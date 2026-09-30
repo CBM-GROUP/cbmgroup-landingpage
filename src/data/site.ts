@@ -225,7 +225,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Leading visual storytelling and creative excellence across CBM's media platforms.",
     quote: "Visuals that speak louder than words.",
     tools: ["Creative Direction", "Brand Identity", "Video Production", "Post-Production"],
-    avatarImage: "/team/michael.jpeg",
+    avatarImage: "/team/ranzo.jpg",
   },
   {
     id: "mukama-shafic",
@@ -245,7 +245,7 @@ export const teamMembers: TeamMember[] = [
     bio: "As a Digital Community Lead, I specialize in building and nurturing vibrant online communities around brands and initiatives. My focus is on fostering meaningful connections, driving engagement, and creating platforms where communities can thrive, collaborate, and grow together.",
     quote: "",
     tools: ["Community Management", "Content Creation", "Social Media Strategy", "Engagement"],
-    avatarImage: "",
+    avatarImage: "/team/whitney.jpg",
   },
   {
     id: "joyce-amoding",
@@ -264,7 +264,7 @@ export const teamMembers: TeamMember[] = [
     quote: "",
     bio: "As a Host & Content Creator for CBM Radio, I specialize in crafting engaging audio experiences that inform, entertain, and inspire our listeners. My focus is on creating content that resonates with our audience, builds meaningful connections, and reflects the vibrant spirit of CBM Radio.",
     tools: ["Content Creation", "Social Media Strategy", "Engagement"],
-    avatarImage: "/team/patience.jpeg",
+    avatarImage: "/team/patience.jpg",
     department: "Marketing & Communications",
   }
 ];
