@@ -89,7 +89,7 @@ export default function Page() {
             <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl">Our pillars</h2>
           </motion.div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2">
             {pillars.map((pillar) => (
               <motion.article key={pillar.id} variants={revealVariants} className="group rounded-[1.5rem] border border-[#2fa88f] bg-[#36bea3] p-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(15,23,42,0.08)]">
                 <h3 className="text-2xl font-bold tracking-[-0.04em] text-black">{pillar.title}</h3>
