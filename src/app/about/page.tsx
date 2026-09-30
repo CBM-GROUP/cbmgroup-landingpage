@@ -53,9 +53,9 @@ export default function Page() {
           variants={revealVariants}
           className="flex flex-col items-center text-center rounded-[2rem] border border-slate-200 bg-white px-6 py-8 shadow-[0_20px_60px_rgba(15,23,42,0.04)] sm:px-10 lg:px-14 lg:py-12"
         >
-          <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.06em] text-slate-900 sm:text-4xl lg:text-6xl">
+          <p className="max-w-4xl text-base sm:text-lg lg:text-xl font-normal leading-relaxed text-slate-600">
             We build the stories, systems, and platforms that move culture forward.
-          </h2>
+          </p>
         </motion.section>
 
         <motion.section
@@ -125,7 +125,7 @@ export default function Page() {
                 variants={revealVariants}
                 className="aspect-square flex flex-col items-center justify-center p-5 text-center rounded-2xl border border-[#2fa88f] bg-[#36bea3] transition-transform duration-300 hover:-translate-y-1 shadow-sm"
               >
-                <p className="text-base sm:text-lg font-normal text-[#0b1f1e] leading-snug">
+                <p className="text-base sm:text-lg font-normal text-white leading-snug">
                   {value.title}
                 </p>
               </motion.div>
