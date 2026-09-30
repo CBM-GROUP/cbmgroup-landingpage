@@ -118,10 +118,16 @@ export default function Page() {
             </h2>
           </motion.div>
 
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+          <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
             {coreValues.map((value) => (
-              <motion.div key={value.id} variants={revealVariants} className="rounded-[1.25rem] border border-[#2fa88f] bg-[#36bea3] p-5 text-[#0b1f1e] transition-transform duration-300 hover:-translate-y-1">
-                <h3 className="text-lg font-semibold tracking-[-0.03em] text-[#0b1f1e]">{value.title}</h3>
+              <motion.div
+                key={value.id}
+                variants={revealVariants}
+                className="aspect-square flex flex-col items-center justify-center p-5 text-center rounded-2xl border border-[#2fa88f] bg-[#36bea3] transition-transform duration-300 hover:-translate-y-1 shadow-sm"
+              >
+                <p className="text-base sm:text-lg font-normal text-[#0b1f1e] leading-snug">
+                  {value.title}
+                </p>
               </motion.div>
             ))}
           </div>

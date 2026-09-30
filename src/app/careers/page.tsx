@@ -70,7 +70,7 @@ export default function Page() {
   };
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#f5f5f1] text-slate-900">
+    <main className="min-h-screen bg-[#f5f5f1] text-slate-900">
       <div className="mx-auto max-w-7xl px-4 pb-24 pt-4 sm:px-6 lg:px-8">
 
         {/* ── PAGE HEADING HERO ── */}

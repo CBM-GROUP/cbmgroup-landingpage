@@ -81,9 +81,9 @@ export default function Page() {
           </div>
         </section>
         <section className="flex flex-col items-center text-center rounded-[2rem] border border-slate-200 bg-white px-6 py-8 shadow-[0_20px_60px_rgba(15,23,42,0.04)] sm:px-10 lg:px-14 lg:py-12">
-          <h2 className="max-w-4xl text-2xl font-semibold tracking-[-0.04em] text-slate-900 sm:text-3xl lg:text-4xl leading-snug sm:leading-relaxed">
+          <p className="max-w-4xl text-base sm:text-lg lg:text-xl font-normal leading-relaxed text-slate-600">
             We invest in people, ideas, and ecosystems that unlock long-term value across culture, media, entertainment, entrepreneurship and technology.
-          </h2>
+          </p>
         </section>
 
         <section className="mt-20 space-y-8">
