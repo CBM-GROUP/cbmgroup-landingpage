@@ -31,19 +31,8 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="w-full max-w-4xl text-3xl font-bold leading-[0.95] tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl drop-shadow-sm"
             >
-              Building the future of creativity
+              Become one of us
             </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.25 }}
-              className="mt-6 max-w-2xl text-center text-base leading-relaxed text-white/95 sm:text-lg"
-            >
-              A multinational creative media, entertainment, streaming and
-              conglomerate company advancing Africa through storytelling,
-              entrepreneurship, digital innovation and technology.
-            </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
