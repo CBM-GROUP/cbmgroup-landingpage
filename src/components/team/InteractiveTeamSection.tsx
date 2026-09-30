@@ -360,13 +360,6 @@ export default function InteractiveTeamSection({ members }: InteractiveTeamSecti
           ))}
         </AnimatePresence>
       </motion.div>
-
-      {/* ── Subtle Helper Hint ── */}
-      <div className="mt-8 flex items-center justify-center text-[11px] text-slate-400">
-        <span className="flex items-center gap-1.5">
-          <RotateCw className="h-3.5 w-3.5 text-teal-500" /> Tap or click any card to flip and view full biography & expertise
-        </span>
-      </div>
     </div>
   );
 }
