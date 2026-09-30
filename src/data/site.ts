@@ -137,9 +137,10 @@ export const initiatives: Initiative[] = [
     number: "01",
     title: "Creative Entrepreneurs Fellowship",
     images: [
-      "/initiatives/hackathon1.jpg",
-      "/initiatives/hackathon.jpg",
-      "/initiatives/hackathon2.jpg",
+      "/initiatives/businessfellowship.jpeg",
+      "/initiatives/businessfellows.jpeg",
+      "/initiatives/businessfellowshi.jpeg",
+      "/initiatives/businessfelloship.jpeg",
     ],
     description:
       "We identify, nurture, and accelerate creative businesses and startups across the music, fashion, film, and media industries, equipping them with the skills, networks, and opportunities needed to thrive.",
@@ -149,12 +150,28 @@ export const initiatives: Initiative[] = [
     number: "02",
     title: "Creative Industry Innovation Hackathon",
     images: [
-      "/initiatives/fellowship.jpg",
-      "/initiatives/fellowship1.jpg",
-      "/initiatives/fellowship2.jpg",
+      "/initiatives/hackathon.jpeg",
+      "/initiatives/hackathon2.jpeg",
+      "/initiatives/hackathon3.jpeg",
+      "/initiatives/hackathon4.jpeg",
     ],
     description:
       "We champion innovation through a program that brings together innovators, creators, and technology enthusiasts to develop practical solutions that address challenges within the music, fashion, film, and media industries.",
+  },
+  {
+    id: "internship",
+    number: "03",
+    title: "CBM Internship Programme",
+    images: [
+      "/initiatives/internship.jpeg",
+      "/initiatives/internship1.jpeg",
+      "/initiatives/internship2.jpeg",
+      "/initiatives/internship3.jpeg",
+      "/initiatives/internship4.jpeg",
+    ],
+    description:
+      "Hands-on learning experiences and structured mentorship designed for emerging creatives, operators, and builders to develop real-world skills across production, technology, business, and media.",
+    href: "/careers",
   },
 ];
 

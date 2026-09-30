@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { initiatives } from "@/data/site";
 
+import Link from "next/link";
+
 function InitiativeCard({ initiative }: { initiative: (typeof initiatives)[number] }) {
   const [selectedImage, setSelectedImage] = useState(0);
 
@@ -24,6 +26,7 @@ function InitiativeCard({ initiative }: { initiative: (typeof initiatives)[numbe
             src={initiative.images[selectedImage]}
             alt={`${initiative.title} initiative`}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 500px"
             className="animate-[fadeIn_0.7s_ease-out] object-cover transition-transform duration-500 group-hover:scale-[1.02]"
           />
         </div>
@@ -33,6 +36,17 @@ function InitiativeCard({ initiative }: { initiative: (typeof initiatives)[numbe
             {initiative.title}
           </h2>
           <p className="mt-2 text-xs leading-relaxed text-white/95 sm:text-sm sm:leading-normal">{initiative.description}</p>
+          {initiative.href && (
+            <div className="mt-3">
+              <Link
+                href={initiative.href}
+                className="inline-flex items-center gap-1.5 rounded-lg bg-black/15 px-3 py-1 text-xs font-semibold text-white transition-all hover:bg-black/25 active:scale-95"
+              >
+                <span>Explore Careers & Opportunities</span>
+                <span>→</span>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
 
@@ -46,7 +60,7 @@ function InitiativeCard({ initiative }: { initiative: (typeof initiatives)[numbe
             aria-pressed={selectedImage === index}
             className={`relative h-9 w-12 sm:h-10 sm:w-14 shrink-0 overflow-hidden rounded-md border-2 transition ${selectedImage === index ? "border-teal-700 opacity-100" : "border-transparent opacity-60 hover:opacity-100"}`}
           >
-            <Image src={image} alt="" fill className="object-cover" />
+            <Image src={image} alt="" fill sizes="56px" className="object-cover" />
           </button>
         ))}
       </div>
