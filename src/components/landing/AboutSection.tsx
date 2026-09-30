@@ -116,15 +116,21 @@ export default function AboutSection() {
                 w-fit
                 items-center
                 gap-3
-                border-b
-                border-gray-300
-                pb-2
+                rounded-full
+                border
+                border-[#36BEA3]
+                bg-[#36BEA3]
+                px-5
+                py-2.5
                 text-sm
-                font-medium
-                text-black
-                transition-colors
-                hover:border-teal-400
-                hover:text-teal-400
+                font-semibold
+                text-white
+                shadow-[0_12px_30px_rgba(54,190,163,0.28)]
+                transition-all
+                duration-200
+                hover:-translate-y-0.5
+                hover:bg-[#2aa58f]
+                hover:border-[#2aa58f]
               ">
               Discover what we do
               <ArrowUpRight
