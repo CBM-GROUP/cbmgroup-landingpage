@@ -7,6 +7,7 @@ import {
   Quote,
   ShieldCheck,
   Wrench,
+  User,
 } from "lucide-react";
 import { TeamMember } from "@/types";
 
@@ -54,7 +55,7 @@ export function InteractiveTeamCard({
 
   const handleFlip = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    setIsFlipped(!isFlipped);
+    setIsFlipped((prev) => !prev);
   };
 
   const deptGrad = member.department ? departmentColors[member.department] || "from-teal-500 to-emerald-600" : "from-teal-500 to-emerald-600";
@@ -81,7 +82,16 @@ export function InteractiveTeamCard({
       >
         {/* ── FRONT: Vertical Full-Image Background Card ── */}
         <div
-          className={`absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[1.75rem] border border-white/10 bg-slate-900 p-5 shadow-2xl [backface-visibility:hidden] ${isFlipped ? "pointer-events-none select-none z-0" : "pointer-events-auto z-10"
+          onClick={handleFlip}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              handleFlip();
+            }
+          }}
+          className={`absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[1.75rem] border border-white/10 bg-slate-900 p-5 shadow-2xl [backface-visibility:hidden] cursor-pointer transition-all duration-300 hover:border-teal-400/40 hover:shadow-teal-500/10 ${isFlipped ? "pointer-events-none select-none z-0" : "pointer-events-auto z-10"
             }`}
         >
           {/* Background Image - Clear & Bright */}
@@ -95,25 +105,23 @@ export function InteractiveTeamCard({
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-teal-700 via-slate-900 to-black" />
           )}
 
-          {/* Clean Bottom Scrim - Only over the bottom 40% for text readability */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 via-35% to-transparent" />
+          {/* Clean Bottom Scrim - Only over the bottom 45% for text readability */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 via-40% to-transparent" />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/50 to-transparent" />
 
           {/* Top Row: Flip Action (top-right) */}
           <div className="relative z-10 flex items-center justify-end">
-            <button
-              type="button"
-              onClick={handleFlip}
-              className="cursor-pointer flex items-center gap-1.5 rounded-xl border border-white/30 bg-black/60 px-3 py-1.5 text-[11px] font-semibold text-white shadow-lg backdrop-blur-md transition-all hover:border-white/60 hover:bg-black/80 active:scale-95"
+            <span
+              className="flex items-center gap-1.5 rounded-xl border border-white/30 bg-black/60 px-3 py-1.5 text-[11px] font-semibold text-white shadow-lg backdrop-blur-md transition-all group-hover:border-teal-400 group-hover:bg-black/80"
             >
-              <span>Profile</span>
+              <span>View Bio</span>
               <RotateCw className="h-3 w-3 transition-transform duration-300 group-hover:rotate-180" />
-            </button>
+            </span>
           </div>
 
           {/* Bottom Content Panel */}
           <div className="relative z-10 mt-auto pt-4">
-            <h3 className="line-clamp-1 text-xl font-bold tracking-tight text-white drop-shadow-md">
+            <h3 className="line-clamp-1 text-xl font-bold tracking-tight text-white drop-shadow-md font-[family-name:var(--font-body)]">
               {member.name}
             </h3>
 
@@ -121,15 +129,26 @@ export function InteractiveTeamCard({
               {member.role}
             </span>
 
-            <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-slate-200 drop-shadow">
-              {member.bio}
-            </p>
+            {/* Tap indicator */}
+            <div className="mt-3 flex items-center gap-1.5 text-[11px] font-medium text-teal-300/90 transition-colors group-hover:text-teal-200">
+              <RotateCw className="h-3 w-3 transition-transform duration-300 group-hover:rotate-180" />
+              <span>Tap card to view bio & details</span>
+            </div>
           </div>
         </div>
 
-        {/* ── BACK: Clean Executive Dossier ── */}
+        {/* ── BACK: Clean Executive Dossier with Full Bio ── */}
         <div
-          className={`absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[2rem] border border-slate-700/80 bg-slate-950 p-6 [backface-visibility:hidden] [transform:rotateY(180deg)] ${isFlipped ? "pointer-events-auto z-10" : "pointer-events-none select-none z-0"
+          onClick={handleFlip}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              handleFlip();
+            }
+          }}
+          className={`absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[1.75rem] border border-slate-700/80 bg-slate-950 p-5 cursor-pointer [backface-visibility:hidden] [transform:rotateY(180deg)] ${isFlipped ? "pointer-events-auto z-10" : "pointer-events-none select-none z-0"
             }`}
         >
           {member.avatarImage && (
@@ -139,16 +158,16 @@ export function InteractiveTeamCard({
               className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top opacity-10 blur-md scale-110"
             />
           )}
-          <div className="pointer-events-none absolute inset-0 bg-[#090e13]/94" />
+          <div className="pointer-events-none absolute inset-0 bg-[#090e13]/95" />
           <div
             className="pointer-events-none absolute inset-0 opacity-10"
             style={{ backgroundImage: "radial-gradient(#14b8a6 1px, transparent 1px)", backgroundSize: "18px 18px" }}
           />
 
-          <div className="relative z-10 flex h-full flex-col justify-between">
+          <div className="relative z-10 flex h-full flex-col justify-between overflow-hidden">
             {/* Header */}
             <div>
-              <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
+              <div className="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
                 <div className="flex items-center gap-1.5">
                   <ShieldCheck className="h-3.5 w-3.5 text-teal-400" />
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-teal-400">
@@ -158,7 +177,7 @@ export function InteractiveTeamCard({
                 <button
                   type="button"
                   onClick={handleFlip}
-                  className="cursor-pointer flex items-center gap-1 rounded-lg border border-slate-700 bg-slate-800/80 px-2.5 py-1 text-[10px] font-medium text-slate-300 transition-colors hover:bg-slate-700 hover:text-white"
+                  className="cursor-pointer flex items-center gap-1 rounded-lg border border-slate-700 bg-slate-800/80 px-2 py-1 text-[10px] font-medium text-slate-300 transition-colors hover:bg-slate-700 hover:text-white"
                   title="Close Profile"
                 >
                   <RotateCw className="h-2.5 w-2.5" />
@@ -167,31 +186,56 @@ export function InteractiveTeamCard({
               </div>
 
               {/* Name & Role */}
-              <div className="mt-4">
-                <h4 className="text-lg font-bold text-white">{member.name}</h4>
-                <p className="text-xs font-medium text-teal-400">{member.role}</p>
-              </div>
-
-              {/* Quote / Statement */}
-              <div className="mt-4 flex items-start gap-2.5 rounded-2xl bg-slate-900/80 p-3.5 border border-slate-800/80">
-                <Quote className="h-4 w-4 shrink-0 rotate-180 text-teal-500/80 mt-0.5" />
-                <p className="text-xs italic leading-relaxed text-slate-300">
-                  {member.quote || "Pushing the boundary of African storytelling and innovation."}
+              <div className="mt-2.5">
+                <h4 className="text-lg font-bold text-white leading-tight font-[family-name:var(--font-body)] tracking-tight">
+                  {member.name}
+                </h4>
+                <p className={`mt-0.5 text-xs font-semibold uppercase tracking-[0.14em] bg-gradient-to-r ${deptGrad} bg-clip-text text-transparent`}>
+                  {member.role}
                 </p>
               </div>
+            </div>
+
+            {/* Scrollable Middle Dossier Content: Bio + Quote + Tools */}
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="my-2.5 flex-1 overflow-y-auto pr-1 text-xs leading-relaxed text-slate-300 [scrollbar-width:thin] [scrollbar-color:#14b8a6_transparent]"
+            >
+              {/* Bio Section */}
+              {member.bio && (
+                <div className="rounded-xl bg-slate-900/80 p-3 border border-slate-800/80 mb-2.5">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-teal-400 mb-1.5">
+                    <User className="h-3 w-3" />
+                    <span>Biography</span>
+                  </div>
+                  <p className="text-xs leading-relaxed text-slate-200">
+                    {member.bio}
+                  </p>
+                </div>
+              )}
+
+              {/* Quote / Statement */}
+              {member.quote && member.quote.trim().length > 0 && (
+                <div className="flex items-start gap-2 rounded-xl bg-slate-900/60 p-2.5 border border-slate-800/70 mb-2.5">
+                  <Quote className="h-3.5 w-3.5 shrink-0 rotate-180 text-teal-500/80 mt-0.5" />
+                  <p className="text-[11px] italic leading-relaxed text-slate-300">
+                    &ldquo;{member.quote}&rdquo;
+                  </p>
+                </div>
+              )}
 
               {/* Focus Tools / Competencies */}
               {member.tools && member.tools.length > 0 && (
-                <div className="mt-4">
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">
+                <div className="mt-1">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1.5">
                     <Wrench className="h-3 w-3 text-teal-400" />
                     <span>Focus & Expertise</span>
                   </div>
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1">
                     {member.tools.map((tool) => (
                       <span
                         key={tool}
-                        className="rounded-lg border border-teal-500/20 bg-teal-950/50 px-2.5 py-1 text-[11px] font-medium text-teal-200"
+                        className="rounded-md border border-teal-500/20 bg-teal-950/50 px-2 py-0.5 text-[10px] font-medium text-teal-200"
                       >
                         {tool}
                       </span>
@@ -202,11 +246,12 @@ export function InteractiveTeamCard({
             </div>
 
             {/* Back controls */}
-            <div className="flex items-center justify-end border-t border-slate-800/80 pt-4">
+            <div className="flex items-center justify-between border-t border-slate-800/80 pt-2.5">
+              <span className="text-[10px] text-slate-400">Tap anywhere to flip back</span>
               <button
                 type="button"
                 onClick={handleFlip}
-                className="cursor-pointer flex items-center gap-1.5 rounded-xl border border-teal-500/40 bg-teal-500/15 px-4 py-2 text-xs font-semibold text-teal-300 transition-all hover:bg-teal-500/25 active:scale-95"
+                className="cursor-pointer flex items-center gap-1.5 rounded-xl border border-teal-500/40 bg-teal-500/15 px-3 py-1.5 text-xs font-semibold text-teal-300 transition-all hover:bg-teal-500/25 active:scale-95"
               >
                 <span>Flip Back</span>
                 <RotateCw className="h-3 w-3" />
@@ -294,7 +339,7 @@ export default function InteractiveTeamSection({ members }: InteractiveTeamSecti
       {/* ── Subtle Helper Hint ── */}
       <div className="mt-8 flex items-center justify-center text-[11px] text-slate-400">
         <span className="flex items-center gap-1.5">
-          <RotateCw className="h-3.5 w-3.5 text-teal-500" /> Click <strong className="text-slate-300">Profile</strong> on any card to view detailed background & expertise
+          <RotateCw className="h-3.5 w-3.5 text-teal-500" /> Tap or click any card to flip and view full biography & expertise
         </span>
       </div>
     </div>
