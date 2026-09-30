@@ -104,7 +104,7 @@ export default function Page() {
           <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
 
             <h2 className="mt-6 max-w-2xl text-3xl font-semibold leading-[1.05] tracking-[-0.06em] sm:text-5xl lg:text-6xl">
-              Your next big Team belongs here.
+              Your next big Team is Here.
             </h2>
             <p className="mt-6 max-w-xl text-base font-semibold leading-7 text-white sm:text-lg">
               Join a curious, creative team shaping culture through media, technology, events, and experiences made in Africa.
@@ -120,7 +120,6 @@ export default function Page() {
 
           {/* Section label */}
           <div className="mb-12 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-teal-600">Find your fit</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] sm:text-4xl">
               Choose your way in.
             </h2>
@@ -144,7 +143,7 @@ export default function Page() {
                     type="button"
                     onClick={() => chooseProgram(program.id)}
                     className={`flex shrink-0 items-center gap-2.5 rounded-2xl border px-3.5 py-2.5 text-left transition-all duration-200 active:scale-95 ${isActive
-                      ? `border-transparent bg-[#0d1f21] text-white shadow-md ${acc.glow}`
+                      ? `border-transparent bg-gradient-to-r from-[#36bea3] to-[#1c7865] text-white shadow-md ${acc.glow}`
                       : "border-slate-200/80 bg-slate-50 text-slate-700 hover:border-slate-300 hover:bg-white"
                       }`}
                   >
@@ -175,7 +174,7 @@ export default function Page() {
                     onClick={() => chooseProgram(program.id)}
                     whileTap={{ scale: 0.97 }}
                     className={`relative flex flex-col overflow-hidden rounded-[1.25rem] border p-5 text-left transition-all duration-300 ${isActive
-                      ? `border-transparent bg-[#0d1f21] text-white shadow-xl ${acc.glow}`
+                      ? `border-transparent bg-gradient-to-r from-[#36bea3] to-[#1c7865] text-white shadow-xl ${acc.glow}`
                       : "border-slate-100 bg-slate-50 text-slate-700 hover:border-slate-200 hover:bg-white hover:shadow-md"
                       }`}
                   >
@@ -249,7 +248,7 @@ export default function Page() {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.96 }}
                             className={`relative flex flex-col overflow-hidden rounded-2xl border p-3.5 sm:p-4 text-left transition-all duration-200 ${isActive
-                              ? `border-transparent bg-[#0d1f21] text-white ring-2 ${accent.ring}`
+                              ? `border-transparent bg-gradient-to-r from-[#36bea3] to-[#1c7865] text-white ring-2 ${accent.ring}`
                               : "border-slate-100 bg-slate-50 text-slate-700 hover:border-slate-200 hover:bg-white hover:shadow-md"
                               }`}
                           >
@@ -290,25 +289,28 @@ export default function Page() {
                                 <span className={`inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br ${accent.bg} shadow-md`}>
                                   {(() => { const Icon = teamIcons[selectedProgram.teams.findIndex(t => t.name === activeDepartment)] ?? Building2; return <Icon className="h-3.5 w-3.5 text-white" />; })()}
                                 </span>
-                                <h4 className="text-base font-semibold text-white">{selectedTeam.name}</h4>
+                                <p className="text-lg font-bold tracking-tight text-white font-[family-name:var(--font-manrope)]">{selectedTeam.name}</p>
                                 <span className={`rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] ${accent.badge}`}>
                                   {selectedProgram.title}
                                 </span>
                               </div>
 
-                              <p className="mt-3 text-xs leading-6 text-slate-300">
+                              <p className="mt-3 text-sm font-medium leading-relaxed text-white/90">
                                 {selectedTeam.description}
                               </p>
 
-                              <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                                {selectedTeam.jobs.map((job) => (
-                                  <div
+                              <div className="mt-5 flex flex-wrap gap-3">
+                                {selectedTeam.jobs.map((job, idx) => (
+                                  <motion.div
                                     key={job}
-                                    className="flex items-center gap-2 rounded-xl border border-white/8 bg-white/5 px-3 py-2.5 text-xs font-medium text-slate-200"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: idx * 0.05 }}
+                                    whileHover={{ scale: 1.05, y: -2 }}
+                                    className="group relative flex cursor-default items-center justify-center rounded-full border border-white/20 bg-white/10 px-5 py-2.5 shadow-sm backdrop-blur-md transition-all hover:border-white/40 hover:bg-white/20 hover:shadow-lg"
                                   >
-                                    <span className={`h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br ${accent.bg}`} />
-                                    {job}
-                                  </div>
+                                    <span className="text-sm font-bold tracking-tight text-white">{job}</span>
+                                  </motion.div>
                                 ))}
                               </div>
 
