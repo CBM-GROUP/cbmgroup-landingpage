@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   RotateCw,
@@ -39,8 +40,8 @@ export function InteractiveTeamCard({
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     setRotate({
-      x: ((y - rect.height / 2) / rect.height) * -5,
-      y: ((x - rect.width / 2) / rect.width) * 5,
+      x: ((y - rect.height / 2) / rect.height) * -4,
+      y: ((x - rect.width / 2) / rect.width) * 4,
     });
   };
 
@@ -53,8 +54,7 @@ export function InteractiveTeamCard({
     setIsHovered(true);
   };
 
-  const handleFlip = (e?: React.MouseEvent) => {
-    if (e) e.stopPropagation();
+  const handleFlip = () => {
     setIsFlipped((prev) => !prev);
   };
 
@@ -63,214 +63,224 @@ export function InteractiveTeamCard({
   return (
     <div
       ref={cardRef}
+      onClick={handleFlip}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="group relative h-[490px] w-full max-w-[330px] mx-auto select-none [perspective:1200px]"
+      className="group relative h-[490px] w-full max-w-[330px] mx-auto select-none [perspective:1000px] cursor-pointer"
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleFlip();
+        }
+      }}
     >
-      {/* 3D Flip Container */}
+      {/* ── FRONT: Vertical Full-Image Background Card ── */}
       <motion.div
         animate={{
           rotateY: isFlipped ? 180 : 0,
-          rotateX: isHovered ? rotate.x : 0,
+          rotateX: !isFlipped && isHovered ? rotate.x : 0,
         }}
         transition={{
           rotateY: { duration: 0.6, ease: [0.23, 1, 0.32, 1] },
           rotateX: { duration: 0.15, ease: "easeOut" },
         }}
-        className="relative h-full w-full [transform-style:preserve-3d]"
+        style={{
+          WebkitBackfaceVisibility: "hidden",
+          backfaceVisibility: "hidden",
+          transformStyle: "preserve-3d",
+        }}
+        className={`absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[1.75rem] border border-white/10 bg-slate-900 p-5 shadow-2xl transition-colors duration-300 hover:border-teal-400/40 hover:shadow-teal-500/10 ${
+          isFlipped ? "pointer-events-none select-none z-0" : "pointer-events-auto z-10"
+        }`}
       >
-        {/* ── FRONT: Vertical Full-Image Background Card ── */}
-        <div
-          onClick={handleFlip}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              handleFlip();
-            }
-          }}
-          className={`absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[1.75rem] border border-white/10 bg-slate-900 p-5 shadow-2xl [backface-visibility:hidden] cursor-pointer transition-all duration-300 hover:border-teal-400/40 hover:shadow-teal-500/10 ${isFlipped ? "pointer-events-none select-none z-0" : "pointer-events-auto z-10"
-            }`}
-        >
-          {/* Background Image - Clear & Bright */}
-          {member.avatarImage ? (
-            <img
-              src={member.avatarImage}
-              alt={member.name}
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-            />
-          ) : (
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-teal-700 via-slate-900 to-black" />
-          )}
+        {/* Background Image - Next.js Image with high-DPI srcset */}
+        {member.avatarImage ? (
+          <Image
+            src={member.avatarImage}
+            alt={member.name}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 330px"
+            priority={index < 3}
+            quality={90}
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+        ) : (
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-teal-700 via-slate-900 to-black" />
+        )}
 
-          {/* Clean Bottom Scrim - Only over the bottom 45% for text readability */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 via-40% to-transparent" />
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/50 to-transparent" />
+        {/* Clean Bottom Scrim - Only over the bottom 45% for text readability */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 via-40% to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/50 to-transparent" />
 
-          {/* Top Row: Flip Action (top-right) */}
-          <div className="relative z-10 flex items-center justify-end">
-            <span
-              className="flex items-center gap-1.5 rounded-xl border border-white/30 bg-black/60 px-3 py-1.5 text-[11px] font-semibold text-white shadow-lg backdrop-blur-md transition-all group-hover:border-teal-400 group-hover:bg-black/80"
-            >
-              <span>View Bio</span>
-              <RotateCw className="h-3 w-3 transition-transform duration-300 group-hover:rotate-180" />
-            </span>
-          </div>
-
-          {/* Bottom Content Panel */}
-          <div className="relative z-10 mt-auto pt-4">
-            <h3
-              style={{
-                fontFamily: "var(--font-manrope), var(--font-body), sans-serif",
-                letterSpacing: "-0.02em",
-                lineHeight: "1.25",
-              }}
-              className="member-name line-clamp-1 text-xl font-bold text-white drop-shadow-md"
-            >
-              {member.name}
-            </h3>
-
-            <span className={`mt-1 block text-xs font-semibold uppercase tracking-[0.16em] bg-gradient-to-r ${deptGrad} bg-clip-text text-transparent`}>
-              {member.role}
-            </span>
-
-            {/* Tap indicator */}
-            <div className="mt-3 flex items-center gap-1.5 text-[11px] font-medium text-teal-300/90 transition-colors group-hover:text-teal-200">
-              <RotateCw className="h-3 w-3 transition-transform duration-300 group-hover:rotate-180" />
-              <span>Tap card to view bio & details</span>
-            </div>
-          </div>
+        {/* Top Row: Flip Action (top-right) */}
+        <div className="relative z-10 flex items-center justify-end">
+          <span className="flex items-center gap-1.5 rounded-xl border border-white/30 bg-black/60 px-3 py-1.5 text-[11px] font-semibold text-white shadow-lg backdrop-blur-md transition-all group-hover:border-teal-400 group-hover:bg-black/80">
+            <span>View Bio</span>
+            <RotateCw className="h-3 w-3 transition-transform duration-300 group-hover:rotate-180" />
+          </span>
         </div>
 
-        {/* ── BACK: Clean Executive Dossier with Full Bio ── */}
-        <div
-          onClick={handleFlip}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              handleFlip();
-            }
-          }}
-          className={`absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[1.75rem] border border-slate-700/80 bg-slate-950 p-5 cursor-pointer [backface-visibility:hidden] [transform:rotateY(180deg)] ${isFlipped ? "pointer-events-auto z-10" : "pointer-events-none select-none z-0"
-            }`}
-        >
-          {member.avatarImage && (
-            <img
-              src={member.avatarImage}
-              alt=""
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top opacity-10 blur-md scale-110"
-            />
-          )}
-          <div className="pointer-events-none absolute inset-0 bg-[#090e13]/95" />
-          <div
-            className="pointer-events-none absolute inset-0 opacity-10"
-            style={{ backgroundImage: "radial-gradient(#14b8a6 1px, transparent 1px)", backgroundSize: "18px 18px" }}
+        {/* Bottom Content Panel */}
+        <div className="relative z-10 mt-auto pt-4">
+          <h3
+            style={{
+              fontFamily: "var(--font-manrope), var(--font-body), sans-serif",
+              fontWeight: 800,
+              letterSpacing: "-0.02em",
+              lineHeight: "1.25",
+            }}
+            className="member-name line-clamp-1 text-xl font-extrabold text-white drop-shadow-md"
+          >
+            {member.name}
+          </h3>
+
+          <span className={`mt-1 block text-xs font-semibold uppercase tracking-[0.16em] bg-gradient-to-r ${deptGrad} bg-clip-text text-transparent`}>
+            {member.role}
+          </span>
+
+          {/* Tap indicator */}
+          <div className="mt-3 flex items-center gap-1.5 text-[11px] font-medium text-teal-300/90 transition-colors group-hover:text-teal-200">
+            <RotateCw className="h-3 w-3 transition-transform duration-300 group-hover:rotate-180" />
+            <span>Tap card to view bio & details</span>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* ── BACK: Clean Executive Dossier with Full Bio ── */}
+      <motion.div
+        initial={false}
+        animate={{
+          rotateY: isFlipped ? 0 : -180,
+          rotateX: isFlipped && isHovered ? rotate.x : 0,
+        }}
+        transition={{
+          rotateY: { duration: 0.6, ease: [0.23, 1, 0.32, 1] },
+          rotateX: { duration: 0.15, ease: "easeOut" },
+        }}
+        style={{
+          WebkitBackfaceVisibility: "hidden",
+          backfaceVisibility: "hidden",
+          transformStyle: "preserve-3d",
+        }}
+        className={`absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[1.75rem] border border-slate-700/80 bg-slate-950 p-5 shadow-2xl ${
+          isFlipped ? "pointer-events-auto z-10" : "pointer-events-none select-none z-0"
+        }`}
+      >
+        {member.avatarImage && (
+          <Image
+            src={member.avatarImage}
+            alt=""
+            fill
+            sizes="330px"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top opacity-10"
           />
+        )}
+        <div className="pointer-events-none absolute inset-0 bg-[#090e13]/95" />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-10"
+          style={{ backgroundImage: "radial-gradient(#14b8a6 1px, transparent 1px)", backgroundSize: "18px 18px" }}
+        />
 
-          <div className="relative z-10 flex h-full flex-col justify-between overflow-hidden">
-            {/* Header */}
-            <div>
-              <div className="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
-                <div className="flex items-center gap-1.5">
-                  <ShieldCheck className="h-3.5 w-3.5 text-teal-400" />
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-teal-400">
-                    MEMBER PROFILE #{String(index + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <button
-                  type="button"
-                  onClick={handleFlip}
-                  className="cursor-pointer flex items-center gap-1 rounded-lg border border-slate-700 bg-slate-800/80 px-2 py-1 text-[10px] font-medium text-slate-300 transition-colors hover:bg-slate-700 hover:text-white"
-                  title="Close Profile"
-                >
-                  <RotateCw className="h-2.5 w-2.5" />
-                  <span>Close</span>
-                </button>
+        <div className="relative z-10 flex h-full flex-col justify-between overflow-hidden">
+          {/* Header */}
+          <div>
+            <div className="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
+              <div className="flex items-center gap-1.5">
+                <ShieldCheck className="h-3.5 w-3.5 text-teal-400" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-teal-400">
+                  MEMBER PROFILE #{String(index + 1).padStart(2, "0")}
+                </span>
               </div>
-
-              {/* Name & Role */}
-              <div className="mt-2.5">
-                <h4
-                  style={{
-                    fontFamily: "var(--font-manrope), var(--font-body), sans-serif",
-                    letterSpacing: "-0.02em",
-                    lineHeight: "1.25",
-                  }}
-                  className="member-name text-lg font-bold text-white"
-                >
-                  {member.name}
-                </h4>
-                <p className={`mt-0.5 text-xs font-semibold uppercase tracking-[0.14em] bg-gradient-to-r ${deptGrad} bg-clip-text text-transparent`}>
-                  {member.role}
-                </p>
-              </div>
-            </div>
-
-            {/* Scrollable Middle Dossier Content: Bio + Quote + Tools */}
-            <div
-              onClick={(e) => e.stopPropagation()}
-              className="my-2.5 flex-1 overflow-y-auto pr-1 text-xs leading-relaxed text-slate-300 [scrollbar-width:thin] [scrollbar-color:#14b8a6_transparent]"
-            >
-              {/* Bio Section */}
-              {member.bio && (
-                <div className="rounded-xl bg-slate-900/80 p-3 border border-slate-800/80 mb-2.5">
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-teal-400 mb-1.5">
-                    <User className="h-3 w-3" />
-                    <span>Biography</span>
-                  </div>
-                  <p className="text-xs leading-relaxed text-slate-200">
-                    {member.bio}
-                  </p>
-                </div>
-              )}
-
-              {/* Quote / Statement */}
-              {member.quote && member.quote.trim().length > 0 && (
-                <div className="flex items-start gap-2 rounded-xl bg-slate-900/60 p-2.5 border border-slate-800/70 mb-2.5">
-                  <Quote className="h-3.5 w-3.5 shrink-0 rotate-180 text-teal-500/80 mt-0.5" />
-                  <p className="text-[11px] italic leading-relaxed text-slate-300">
-                    &ldquo;{member.quote}&rdquo;
-                  </p>
-                </div>
-              )}
-
-              {/* Focus Tools / Competencies */}
-              {member.tools && member.tools.length > 0 && (
-                <div className="mt-1">
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1.5">
-                    <Wrench className="h-3 w-3 text-teal-400" />
-                    <span>Focus & Expertise</span>
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    {member.tools.map((tool) => (
-                      <span
-                        key={tool}
-                        className="rounded-md border border-teal-500/20 bg-teal-950/50 px-2 py-0.5 text-[10px] font-medium text-teal-200"
-                      >
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Back controls */}
-            <div className="flex items-center justify-between border-t border-slate-800/80 pt-2.5">
-              <span className="text-[10px] text-slate-400">Tap anywhere to flip back</span>
               <button
                 type="button"
                 onClick={handleFlip}
-                className="cursor-pointer flex items-center gap-1.5 rounded-xl border border-teal-500/40 bg-teal-500/15 px-3 py-1.5 text-xs font-semibold text-teal-300 transition-all hover:bg-teal-500/25 active:scale-95"
+                className="cursor-pointer flex items-center gap-1 rounded-lg border border-slate-700 bg-slate-800/80 px-2 py-1 text-[10px] font-medium text-slate-300 transition-colors hover:bg-slate-700 hover:text-white"
+                title="Close Profile"
               >
-                <span>Flip Back</span>
-                <RotateCw className="h-3 w-3" />
+                <RotateCw className="h-2.5 w-2.5" />
+                <span>Close</span>
               </button>
             </div>
+
+            {/* Name & Role */}
+            <div className="mt-2.5">
+              <h4
+                style={{
+                  fontFamily: "var(--font-manrope), var(--font-body), sans-serif",
+                  fontWeight: 800,
+                  letterSpacing: "-0.02em",
+                  lineHeight: "1.25",
+                }}
+                className="member-name text-lg font-extrabold text-white"
+              >
+                {member.name}
+              </h4>
+              <p className={`mt-0.5 text-xs font-semibold uppercase tracking-[0.14em] bg-gradient-to-r ${deptGrad} bg-clip-text text-transparent`}>
+                {member.role}
+              </p>
+            </div>
+          </div>
+
+          {/* Scrollable Middle Dossier Content: Bio + Quote + Tools */}
+          <div className="my-2.5 flex-1 overflow-y-auto pr-1 text-xs leading-relaxed text-slate-300 [scrollbar-width:thin] [scrollbar-color:#14b8a6_transparent]">
+            {/* Bio Section */}
+            {member.bio && (
+              <div className="rounded-xl bg-slate-900/80 p-3 border border-slate-800/80 mb-2.5">
+                <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-teal-400 mb-1.5">
+                  <User className="h-3 w-3" />
+                  <span>Biography</span>
+                </div>
+                <p className="text-xs leading-relaxed text-slate-200">
+                  {member.bio}
+                </p>
+              </div>
+            )}
+
+            {/* Quote / Statement */}
+            {member.quote && member.quote.trim().length > 0 && (
+              <div className="flex items-start gap-2 rounded-xl bg-slate-900/60 p-2.5 border border-slate-800/70 mb-2.5">
+                <Quote className="h-3.5 w-3.5 shrink-0 rotate-180 text-teal-500/80 mt-0.5" />
+                <p className="text-[11px] italic leading-relaxed text-slate-300">
+                  &ldquo;{member.quote}&rdquo;
+                </p>
+              </div>
+            )}
+
+            {/* Focus Tools / Competencies */}
+            {member.tools && member.tools.length > 0 && (
+              <div className="mt-1">
+                <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1.5">
+                  <Wrench className="h-3 w-3 text-teal-400" />
+                  <span>Focus & Expertise</span>
+                </div>
+                <div className="flex flex-wrap gap-1">
+                  {member.tools.map((tool) => (
+                    <span
+                      key={tool}
+                      className="rounded-md border border-teal-500/20 bg-teal-950/50 px-2 py-0.5 text-[10px] font-medium text-teal-200"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Back controls */}
+          <div className="flex items-center justify-between border-t border-slate-800/80 pt-2.5">
+            <span className="text-[10px] text-slate-400">Tap anywhere to flip back</span>
+            <button
+              type="button"
+              onClick={handleFlip}
+              className="cursor-pointer flex items-center gap-1.5 rounded-xl border border-teal-500/40 bg-teal-500/15 px-3 py-1.5 text-xs font-semibold text-teal-300 transition-all hover:bg-teal-500/25 active:scale-95"
+            >
+              <span>Flip Back</span>
+              <RotateCw className="h-3 w-3" />
+            </button>
           </div>
         </div>
       </motion.div>
@@ -294,9 +304,9 @@ export default function InteractiveTeamSection({ members }: InteractiveTeamSecti
   return (
     <div className="relative">
       {/* ── Controls Bar: Clean Filter Bar ── */}
-      <div className="mb-8 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-800 bg-[#0c1218] px-5 py-4">
+      <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border border-slate-800 bg-[#0c1218] p-4 sm:px-5 sm:py-4">
         {/* Filter tabs */}
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 sm:pb-0 sm:flex-wrap">
           {departments.map((dept) => {
             const isActive = activeFilter === dept;
             const count = dept === "All" ? members.length : members.filter((m) => m.department === dept).length;
@@ -306,7 +316,7 @@ export default function InteractiveTeamSection({ members }: InteractiveTeamSecti
                 key={dept}
                 type="button"
                 onClick={() => setActiveFilter(dept)}
-                className={`flex items-center gap-2 rounded-xl px-3.5 py-1.5 text-xs font-semibold transition-all duration-200 active:scale-95 ${isActive
+                className={`flex shrink-0 items-center gap-2 rounded-xl px-3.5 py-1.5 text-xs font-semibold transition-all duration-200 active:scale-95 ${isActive
                   ? "bg-white text-slate-900 shadow-md"
                   : "border border-white/10 bg-white/5 text-slate-400 hover:border-white/20 hover:bg-white/10 hover:text-white"
                   }`}
@@ -324,18 +334,19 @@ export default function InteractiveTeamSection({ members }: InteractiveTeamSecti
         </div>
 
         {/* Member count indicator */}
-        <div className="text-xs text-slate-400">
+        <div className="text-xs text-slate-400 shrink-0">
           Showing <span className="font-semibold text-white">{filteredMembers.length}</span> team members
         </div>
       </div>
 
       {/* ── Team Cards: Vertical Portrait Grid ── */}
-      <motion.div layout className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 justify-center">
-        <AnimatePresence>
+      <motion.div layout="position" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full justify-items-center">
+        <AnimatePresence mode="popLayout">
           {filteredMembers.map((member, index) => (
             <motion.div
-              layout
+              layout="position"
               key={member.id}
+              className="w-full flex justify-center"
               initial={{ opacity: 0, scale: 0.95, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 16 }}

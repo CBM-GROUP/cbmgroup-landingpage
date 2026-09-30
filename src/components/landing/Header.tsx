@@ -20,18 +20,21 @@ export default function Header() {
             <div className="flex items-center">
               <button
                 onClick={() => setOpen((value) => !value)}
-                className="text-slate-900 md:hidden"
+                className="text-slate-900 md:hidden p-1 -ml-1 cursor-pointer"
                 aria-label="Toggle navigation"
               >
-                {open ? <X /> : <Menu />}
+                {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
             </div>
 
-            <div className="flex flex-1 p-1 justify-center border-b-4 border-[#36BEA3] pb-3">
+            <div className="flex flex-1 p-1 justify-center border-[#000] sm:border-b-2">
               <Link href="/" prefetch={false} className="inline-flex items-center">
-                <img src="/logo.png" alt="CBM Group logo" className="h-13 w-auto" />
+                <img src="/logo.png" alt="CBM Group logo" className="h-10 sm:h-12 w-auto object-contain" />
               </Link>
             </div>
+
+            {/* Mobile spacer to keep logo centered */}
+            <div className="w-6 md:hidden" aria-hidden="true" />
           </div>
 
           {/* Navigation Links Row - Extra Spaced between Companies, About Us, Purpose, Work At CBM */}
@@ -43,9 +46,8 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   prefetch={false}
-                  className={`text-base font-medium tracking-tight transition ${
-                    isActive ? "text-slate-950 font-semibold" : "text-slate-600 hover:text-slate-950"
-                  }`}
+                  className={`text-base font-medium tracking-tight transition ${isActive ? "text-slate-950 font-semibold" : "text-slate-600 hover:text-slate-950"
+                    }`}
                 >
                   {item.label}
                 </Link>
@@ -72,9 +74,8 @@ export default function Header() {
                       href={item.href}
                       prefetch={false}
                       onClick={() => setOpen(false)}
-                      className={`text-base font-medium transition ${
-                        isActive ? "text-slate-950 font-semibold" : "text-slate-600 hover:text-slate-950"
-                      }`}
+                      className={`text-base font-medium transition ${isActive ? "text-slate-950 font-semibold" : "text-slate-600 hover:text-slate-950"
+                        }`}
                     >
                       {item.label}
                     </Link>
