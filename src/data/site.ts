@@ -282,31 +282,31 @@ export const careerPrograms: CareerProgram[] = [
         name: "Business",
         description:
           "Strategy, partnerships, finance, and operational leadership that keeps the ecosystem moving.",
-        jobs: ["Partnerships Intern", "Operations Intern", "Research & Insights Intern"],
+        jobs: ["Business Development Lead", "Partnerships Lead", "Corporate Business Lead", "Client Relationship", "Operations Lead"],
       },
       {
         name: "Creative & Production",
         description:
           "Storytelling, media production, content creation, and hands-on creative execution across formats.",
-        jobs: ["Production Assistant Intern", "Video Editor Intern", "Content Creator Intern"],
+        jobs: ["Video Editor", "Graphics Designer", "Content Creator", "Video/Cinematography Lead", "Photography Lead", "Motion Graphics Designer"],
       },
       {
         name: "Marketing & Communications",
         description:
           "Brand building, audience growth, campaign strategy, and communications that connect culture with action.",
-        jobs: ["Social Media Intern", "Brand Marketing Intern", "Campaign Intern"],
+        jobs: ["Marketing Lead", "Communication Strategist", "Public Relations Lead", "Digital Community Lead"],
       },
       {
         name: "Technology (IT)",
         description:
           "Product, platform, systems, and digital infrastructure to power innovation across the group.",
-        jobs: ["Frontend Developer Intern", "Product Intern", "Data & Systems Intern"],
+        jobs: ["IT Lead", "Backend Developer", "Data Management Lead", "Product Manager", "Cyber Security Specialist"],
       },
       {
         name: "Events",
         description:
           "Curating and producing live experiences, activations, and community-driven moments that deepen engagement.",
-        jobs: ["Event Operations Intern", "Experience Coordinator Intern", "Community Engagement Intern"],
+        jobs: ["Events Lead", "Partnerships & Sponsorships", "Team Management Lead", "Activations & Promotions"],
       },
     ],
   },
@@ -320,31 +320,31 @@ export const careerPrograms: CareerProgram[] = [
         name: "Business",
         description:
           "Strategy, partnerships, finance, and operational leadership that keeps the ecosystem moving.",
-        jobs: ["Partnerships Volunteer", "Business Development Volunteer", "Strategy Volunteer"],
+        jobs: ["Business Development Lead", "Partnerships Lead", "Corporate Business Lead", "Client Relationship", "Operations Lead"],
       },
       {
         name: "Creative & Production",
         description:
           "Storytelling, media production, content creation, and hands-on creative execution across formats.",
-        jobs: ["Creative Volunteer", "Camera Volunteer", "Post-Production Volunteer"],
+        jobs: ["Video Editor", "Graphics Designer", "Content Creator", "Video/Cinematography Lead", "Photography Lead", "Motion Graphics Designer"],
       },
       {
         name: "Marketing & Communications",
         description:
           "Brand building, audience growth, campaign strategy, and communications that connect culture with action.",
-        jobs: ["Community Outreach Volunteer", "Digital Marketing Volunteer", "PR Volunteer"],
+        jobs: ["Marketing Lead", "Communication Strategist", "Public Relations Lead", "Digital Community Lead"],
       },
       {
         name: "Technology (IT)",
         description:
           "Product, platform, systems, and digital infrastructure to power innovation across the group.",
-        jobs: ["Web Support Volunteer", "Research & Testing Volunteer", "Product Volunteer"],
+        jobs: ["IT Lead", "Backend Developer", "Data Management Lead", "Product Manager", "Cyber Security Specialist"],
       },
       {
         name: "Events",
         description:
           "Curating and producing live experiences, activations, and community-driven moments that deepen engagement.",
-        jobs: ["Guest Experience Volunteer", "Event Support Volunteer", "Logistics Volunteer"],
+        jobs: ["Events Lead", "Partnerships & Sponsorships", "Team Management Lead", "Activations & Promotions"],
       },
     ],
   },
@@ -358,31 +358,31 @@ export const careerPrograms: CareerProgram[] = [
         name: "Business",
         description:
           "Strategy, partnerships, finance, and operational leadership that keeps the ecosystem moving.",
-        jobs: ["Business Manager", "Partnerships Lead", "Operations Manager"],
+        jobs: ["Business Development Lead", "Partnerships Lead", "Corporate Business Lead", "Client Relationship", "Operations Lead"],
       },
       {
         name: "Creative & Production",
         description:
           "Storytelling, media production, content creation, and hands-on creative execution across formats.",
-        jobs: ["Creative Producer", "Senior Video Editor", "Content Lead"],
+        jobs: ["Video Editor", "Graphics Designer", "Content Creator", "Video/Cinematography Lead", "Photography Lead", "Motion Graphics Designer"],
       },
       {
         name: "Marketing & Communications",
         description:
           "Brand building, audience growth, campaign strategy, and communications that connect culture with action.",
-        jobs: ["Brand Strategist", "Communications Manager", "Social Media Lead"],
+        jobs: ["Marketing Lead", "Communication Strategist", "Public Relations Lead", "Digital Community Lead"],
       },
       {
         name: "Technology (IT)",
         description:
           "Product, platform, systems, and digital infrastructure to power innovation across the group.",
-        jobs: ["Frontend Engineer", "Platform Product Manager", "Systems Analyst"],
+        jobs: ["IT Lead", "Backend Developer", "Data Management Lead", "Product Manager", "Cyber Security Specialist"],
       },
       {
         name: "Events",
         description:
           "Curating and producing live experiences, activations, and community-driven moments that deepen engagement.",
-        jobs: ["Events Manager", "Activation Lead", "Experience Producer"],
+        jobs: ["Events Lead", "Partnerships & Sponsorships", "Team Management Lead", "Activations & Promotions"],
       },
     ],
   },

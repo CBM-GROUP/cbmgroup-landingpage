@@ -57,10 +57,10 @@ export default function Page() {
 
   const applicationMailto = selectedTeam
     ? `mailto:cbmgroup02@gmail.com?subject=${encodeURIComponent(
-        `Application for ${selectedProgram.title} - ${selectedTeam.name}`,
-      )}&body=${encodeURIComponent(
-        `Hello CBM Team,\n\nI am interested in the ${selectedProgram.title} opportunity for the ${selectedTeam.name} team.\n\nPlease share the next steps for my application.\n\nBest regards,\n[Your Name]`,
-      )}`
+      `Application for ${selectedProgram.title} - ${selectedTeam.name}`,
+    )}&body=${encodeURIComponent(
+      `Hello CBM Team,\n\nI am interested in the ${selectedProgram.title} opportunity for the ${selectedTeam.name} team.\n\nPlease share the next steps for my application.\n\nBest regards,\n[Your Name]`,
+    )}`
     : "#";
 
   const chooseProgram = (programId: string) => {
@@ -107,7 +107,7 @@ export default function Page() {
               Build with CBM
             </div>
             <h2 className="mt-6 max-w-2xl text-3xl font-semibold leading-[1.05] tracking-[-0.06em] sm:text-5xl lg:text-6xl">
-              Your next big idea belongs here.
+              Your next big Team belongs here.
             </h2>
             <p className="mt-6 max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
               Join a curious, creative team shaping culture through media, technology, events, and experiences made in Africa.
@@ -146,11 +146,10 @@ export default function Page() {
                     key={program.id}
                     type="button"
                     onClick={() => chooseProgram(program.id)}
-                    className={`flex shrink-0 items-center gap-2.5 rounded-2xl border px-3.5 py-2.5 text-left transition-all duration-200 active:scale-95 ${
-                      isActive
+                    className={`flex shrink-0 items-center gap-2.5 rounded-2xl border px-3.5 py-2.5 text-left transition-all duration-200 active:scale-95 ${isActive
                         ? `border-transparent bg-[#0d1f21] text-white shadow-md ${acc.glow}`
                         : "border-slate-200/80 bg-slate-50 text-slate-700 hover:border-slate-300 hover:bg-white"
-                    }`}
+                      }`}
                   >
                     <span className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${acc.bg} shadow-sm`}>
                       <Icon className="h-4 w-4 text-white" />
@@ -178,11 +177,10 @@ export default function Page() {
                     type="button"
                     onClick={() => chooseProgram(program.id)}
                     whileTap={{ scale: 0.97 }}
-                    className={`relative flex flex-col overflow-hidden rounded-[1.25rem] border p-5 text-left transition-all duration-300 ${
-                      isActive
+                    className={`relative flex flex-col overflow-hidden rounded-[1.25rem] border p-5 text-left transition-all duration-300 ${isActive
                         ? `border-transparent bg-[#0d1f21] text-white shadow-xl ${acc.glow}`
                         : "border-slate-100 bg-slate-50 text-slate-700 hover:border-slate-200 hover:bg-white hover:shadow-md"
-                    }`}
+                      }`}
                   >
                     {isActive && (
                       <div className={`absolute -right-8 -top-8 h-32 w-32 rounded-full bg-gradient-to-br ${acc.bg} opacity-20 blur-2xl`} />
@@ -253,11 +251,10 @@ export default function Page() {
                             onClick={() => setActiveDepartment(isActive ? null : team.name)}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.96 }}
-                            className={`relative flex flex-col overflow-hidden rounded-2xl border p-3.5 sm:p-4 text-left transition-all duration-200 ${
-                              isActive
+                            className={`relative flex flex-col overflow-hidden rounded-2xl border p-3.5 sm:p-4 text-left transition-all duration-200 ${isActive
                                 ? `border-transparent bg-[#0d1f21] text-white ring-2 ${accent.ring}`
                                 : "border-slate-100 bg-slate-50 text-slate-700 hover:border-slate-200 hover:bg-white hover:shadow-md"
-                            }`}
+                              }`}
                           >
                             {isActive && (
                               <div className={`absolute -right-4 -top-4 h-20 w-20 rounded-full bg-gradient-to-br ${accent.bg} opacity-25 blur-xl`} />
