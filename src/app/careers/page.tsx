@@ -120,10 +120,9 @@ export default function Page() {
               <div className="w-full max-w-lg text-center lg:mr-auto lg:text-left">
                 <h2
                   style={{ fontFamily: "var(--font-body)" }}
-                  className="w-full text-[clamp(1.75rem,3.6vw,3rem)] font-extrabold leading-[1.08] tracking-[-0.035em] text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.22)]"
+                  className="w-full text-[clamp(3rem,5.6vw,6rem)] font-extrabold leading-[1.08] tracking-[-0.035em] text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.22)]"
                 >
-                  Your next big <br className="hidden sm:inline" />
-                  Team is Here.
+                  Your next big Team is Here.
                 </h2>
 
                 <p className="mt-3 sm:mt-4 max-w-md text-sm font-medium leading-relaxed text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.2)] sm:text-base">
