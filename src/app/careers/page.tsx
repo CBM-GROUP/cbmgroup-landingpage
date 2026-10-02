@@ -100,8 +100,8 @@ export default function Page() {
         </section>
 
         {/* ── HERO / TEAM BANNER ── */}
-        <section className="relative mt-8 mb-12 sm:mt-10 sm:mb-16">
-          <div className="group relative isolate min-h-[460px] overflow-hidden rounded-[2rem] bg-[#0bb9a0] shadow-[0_24px_80px_rgba(15,23,42,0.15)] sm:min-h-[520px] sm:rounded-[2.5rem] lg:min-h-[580px]">
+        <section className="relative mt-6 mb-12 sm:mt-8 sm:mb-14">
+          <div className="group relative isolate min-h-[340px] overflow-hidden rounded-[2rem] bg-[#0bb9a0] shadow-[0_20px_60px_rgba(15,23,42,0.12)] sm:min-h-[380px] sm:rounded-[2.25rem] lg:min-h-[440px]">
             {/* Background banner image without color-washing overlays */}
             <Image
               src="/cvbBanner (3).jpg.jpeg"
@@ -116,25 +116,28 @@ export default function Page() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent lg:hidden" />
 
             {/* Content positioned on the left half */}
-            <div className="relative z-10 flex min-h-[460px] flex-col justify-end p-6 sm:min-h-[520px] sm:p-10 lg:min-h-[580px] lg:justify-center lg:p-16">
-              <div className="w-full max-w-xl text-center lg:mr-auto lg:text-left">
-                <h2 className="w-full text-[clamp(2.75rem,6.5vw,5.5rem)] font-extrabold leading-[0.92] tracking-[-0.055em] text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.25)]">
+            <div className="relative z-10 flex min-h-[340px] flex-col justify-end p-6 sm:min-h-[380px] sm:p-8 lg:min-h-[440px] lg:justify-center lg:p-12">
+              <div className="w-full max-w-lg text-center lg:mr-auto lg:text-left">
+                <h2
+                  style={{ fontFamily: "var(--font-body)" }}
+                  className="w-full text-[clamp(1.75rem,3.6vw,3rem)] font-extrabold leading-[1.08] tracking-[-0.035em] text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.22)]"
+                >
                   Your next big <br className="hidden sm:inline" />
                   Team is Here.
                 </h2>
 
-                <p className="mt-4 sm:mt-5 max-w-lg text-sm font-medium leading-6 text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.2)] sm:text-base sm:leading-7 lg:text-lg">
+                <p className="mt-3 sm:mt-4 max-w-md text-sm font-medium leading-relaxed text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.2)] sm:text-base">
                   Join a curious, creative team shaping culture through media, technology, events, and experiences made in Africa.
                 </p>
 
-                <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+                <div className="mt-5 sm:mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
                   <a
                     href="#opportunities"
-                    className="group inline-flex items-center gap-2.5 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#36BEA3] hover:text-white"
+                    className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#36BEA3] hover:text-white"
                   >
                     Explore opportunities
                     <ArrowDown
-                      size={17}
+                      size={16}
                       className="transition-transform duration-200 group-hover:translate-y-0.5"
                     />
                   </a>
