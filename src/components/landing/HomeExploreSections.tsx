@@ -36,6 +36,14 @@ const partnerBrands = [
     name: "National ICT Innovation Hub",
     image: "/brands/WhatsApp Image 2026-10-02 at 4.47.59 PM.jpeg",
   },
+  {
+    name: "Brand Video",
+    image: "/brands/WhatsApp Video 2026-10-02 at 17.44.33.mp4",
+  },
+  {
+    name: "TFCS",
+    image: "/brands/TFCS Logo.jpg.jpeg",
+  },
 ];
 
 export function HomeCompaniesSection() {
@@ -53,14 +61,11 @@ export function HomeCompaniesSection() {
     >
       <div className="flex flex-col gap-5 border-b border-slate-200 pb-6 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#167765]">
-            The CBM universe
-          </p>
           <h2
             id="home-companies-heading"
             className="mt-3 max-w-3xl text-3xl leading-tight tracking-[-0.045em] text-slate-950 sm:text-4xl lg:text-5xl"
           >
-            See what we&apos;re made of.
+            The CBM universe
           </h2>
         </div>
       </div>
@@ -172,13 +177,24 @@ export function HomeDestinationsSection() {
                     key={partner.name}
                     className="flex h-[140px] w-[250px] shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white p-3 shadow-[0_8px_24px_rgba(15,23,42,0.04)] sm:h-[160px] sm:w-[280px] sm:p-4"
                   >
-                    <Image
-                      src={partner.image}
-                      alt={partner.name}
-                      width={240}
-                      height={120}
-                      className="max-h-full w-full object-contain"
-                    />
+                    {partner.image.endsWith('.mp4') ? (
+                      <video
+                        src={partner.image}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="max-h-full w-full object-contain"
+                      />
+                    ) : (
+                      <Image
+                        src={partner.image}
+                        alt={partner.name}
+                        width={180}
+                        height={80}
+                        className="max-h-full w-full object-contain"
+                      />
+                    )}
                   </div>
                 ))}
               </div>
