@@ -123,11 +123,20 @@ export default function Page() {
               <motion.div
                 key={value.id}
                 variants={revealVariants}
-                className="aspect-square flex flex-col items-center justify-center p-5 text-center rounded-2xl border border-[#2fa88f] bg-[#36bea3] transition-transform duration-300 hover:-translate-y-1 shadow-sm"
+                className="group relative isolate aspect-square overflow-hidden rounded-2xl border border-[#2fa88f] shadow-[0_18px_40px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:-translate-y-1"
+                style={{
+                  backgroundImage: "url('/string.jpeg')",
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
               >
-                <p className="text-base sm:text-lg font-bold text-white leading-snug">
-                  {value.title}
-                </p>
+                <div className="absolute inset-0 bg-[#1d7a6b]/80 backdrop-blur-[1px]" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#36bea3]/30 via-[#1d7a6b]/40 to-[#0f172a]/70" />
+                <div className="relative z-10 flex h-full w-full items-center justify-center p-5 text-center">
+                  <p className="text-base font-bold leading-snug text-white sm:text-lg">
+                    {value.title}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
