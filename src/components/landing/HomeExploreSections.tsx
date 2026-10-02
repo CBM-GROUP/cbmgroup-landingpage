@@ -30,7 +30,7 @@ const destinations = [
 const featuredBrandIds = ["cbm-tv", "cbm-film", "cbm-advertising"];
 const partnerBrands = [
   { name: "Soul", image: "/brands/Havek.png" },
-  { name: "Halvek Technologies", image: "/brands/ICT HUB.jpg" },
+  { name: "Halvek Technologies", image: "/brands/hub 2.jpg" },
   { name: "Sumic IT Solutions", image: "/brands/sumic1.jpg" },
   {
     name: "National ICT Innovation Hub",
