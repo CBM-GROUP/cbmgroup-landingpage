@@ -28,13 +28,14 @@ const destinations = [
 ];
 
 const featuredBrandIds = ["cbm-tv", "cbm-film", "cbm-advertising"];
-const partnerPlaceholders = [
-  "Partner One",
-  "Partner Two",
-  "Partner Three",
-  "Partner Four",
-  "Partner Five",
-  "Partner Six",
+const partnerBrands = [
+  { name: "Soul", image: "/brands/Havek.png" },
+  { name: "Halvek Technologies", image: "/brands/ICT HUB.jpg" },
+  { name: "Sumic IT Solutions", image: "/brands/sumic1.jpg" },
+  {
+    name: "National ICT Innovation Hub",
+    image: "/brands/WhatsApp Image 2026-10-02 at 4.47.59 PM.jpeg",
+  },
 ];
 
 export function HomeCompaniesSection() {
@@ -156,9 +157,9 @@ export function HomeDestinationsSection() {
 
       <div className="mt-12 border-t border-slate-200 pt-7 sm:mt-16 sm:pt-9">
         <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-[#167765]">
-          Partner placeholders
+          Our Partners
         </p>
-        <div className="overflow-hidden" aria-label="Placeholder partner logos">
+        <div className="overflow-hidden" aria-label="Partner logos">
           <div className="partner-marquee flex w-max items-center gap-6">
             {[0, 1].map((copy) => (
               <div
@@ -166,24 +167,18 @@ export function HomeDestinationsSection() {
                 className="flex shrink-0 items-center gap-6"
                 aria-hidden={copy === 1}
               >
-                {partnerPlaceholders.map((partner, index) => (
+                {partnerBrands.map((partner) => (
                   <div
-                    key={partner}
-                    className="flex h-[76px] min-w-[180px] items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-5 shadow-[0_8px_24px_rgba(15,23,42,0.04)] sm:min-w-[210px]"
+                    key={partner.name}
+                    className="flex h-[100px] w-[200px] shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white p-4 shadow-[0_8px_24px_rgba(15,23,42,0.04)] sm:h-[110px] sm:w-[220px]"
                   >
-                    <span
-                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${
-                        index % 2 === 0
-                          ? "bg-[#36BEA3]/15 text-[#167765]"
-                          : "bg-[#eaf7f3] text-[#2aa58f]"
-                      }`}
-                      aria-hidden="true"
-                    >
-                      <span className="h-4 w-4 rounded-full border-[3px] border-current" />
-                    </span>
-                    <span className="text-sm font-semibold tracking-tight text-slate-700">
-                      {partner}
-                    </span>
+                    <Image
+                      src={partner.image}
+                      alt={partner.name}
+                      width={180}
+                      height={80}
+                      className="max-h-full w-full object-contain"
+                    />
                   </div>
                 ))}
               </div>
