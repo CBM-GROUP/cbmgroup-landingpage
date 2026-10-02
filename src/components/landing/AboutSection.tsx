@@ -4,13 +4,6 @@ import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 
-const aboutPills = [
-  "Creativity",
-  "Storytelling",
-  "Technology",
-  "Entertainment",
-];
-
 // Reusable animation variants for staggered children
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -33,15 +26,6 @@ const itemVariants: Variants = {
   },
 };
 
-const pillVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-};
-
 export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -61,7 +45,7 @@ export default function AboutSection() {
           INTRODUCTION
       ====================================================== */}
 
-      <div className="relative mx-auto max-w-[1600px] px-6 pb-16 pt-24 sm:px-10 sm:pb-24 sm:pt-32 lg:px-16 lg:pb-32 lg:pt-40">
+      <div className="relative mx-auto max-w-[1600px] px-6 pb-10 pt-24 sm:px-10 sm:pb-16 sm:pt-32 lg:px-16 lg:pb-20 lg:pt-40">
         
 
         {/* =================================================
@@ -100,7 +84,7 @@ export default function AboutSection() {
           <motion.div
             variants={itemVariants}
             className="flex flex-col justify-end lg:pb-3">
-            <p className="max-w-md text-base leading-7 text-gray-600 sm:text-lg sm:leading-8">
+            <p className="max-w-md text-base font-bold leading-7 text-gray-700 sm:text-lg sm:leading-8">
               CBM Group is a multinational creative media, entertainment,
               streaming and conglomerate company advancing Africa through
               storytelling, entrepreneurship, digital innovation, technology and
@@ -146,48 +130,9 @@ export default function AboutSection() {
           </motion.div>
         </motion.div>
 
-        {/* =================================================
-            VALUE PILLS (Staggered cascade)
-        ================================================== */}
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.8 }}
-          className="mt-16 flex flex-wrap items-center gap-2 border-t border-gray-200 pt-6">
-          {aboutPills.map((pill) => (
-            <motion.span
-              key={pill}
-              variants={pillVariants}
-              className="
-                rounded-full
-                border
-                border-gray-200
-                bg-gray-50
-                px-4
-                py-2
-                text-xs
-                uppercase
-                tracking-[0.12em]
-                text-gray-600
-                transition-colors
-                hover:bg-gray-100
-                cursor-default
-              ">
-              {pill}
-            </motion.span>
-          ))}
-
-          <motion.span 
-            variants={itemVariants}
-            className="ml-auto hidden text-xs text-gray-400 sm:block">
-            Creativity → Culture → Impact
-          </motion.span>
-        </motion.div>
       </div>
 
-      <div className="relative mx-auto max-w-4xl lg:max-w-5xl px-4 pb-16 pt-6 sm:px-6 sm:pb-24 lg:px-8 lg:pb-32">
+      <div className="relative mx-auto max-w-4xl px-4 pb-16 pt-0 sm:px-6 sm:pb-24 lg:max-w-5xl lg:px-8 lg:pb-32">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

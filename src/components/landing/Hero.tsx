@@ -3,47 +3,54 @@
 import { motion } from "framer-motion";
 import { ArrowDownRight, Play } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export function Hero() {
   return (
     <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
-      <section className="-mt-[175px] sm:-mt-[210px] lg:-mt-[225px] mb-12">
-        {/* Main Hero Card in Company Color Theme */}
-        <div className="relative overflow-hidden rounded-[2.2rem] sm:rounded-[2.5rem] border border-white/20 bg-[#36BEA3] shadow-[0_24px_80px_rgba(15,23,42,0.14)]">
-          <img
+      <section className="-mt-[175px] mb-10 sm:-mt-[210px] sm:mb-14 lg:-mt-[225px] lg:mb-16">
+        <div className="group relative isolate min-h-[440px] overflow-hidden rounded-[2rem] bg-[#36BEA3] shadow-[0_24px_80px_rgba(15,23,42,0.18)] sm:min-h-[520px] sm:rounded-[2.5rem] lg:min-h-[590px]">
+          <Image
             src="/assets/nature.jpg"
-            alt="Hero background"
-            className="absolute inset-0 h-full w-full object-cover opacity-45"
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 1280px) 100vw, 1280px"
+            className="object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
           />
-          <div className="absolute inset-0 bg-[#36BEA3]/80" />
-          <div
-            className="absolute inset-0 opacity-40"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 60% 30%, rgba(255,255,255,0.18) 0 18%, transparent 19%), repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12) 0 18px, transparent 18px 60px)",
-            }}
-          />
+          <div className="absolute inset-0 bg-[#36BEA3]/75" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#126b5b]/65 via-transparent to-[#126b5b]/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0e5146]/55 via-transparent to-[#126b5b]/10" />
 
-          <div className="relative z-10 flex min-h-[380px] sm:min-h-[440px] lg:min-h-[500px] flex-col items-center justify-center p-6 pt-48 pb-12 sm:p-10 sm:pt-56 sm:pb-16 lg:p-16 lg:pt-60 lg:pb-20 text-center">
+          <div className="relative z-10 flex min-h-[440px] flex-col items-center justify-end px-6 pb-10 pt-44 text-center sm:min-h-[520px] sm:px-12 sm:pb-14 sm:pt-52 lg:min-h-[590px] lg:items-start lg:px-16 lg:pb-16 lg:pt-56 lg:text-left">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="w-full max-w-4xl text-3xl font-bold leading-[0.95] tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl drop-shadow-sm"
+              className="w-full max-w-4xl text-[clamp(3.1rem,8vw,7rem)] leading-[0.88] tracking-[-0.055em] text-white drop-shadow-sm"
             >
-              Become One Of Us
+              Become one of us
             </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="mt-5 max-w-xl text-sm leading-6 text-white/85 sm:text-base sm:leading-7 lg:text-lg"
+            >
+              We bring media, entertainment, technology, and entrepreneurship together to move Africa&apos;s creative future forward.
+            </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="mt-8 flex flex-wrap items-center justify-center gap-4"
+              className="mt-7 flex flex-wrap items-center justify-center gap-3 sm:mt-8 lg:justify-start"
             >
               <Link
                 href="/companies"
                 prefetch={false}
-                className="group flex items-center gap-3 rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:scale-105 hover:bg-slate-900"
+                className="group flex items-center gap-3 rounded-full bg-[#36BEA3] px-6 py-3.5 text-sm font-semibold text-slate-950 shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-white"
               >
                 Explore our brands
                 <ArrowDownRight
@@ -55,7 +62,7 @@ export function Hero() {
               <Link
                 href="/about"
                 prefetch={false}
-                className="flex items-center gap-3 rounded-full border border-white/40 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-xs transition-all duration-200 hover:scale-105 hover:bg-white/20"
+                className="flex items-center gap-3 rounded-full border border-white/60 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20"
               >
                 <Play size={17} fill="currentColor" />
                 Discover CBM

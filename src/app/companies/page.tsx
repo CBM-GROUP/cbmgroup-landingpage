@@ -1,5 +1,6 @@
 import { brands } from "@/data/site";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Page() {
   return (
@@ -34,33 +35,29 @@ export default function Page() {
         </section>
 
         <section className="mt-12 sm:mt-16 lg:mt-20">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
             {brands.map((brand) => (
               <a
                 key={brand.id}
                 href={brand.href}
                 target="_blank"
                 rel="noreferrer"
-                className="group mx-auto block w-full max-w-[380px] bg-[#f4e7e6] p-0 transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg rounded-xl overflow-hidden"
+                className="group flex min-h-[190px] flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-4 shadow-[0_12px_36px_rgba(15,23,42,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(15,23,42,0.1)] sm:min-h-[220px] sm:rounded-[1.5rem] sm:p-5"
               >
-                <div className="flex h-[340px] sm:h-[360px] flex-col border border-[#f1d5d1] bg-[#f9f8f7]">
-                  <div className="flex flex-1 items-center justify-center p-4">
-                    <div className="relative h-[220px] sm:h-[240px] w-full max-w-[340px]">
-                      <Image
-                        src={brand.image ?? "/logo.png"}
-                        alt={`${brand.name} logo`}
-                        fill
-                        className="object-contain transition-transform duration-300 group-hover:scale-[1.03]"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between gap-3 px-6 pb-5 pt-2 text-slate-800 border-t border-[#f1d5d1]/50 bg-white/60">
-                    <span className="text-[1.3rem] font-medium tracking-[-0.05em] sm:text-[1.5rem]">
-                      {brand.name}
-                    </span>
-                    <span className="text-[1.6rem] leading-none text-[#d7262d] transition-transform duration-200 group-hover:translate-x-1">›</span>
-                  </div>
+                <div className="relative flex h-32 items-center justify-center sm:h-40">
+                  <Image
+                    src={brand.image ?? "/logo.png"}
+                    alt={`${brand.name} logo`}
+                    fill
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 30vw, 360px"
+                    className="object-contain p-1 transition-transform duration-300 group-hover:scale-[1.04]"
+                  />
+                </div>
+                <div className="mt-4 flex items-center justify-between gap-2 border-t border-slate-100 pt-3">
+                  <span className="text-sm font-semibold tracking-tight text-slate-900 sm:text-base">
+                    {brand.name}
+                  </span>
+                  <ArrowUpRight className="h-4 w-4 shrink-0 text-[#167765] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </div>
               </a>
             ))}
