@@ -155,8 +155,8 @@ export function HomeDestinationsSection() {
         ))}
       </div>
 
-      <div className="mt-12 border-t border-slate-200 pt-7 sm:mt-16 sm:pt-9">
-        <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-[#167765]">
+      <div className="mt-12 border-t border-slate-200 pt-8 sm:mt-16 sm:pt-10">
+        <p className="mb-14 text-sm font-bold uppercase tracking-[0.18em] text-[#167765] sm:mb-16">
           Our Partners
         </p>
         <div className="overflow-hidden" aria-label="Partner logos">
@@ -170,13 +170,13 @@ export function HomeDestinationsSection() {
                 {partnerBrands.map((partner) => (
                   <div
                     key={partner.name}
-                    className="flex h-[100px] w-[200px] shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white p-4 shadow-[0_8px_24px_rgba(15,23,42,0.04)] sm:h-[110px] sm:w-[220px]"
+                    className="flex h-[140px] w-[250px] shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white p-3 shadow-[0_8px_24px_rgba(15,23,42,0.04)] sm:h-[160px] sm:w-[280px] sm:p-4"
                   >
                     <Image
                       src={partner.image}
                       alt={partner.name}
-                      width={180}
-                      height={80}
+                      width={240}
+                      height={120}
                       className="max-h-full w-full object-contain"
                     />
                   </div>
