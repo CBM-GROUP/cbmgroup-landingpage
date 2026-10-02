@@ -140,18 +140,15 @@ export function HomeDestinationsSection() {
             className="group relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-[1.75rem] border border-[#cce9e2] bg-gradient-to-br from-white to-[#eaf7f3] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#36BEA3] hover:shadow-[0_20px_48px_rgba(15,23,42,0.1)] sm:min-h-[300px] sm:p-8"
           >
             <div>
-              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-600">
+              <span className="text-md font-semibold uppercase tracking-[0.16em] text-slate-600">
                 {destination.eyebrow}
               </span>
             </div>
             <div>
-              <h3 className="max-w-xs text-2xl leading-tight tracking-[-0.04em] text-slate-950 sm:text-3xl">
-                {destination.title}
-              </h3>
-              <p className="mt-3 max-w-sm text-sm leading-6 text-slate-600">
+              <p className="mt-3 max-w-sm text-xl font-bold leading-6 text-[#000">
                 {destination.description}
               </p>
-              <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-[#36BEA3] px-4 py-2.5 text-sm font-semibold text-white transition-colors group-hover:bg-[#2aa58f]">
+              <span className="mt-5 inline-flex w-fit items-center gap-1 rounded-full bg-[#36BEA3] px-4 py-2.5 text-sm font-semibold text-white transition-colors group-hover:bg-[#2aa58f]">
                 Find out more
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </span>
@@ -160,10 +157,10 @@ export function HomeDestinationsSection() {
         ))}
       </div>
 
-      <div className="mt-12 border-t border-slate-200 pt-8 sm:mt-16 sm:pt-10">
-        <p className="mb-14 text-sm font-bold uppercase tracking-[0.18em] text-[#167765] sm:mb-16">
+      <div className="mt-12 border-t border-slate-200 pt-8 sm:mt-16 sm:pt-10 text-center">
+        <h2 className="mb-14 text-2xl font-bold uppercase tracking-[0.18em] text-[#000] sm:mb-16">
           Our Partners
-        </p>
+        </h2>
         <div className="overflow-hidden" aria-label="Partner logos">
           <div className="partner-marquee flex w-max items-center gap-6">
             {[0, 1].map((copy) => (
