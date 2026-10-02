@@ -8,7 +8,7 @@ import Image from "next/image";
 export function Hero() {
   return (
     <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
-      <section className="-mt-[175px] mb-10 sm:-mt-[210px] sm:mb-14 lg:-mt-[225px] lg:mb-16">
+      <section className="-mt-[135px] mb-10 sm:-mt-[170px] sm:mb-14 lg:-mt-[185px] lg:mb-16">
         <div className="group relative isolate min-h-[440px] overflow-hidden rounded-[2rem] bg-[#36BEA3] shadow-[0_24px_80px_rgba(15,23,42,0.18)] sm:min-h-[520px] sm:rounded-[2.5rem] lg:min-h-[590px]">
           <Image
             src="/assets/nature.jpg"
@@ -22,7 +22,7 @@ export function Hero() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#126b5b]/65 via-transparent to-[#126b5b]/10" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0e5146]/55 via-transparent to-[#126b5b]/10" />
 
-          <div className="relative z-10 flex min-h-[440px] flex-col items-center justify-end px-6 pb-10 pt-44 text-center sm:min-h-[520px] sm:px-12 sm:pb-14 sm:pt-52 lg:min-h-[590px] lg:items-start lg:px-16 lg:pb-16 lg:pt-56 lg:text-left">
+          <div className="relative z-10 flex min-h-[440px] flex-col items-center justify-end px-6 pb-10 pt-44 text-center sm:min-h-[520px] sm:px-12 sm:pb-14 sm:pt-52 lg:min-h-[590px] lg:items-start lg:px-16 lg:pb-8 lg:pt-56 lg:text-left">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}

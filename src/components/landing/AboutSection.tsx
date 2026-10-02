@@ -45,7 +45,7 @@ export default function AboutSection() {
           INTRODUCTION
       ====================================================== */}
 
-      <div className="relative mx-auto max-w-[1600px] px-6 pb-10 pt-24 sm:px-10 sm:pb-16 sm:pt-32 lg:px-16 lg:pb-20 lg:pt-40">
+      <div className="relative mx-auto max-w-[1600px] px-6 pb-10 pt-20 sm:px-10 sm:pb-16 sm:pt-28 lg:px-16 lg:pb-20 lg:pt-36">
         
 
         {/* =================================================

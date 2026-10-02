@@ -105,16 +105,13 @@ export function HomeDestinationsSection() {
   return (
     <section
       aria-labelledby="home-destinations-heading"
-      className="mx-auto max-w-[1600px] px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16 lg:pb-32"
+      className="mx-auto max-w-[1600px] px-6 pb-20 pt-8 sm:px-10 sm:pb-28 sm:pt-10 lg:px-16 lg:pb-32"
     >
       <div className="mb-7 flex flex-col gap-3 sm:mb-9 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#167765]">
-            Keep exploring
-          </p>
           <h2
             id="home-destinations-heading"
-            className="mt-3 text-3xl leading-tight tracking-[-0.045em] text-slate-950 sm:text-4xl"
+            className="text-3xl leading-tight tracking-[-0.045em] text-slate-950 sm:text-4xl"
           >
             More to discover at CBM.
           </h2>
