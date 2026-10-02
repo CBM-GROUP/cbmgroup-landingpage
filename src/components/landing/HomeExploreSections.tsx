@@ -65,7 +65,7 @@ export function HomeCompaniesSection() {
             id="home-companies-heading"
             className="mt-3 max-w-3xl text-3xl leading-tight tracking-[-0.045em] text-slate-950 sm:text-4xl lg:text-5xl"
           >
-            The CBM universe
+            Explore The CBM universe
           </h2>
         </div>
       </div>
