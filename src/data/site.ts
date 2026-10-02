@@ -109,7 +109,7 @@ export const brands: Brand[] = [
     id: "cbm-records",
     name: "CBM Records",
     image: "/companies/CBM Records Logo - 17.jpg.jpeg",
-    href: "https://records.cbmgroupco.com",
+    href: "https://cbmrecords.cbmgroupco.com",
   },
   {
     id: "cbm-advertising",
