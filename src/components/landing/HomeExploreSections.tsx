@@ -139,13 +139,11 @@ export function HomeDestinationsSection() {
             href={destination.href}
             className="group relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-[1.75rem] border border-[#cce9e2] bg-gradient-to-br from-white to-[#eaf7f3] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#36BEA3] hover:shadow-[0_20px_48px_rgba(15,23,42,0.1)] sm:min-h-[300px] sm:p-8"
           >
-            <div>
-              <span className="text-md font-semibold uppercase tracking-[0.16em] text-slate-600">
+            <div className="flex flex-col gap-4">
+              <span className="text-xl font-bold uppercase tracking-[0.16em]">
                 {destination.eyebrow}
               </span>
-            </div>
-            <div>
-              <p className="mt-3 max-w-sm text-xl font-bold leading-6 text-[#000">
+              <p className="mt-3 max-w-sm text-xl leading-6 text-[#000">
                 {destination.description}
               </p>
               <span className="mt-5 inline-flex w-fit items-center gap-1 rounded-full bg-[#36BEA3] px-4 py-2.5 text-sm font-semibold text-white transition-colors group-hover:bg-[#2aa58f]">
