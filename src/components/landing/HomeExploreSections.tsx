@@ -28,6 +28,14 @@ const destinations = [
 ];
 
 const featuredBrandIds = ["cbm-tv", "cbm-film", "cbm-advertising"];
+const partnerPlaceholders = [
+  "Partner One",
+  "Partner Two",
+  "Partner Three",
+  "Partner Four",
+  "Partner Five",
+  "Partner Six",
+];
 
 export function HomeCompaniesSection() {
   const featuredBrands = brands
@@ -51,7 +59,7 @@ export function HomeCompaniesSection() {
             id="home-companies-heading"
             className="mt-3 max-w-3xl text-3xl leading-tight tracking-[-0.045em] text-slate-950 sm:text-4xl lg:text-5xl"
           >
-            See what we&apos;re building.
+            See what we&apos;re made of.
           </h2>
         </div>
       </div>
@@ -144,6 +152,44 @@ export function HomeDestinationsSection() {
             </div>
           </Link>
         ))}
+      </div>
+
+      <div className="mt-12 border-t border-slate-200 pt-7 sm:mt-16 sm:pt-9">
+        <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-[#167765]">
+          Partner placeholders
+        </p>
+        <div className="overflow-hidden" aria-label="Placeholder partner logos">
+          <div className="partner-marquee flex w-max items-center gap-6">
+            {[0, 1].map((copy) => (
+              <div
+                key={copy}
+                className="flex shrink-0 items-center gap-6"
+                aria-hidden={copy === 1}
+              >
+                {partnerPlaceholders.map((partner, index) => (
+                  <div
+                    key={partner}
+                    className="flex h-[76px] min-w-[180px] items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-5 shadow-[0_8px_24px_rgba(15,23,42,0.04)] sm:min-w-[210px]"
+                  >
+                    <span
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${
+                        index % 2 === 0
+                          ? "bg-[#36BEA3]/15 text-[#167765]"
+                          : "bg-[#eaf7f3] text-[#2aa58f]"
+                      }`}
+                      aria-hidden="true"
+                    >
+                      <span className="h-4 w-4 rounded-full border-[3px] border-current" />
+                    </span>
+                    <span className="text-sm font-semibold tracking-tight text-slate-700">
+                      {partner}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
