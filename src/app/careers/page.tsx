@@ -1,8 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
+  ArrowDown,
   ArrowUpRight,
   BriefcaseBusiness,
   Building2,
@@ -97,21 +99,48 @@ export default function Page() {
           </div>
         </section>
 
-        {/* ── HERO ── */}
-        <section className="relative overflow-hidden rounded-[2.5rem] bg-[#36bea3] px-6 py-12 text-white shadow-[0_24px_70px_rgba(15,23,42,0.14)] sm:px-10 sm:py-16 lg:px-16 lg:py-20">
-          <div className="absolute -right-24 -top-32 h-80 w-80 rounded-full bg-[#36bea3]/30 blur-3xl" />
-          <div className="absolute -bottom-40 left-1/3 h-80 w-80 rounded-full bg-[#f6b85c]/15 blur-3xl" />
-          <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
+        {/* ── HERO / TEAM BANNER ── */}
+        <section className="relative mt-8 mb-12 sm:mt-10 sm:mb-16">
+          <div className="group relative isolate min-h-[460px] overflow-hidden rounded-[2rem] bg-[#0bb9a0] shadow-[0_24px_80px_rgba(15,23,42,0.15)] sm:min-h-[520px] sm:rounded-[2.5rem] lg:min-h-[580px]">
+            {/* Background banner image without color-washing overlays */}
+            <Image
+              src="/cvbBanner (3).jpg.jpeg"
+              alt="Your next big Team is Here"
+              fill
+              priority
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-cover object-right sm:object-center transition-transform duration-700 ease-out group-hover:scale-[1.015]"
+            />
 
-            <h2 className="mt-6 max-w-2xl text-3xl font-semibold leading-[1.05] tracking-[-0.06em] sm:text-5xl lg:text-6xl">
-              Your next big Team is Here.
-            </h2>
-            <p className="mt-6 max-w-xl text-base font-semibold leading-7 text-white sm:text-lg">
-              Join a curious, creative team shaping culture through media, technology, events, and experiences made in Africa.
-            </p>
-            <a href="#opportunities" className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#8ce5d3] px-5 py-3 text-sm font-bold text-[#102b2d] transition hover:bg-white">
-              Explore opportunities <span aria-hidden="true">↓</span>
-            </a>
+            {/* Mobile-only subtle gradient for small screen text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent lg:hidden" />
+
+            {/* Content positioned on the left half */}
+            <div className="relative z-10 flex min-h-[460px] flex-col justify-end p-6 sm:min-h-[520px] sm:p-10 lg:min-h-[580px] lg:justify-center lg:p-16">
+              <div className="w-full max-w-xl text-center lg:mr-auto lg:text-left">
+                <h2 className="w-full text-[clamp(2.75rem,6.5vw,5.5rem)] font-extrabold leading-[0.92] tracking-[-0.055em] text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.25)]">
+                  Your next big <br className="hidden sm:inline" />
+                  Team is Here.
+                </h2>
+
+                <p className="mt-4 sm:mt-5 max-w-lg text-sm font-medium leading-6 text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.2)] sm:text-base sm:leading-7 lg:text-lg">
+                  Join a curious, creative team shaping culture through media, technology, events, and experiences made in Africa.
+                </p>
+
+                <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+                  <a
+                    href="#opportunities"
+                    className="group inline-flex items-center gap-2.5 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#36BEA3] hover:text-white"
+                  >
+                    Explore opportunities
+                    <ArrowDown
+                      size={17}
+                      className="transition-transform duration-200 group-hover:translate-y-0.5"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
