@@ -25,7 +25,11 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-[#f5f5f1] text-slate-900">
       <div className="mx-auto max-w-7xl px-4 pb-20 pt-4 sm:px-6 sm:pb-24 lg:px-8">
+<<<<<<< HEAD
         <section className="-mt-[72px] sm:-mt-[210px] lg:-mt-[225px] mb-12">
+=======
+        <section className="mt-3 mb-10 sm:mt-4 sm:mb-12 lg:mt-5 lg:mb-14">
+>>>>>>> 68eb61dd707444ee5512b6deead766d886adf48f
           <div className="relative overflow-hidden rounded-[2.2rem] sm:rounded-[2.5rem] border border-white/20 bg-[#36BEA3] shadow-[0_24px_80px_rgba(15,23,42,0.14)]">
             <img
               src="/assets/nature.jpg"
@@ -40,7 +44,7 @@ export default function Page() {
                   "radial-gradient(circle at 60% 30%, rgba(255,255,255,0.18) 0 18%, transparent 19%), repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12) 0 18px, transparent 18px 60px)",
               }}
             />
-            <div className="relative flex min-h-[280px] sm:min-h-[360px] lg:min-h-[420px] items-center justify-center p-6 pt-48 sm:p-10 sm:pt-56 lg:p-12 lg:pt-60">
+            <div className="relative flex min-h-[180px] sm:min-h-[220px] lg:min-h-[260px] items-center justify-center p-6 sm:p-10 lg:p-12">
               <h1 className="text-center text-[clamp(2.2rem,6vw,5.5rem)] font-bold leading-[0.85] tracking-[-0.06em] text-white drop-shadow-sm uppercase">
                 ABOUT US
               </h1>
@@ -123,15 +127,15 @@ export default function Page() {
               <motion.div
                 key={value.id}
                 variants={revealVariants}
-                className="group relative isolate aspect-square overflow-hidden rounded-2xl border border-[#2fa88f] shadow-[0_18px_40px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:-translate-y-1"
+                className="group relative isolate min-h-[240px] sm:min-h-[280px] overflow-hidden rounded-2xl border border-[#2fa88f] shadow-[0_18px_40px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:-translate-y-1"
                 style={{
-                  backgroundImage: "url('/string.jpeg')",
+                  backgroundImage: "url('/WhatsApp%20Image%202026-10-02%20at%2019.22.21.jpeg')",
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
               >
-                <div className="absolute inset-0 bg-[#1d7a6b]/80 backdrop-blur-[1px]" />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#36bea3]/30 via-[#1d7a6b]/40 to-[#0f172a]/70" />
+                <div className="absolute inset-0 bg-[#1d7a6b]/20" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#36bea3]/10 via-[#1d7a6b]/15 to-[#0f172a]/30" />
                 <div className="relative z-10 flex h-full w-full items-center justify-center p-5 text-center">
                   <p className="text-base font-bold leading-snug text-white sm:text-lg">
                     {value.title}

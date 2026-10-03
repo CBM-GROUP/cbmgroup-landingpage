@@ -30,11 +30,19 @@ const destinations = [
 const featuredBrandIds = ["cbm-tv", "cbm-film", "cbm-advertising"];
 const partnerBrands = [
   { name: "Soul", image: "/brands/Havek.png" },
-  { name: "Halvek Technologies", image: "/brands/ICT HUB.jpg" },
+  { name: "Halvek Technologies", image: "/brands/hub 2.jpg" },
   { name: "Sumic IT Solutions", image: "/brands/sumic1.jpg" },
   {
     name: "National ICT Innovation Hub",
     image: "/brands/WhatsApp Image 2026-10-02 at 4.47.59 PM.jpeg",
+  },
+  {
+    name: "Brand Video",
+    image: "/brands/WhatsApp Video 2026-10-02 at 17.44.33.mp4",
+  },
+  {
+    name: "TFCS",
+    image: "/brands/TFCS Logo.jpg.jpeg",
   },
 ];
 
@@ -53,14 +61,11 @@ export function HomeCompaniesSection() {
     >
       <div className="flex flex-col gap-5 border-b border-slate-200 pb-6 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#167765]">
-            The CBM universe
-          </p>
           <h2
             id="home-companies-heading"
             className="mt-3 max-w-3xl text-3xl leading-tight tracking-[-0.045em] text-slate-950 sm:text-4xl lg:text-5xl"
           >
-            See what we&apos;re made of.
+            Explore The CBM universe
           </h2>
         </div>
       </div>
@@ -134,19 +139,14 @@ export function HomeDestinationsSection() {
             href={destination.href}
             className="group relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-[1.75rem] border border-[#cce9e2] bg-gradient-to-br from-white to-[#eaf7f3] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#36BEA3] hover:shadow-[0_20px_48px_rgba(15,23,42,0.1)] sm:min-h-[300px] sm:p-8"
           >
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-600">
+            <div className="flex flex-col gap-4">
+              <h4 className="text-xl font-bold uppercase tracking-[0.16em]">
                 {destination.eyebrow}
-              </span>
-            </div>
-            <div>
-              <h3 className="max-w-xs text-2xl leading-tight tracking-[-0.04em] text-slate-950 sm:text-3xl">
-                {destination.title}
-              </h3>
-              <p className="mt-3 max-w-sm text-sm leading-6 text-slate-600">
+              </h4>
+              <p className="mt-3 max-w-sm text-xl leading-6 text-[#000]">
                 {destination.description}
               </p>
-              <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-[#36BEA3] px-4 py-2.5 text-sm font-semibold text-white transition-colors group-hover:bg-[#2aa58f]">
+              <span className="mt-5 inline-flex w-fit items-center gap-1 rounded-full bg-[#36BEA3] px-4 py-2.5 text-sm font-semibold text-white transition-colors group-hover:bg-[#2aa58f]">
                 Find out more
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </span>
@@ -155,10 +155,10 @@ export function HomeDestinationsSection() {
         ))}
       </div>
 
-      <div className="mt-12 border-t border-slate-200 pt-8 sm:mt-16 sm:pt-10">
-        <p className="mb-14 text-sm font-bold uppercase tracking-[0.18em] text-[#167765] sm:mb-16">
+      <div className="mt-12 border-t border-slate-200 pt-8 sm:mt-16 sm:pt-10 text-center">
+        <h2 className="mb-14 text-2xl font-bold uppercase tracking-[0.18em] text-[#000] sm:mb-16">
           Our Partners
-        </p>
+        </h2>
         <div className="overflow-hidden" aria-label="Partner logos">
           <div className="partner-marquee flex w-max items-center gap-6">
             {[0, 1].map((copy) => (
@@ -172,13 +172,24 @@ export function HomeDestinationsSection() {
                     key={partner.name}
                     className="flex h-[140px] w-[250px] shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-white p-3 shadow-[0_8px_24px_rgba(15,23,42,0.04)] sm:h-[160px] sm:w-[280px] sm:p-4"
                   >
-                    <Image
-                      src={partner.image}
-                      alt={partner.name}
-                      width={240}
-                      height={120}
-                      className="max-h-full w-full object-contain"
-                    />
+                    {partner.image.endsWith('.mp4') ? (
+                      <video
+                        src={partner.image}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="max-h-full w-full object-contain"
+                      />
+                    ) : (
+                      <Image
+                        src={partner.image}
+                        alt={partner.name}
+                        width={180}
+                        height={80}
+                        className="max-h-full w-full object-contain"
+                      />
+                    )}
                   </div>
                 ))}
               </div>

@@ -1,8 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
+  ArrowDown,
   ArrowUpRight,
   BriefcaseBusiness,
   Building2,
@@ -74,7 +76,11 @@ export default function Page() {
       <div className="mx-auto max-w-7xl px-4 pb-24 pt-4 sm:px-6 lg:px-8">
 
         {/* ── PAGE HEADING HERO ── */}
+<<<<<<< HEAD
         <section className="-mt-[72px] sm:-mt-[210px] lg:-mt-[225px] mb-12">
+=======
+        <section className="mt-3 mb-10 sm:mt-4 sm:mb-12 lg:mt-5 lg:mb-14">
+>>>>>>> 68eb61dd707444ee5512b6deead766d886adf48f
           <div className="relative overflow-hidden rounded-[2.2rem] sm:rounded-[2.5rem] border border-white/20 bg-[#36BEA3] shadow-[0_24px_80px_rgba(15,23,42,0.14)]">
             <img
               src="/assets/nature.jpg"
@@ -89,7 +95,7 @@ export default function Page() {
                   "radial-gradient(circle at 60% 30%, rgba(255,255,255,0.18) 0 18%, transparent 19%), repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12) 0 18px, transparent 18px 60px)",
               }}
             />
-            <div className="relative flex min-h-[280px] sm:min-h-[360px] lg:min-h-[420px] items-center justify-center p-6 pt-48 sm:p-10 sm:pt-56 lg:p-12 lg:pt-60">
+            <div className="relative flex min-h-[180px] sm:min-h-[220px] lg:min-h-[260px] items-center justify-center p-6 sm:p-10 lg:p-12">
               <h1 className="text-center text-[clamp(2.2rem,6vw,5.5rem)] font-bold leading-[0.85] tracking-[-0.06em] text-white drop-shadow-sm uppercase">
                 CAREERS
               </h1>
@@ -97,21 +103,50 @@ export default function Page() {
           </div>
         </section>
 
-        {/* ── HERO ── */}
-        <section className="relative overflow-hidden rounded-[2.5rem] bg-[#36bea3] px-6 py-12 text-white shadow-[0_24px_70px_rgba(15,23,42,0.14)] sm:px-10 sm:py-16 lg:px-16 lg:py-20">
-          <div className="absolute -right-24 -top-32 h-80 w-80 rounded-full bg-[#36bea3]/30 blur-3xl" />
-          <div className="absolute -bottom-40 left-1/3 h-80 w-80 rounded-full bg-[#f6b85c]/15 blur-3xl" />
-          <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
+        {/* ── HERO / TEAM BANNER ── */}
+        <section className="relative mt-6 mb-12 sm:mt-8 sm:mb-14">
+          <div className="group relative isolate min-h-[340px] overflow-hidden rounded-[2rem] bg-[#0bb9a0] shadow-[0_20px_60px_rgba(15,23,42,0.12)] sm:min-h-[380px] sm:rounded-[2.25rem] lg:min-h-[440px]">
+            {/* Background banner image without color-washing overlays */}
+            <Image
+              src="/cvbBanner (3).jpg.jpeg"
+              alt="Your next big Team is Here"
+              fill
+              priority
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-cover object-right sm:object-center transition-transform duration-700 ease-out group-hover:scale-[1.015]"
+            />
 
-            <h2 className="mt-6 max-w-2xl text-3xl font-semibold leading-[1.05] tracking-[-0.06em] sm:text-5xl lg:text-6xl">
-              Your next big Team is Here.
-            </h2>
-            <p className="mt-6 max-w-xl text-base font-semibold leading-7 text-white sm:text-lg">
-              Join a curious, creative team shaping culture through media, technology, events, and experiences made in Africa.
-            </p>
-            <a href="#opportunities" className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#8ce5d3] px-5 py-3 text-sm font-bold text-[#102b2d] transition hover:bg-white">
-              Explore opportunities <span aria-hidden="true">↓</span>
-            </a>
+            {/* Mobile-only subtle gradient for small screen text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent lg:hidden" />
+
+            {/* Content positioned on the left half */}
+            <div className="relative z-10 flex min-h-[340px] flex-col justify-end p-6 sm:min-h-[380px] sm:p-8 lg:min-h-[440px] lg:justify-center lg:p-12">
+              <div className="w-full max-w-lg text-center lg:mr-auto lg:text-left">
+                <h2
+                  style={{ fontFamily: "var(--font-body)" }}
+                  className="w-full text-[clamp(3rem,5.6vw,6rem)] font-extrabold leading-[1.08] tracking-[-0.035em] text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.22)]"
+                >
+                  Your next big Team is Here.
+                </h2>
+
+                <p className="mt-3 sm:mt-4 max-w-md text-sm font-medium leading-relaxed text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.2)] sm:text-base">
+                  Join a curious, creative team shaping culture through media, technology, events, and experiences made in Africa.
+                </p>
+
+                <div className="mt-5 sm:mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+                  <a
+                    href="#opportunities"
+                    className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#36BEA3] hover:text-white"
+                  >
+                    Explore opportunities
+                    <ArrowDown
+                      size={16}
+                      className="transition-transform duration-200 group-hover:translate-y-0.5"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
