@@ -74,7 +74,7 @@ export default function Page() {
       <div className="mx-auto max-w-7xl px-4 pb-24 pt-4 sm:px-6 lg:px-8">
 
         {/* ── PAGE HEADING HERO ── */}
-        <section className="-mt-[175px] sm:-mt-[210px] lg:-mt-[225px] mb-12">
+        <section className="-mt-[72px] sm:-mt-[210px] lg:-mt-[225px] mb-12">
           <div className="relative overflow-hidden rounded-[2.2rem] sm:rounded-[2.5rem] border border-white/20 bg-[#36BEA3] shadow-[0_24px_80px_rgba(15,23,42,0.14)]">
             <img
               src="/assets/nature.jpg"
