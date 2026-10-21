@@ -8,14 +8,9 @@ import Image from "next/image";
 export function Hero() {
   return (
     <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
-<<<<<<< HEAD
-      <section className="-mt-[72px] mb-10 sm:-mt-[170px] sm:mb-14 lg:-mt-[185px] lg:mb-16">
-        <div className="group relative isolate min-h-[440px] overflow-hidden rounded-[2rem] bg-[#36BEA3] shadow-[0_24px_80px_rgba(15,23,42,0.18)] sm:min-h-[520px] sm:rounded-[2.5rem] lg:min-h-[590px]">
-=======
       <section className="mt-3 mb-10 sm:mt-4 sm:mb-14 lg:mt-5 lg:mb-16">
         <div className="group relative isolate min-h-[460px] overflow-hidden rounded-[2rem] bg-[#0bb9a0] shadow-[0_24px_80px_rgba(15,23,42,0.15)] sm:min-h-[520px] sm:rounded-[2.5rem] lg:min-h-[580px]">
           {/* Background image without color-washing overlays */}
->>>>>>> 68eb61dd707444ee5512b6deead766d886adf48f
           <Image
             src="/cvbBanner (2).jpg.jpeg"
             alt="Become one of us"
@@ -25,20 +20,8 @@ export function Hero() {
             className="object-cover object-left sm:object-center transition-transform duration-700 ease-out group-hover:scale-[1.015]"
           />
 
-<<<<<<< HEAD
-          <div className="relative z-10 flex min-h-[440px] flex-col items-center justify-end px-6 pb-10 pt-32 text-center sm:min-h-[520px] sm:px-12 sm:pb-14 sm:pt-52 lg:min-h-[590px] lg:items-start lg:px-16 lg:pb-8 lg:pt-56 lg:text-left">
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="w-full max-w-4xl text-[clamp(3.1rem,8vw,7rem)] leading-[0.88] tracking-[-0.055em] text-white drop-shadow-sm"
-            >
-              Become one of us
-            </motion.h1>
-=======
           {/* Mobile-only subtle gradient for small screen text readability */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent lg:hidden" />
->>>>>>> 68eb61dd707444ee5512b6deead766d886adf48f
 
           {/* Content positioned on the right half */}
           <div className="relative z-10 flex min-h-[460px] flex-col justify-end p-6 sm:min-h-[520px] sm:p-10 lg:min-h-[580px] lg:justify-center lg:p-16">

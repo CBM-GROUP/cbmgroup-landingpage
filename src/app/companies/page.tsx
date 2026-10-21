@@ -6,11 +6,7 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-[#f5f5f1] text-slate-900">
       <div className="mx-auto max-w-7xl px-4 pb-20 pt-4 sm:px-6 sm:pb-24 lg:px-8">
-<<<<<<< HEAD
-        <section className="-mt-[72px] sm:-mt-[210px] lg:-mt-[225px] mb-12">
-=======
         <section className="mt-3 mb-10 sm:mt-4 sm:mb-12 lg:mt-5 lg:mb-14">
->>>>>>> 68eb61dd707444ee5512b6deead766d886adf48f
           <div className="relative overflow-hidden rounded-[2.2rem] sm:rounded-[2.5rem] border border-white/20 bg-[#36BEA3] shadow-[0_24px_80px_rgba(15,23,42,0.14)]">
             <img
               src="/assets/nature.jpg"
