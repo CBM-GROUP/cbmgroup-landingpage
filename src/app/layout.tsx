@@ -14,6 +14,9 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "CBM Group",
   description: "Creative media, entertainment, and streaming company",
+  icons: {
+    icon: "/icon-192.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
